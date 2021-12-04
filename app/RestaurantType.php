@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class RestaurantType extends Model
 {
     protected $fillable = [
-        'name','slug', 'img_path'
+        'name','slug'
     ];
 
     public function users()
