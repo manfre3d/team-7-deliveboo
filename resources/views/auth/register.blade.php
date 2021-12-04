@@ -8,9 +8,10 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}"  enctype="multipart/form-data">
                         @csrf
 
+                        {{-- name input --}}
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -25,6 +26,7 @@
                             </div>
                         </div>
 
+                        {{-- email input --}}
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -39,6 +41,7 @@
                             </div>
                         </div>
 
+                        {{-- password input--}}
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -53,11 +56,74 @@
                             </div>
                         </div>
 
+                        {{-- password confirm input--}}
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        {{-- description textarea tag --}}
+                        <div class="form-group row">
+                            <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
+
+                            <div class="col-md-6">
+                                <textarea id="description"  class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="description" autofocus></textarea>
+
+                                @error('description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{-- image input tag --}}
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                {{-- label per l'input tag --}}
+                                <label name="image">Inserisci l'immagine del ristorante da registrare</label>
+                            
+                                {{-- input tag, type file, per inviare file all'invio del form --}}
+                                <input type="file" name="image"
+                                    class="form-control-file @error('image') is-invalid @enderror" >
+                            
+                                {{-- codice per mostrare un errore in caso di validazione non soddisfatta --}}
+                                @error('image')
+                                <div class="invalid-feedback">{{$message}}</div>
+                                @enderror    
+                            </div>
+                        </div>
+                        
+                        {{-- address input tag --}}
+                        <div class="form-group row">
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
+
+                                @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{-- piva input tag --}}
+                        <div class="form-group row">
+                            <label for="piva" class="col-md-4 col-form-label text-md-right">{{ __('Partita Iva') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="piva" type="text" class="form-control @error('piva') is-invalid @enderror" name="piva" value="{{ old('piva') }}" required autocomplete="piva" autofocus>
+
+                                @error('piva')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 

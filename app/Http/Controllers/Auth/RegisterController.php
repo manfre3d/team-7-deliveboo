@@ -57,7 +57,8 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'address' => ['required', 'string','max:150'],
             'piva' => ['required', 'string','max:25'],
-            'image' => ['nullable','image','max:250'],
+            'image' => ['nullable','mimes:jpeg,jpg,png,gif','max:1000'],
+            'description' => ['nullable','string'],
         ]);
     }
 
@@ -84,6 +85,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'address' => $data['address'],
             'piva' => $data['piva'],
+            'description' => $data['description'],
             'slug' => $this->getSlug($data['name']),
             'img_path' => $cover_path
         ]);
