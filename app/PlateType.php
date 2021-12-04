@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class PlateType extends Model
 {
     protected $fillable = [
-        'name',
-        'plate_type_id'
+        'name'
     ];
     public function plates()
     {

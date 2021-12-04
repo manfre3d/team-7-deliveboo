@@ -57,7 +57,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'address' => ['required', 'string','max:150'],
             'piva' => ['required', 'string','max:25'],
-            'image' => ['nullable','mimes:jpeg,jpg,png,gif','max:1000'],
+            'image' => ['nullable','mimes:jpeg,jpg,png','max:1000'],
             'description' => ['nullable','string'],
         ]);
     }
