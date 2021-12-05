@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Plate extends Model
 {
     protected $fillable = [
-        'name','description','ingredients','price','availability', 'plate_type_id', 'img_path'
+        'name','description','ingredients','price','availability','user_id' , 'plate_type_id', 'img_path'
     ];
 
     public function user()
