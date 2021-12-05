@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PlateType extends Model
 {
+    public $table = 'plates_types';
+    
     protected $fillable = [
         'name'
     ];
