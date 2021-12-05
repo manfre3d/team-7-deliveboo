@@ -5,7 +5,7 @@ use Illuminate\Support\Str;
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\DB;
 
 class UsersTableSeeder extends Seeder
 {
@@ -70,7 +70,7 @@ class UsersTableSeeder extends Seeder
             "restaurant_covers/seeder_images/spanish-cuisine.jpg"            
         ];
 
-        for( $i = 0; $i < 15; $i++ ) {
+        for( $i = 1; $i <= 15; $i++ ) {
             $newUser= new User();
 
             // generates a random name, between the contents of the array $restaurantName
@@ -97,7 +97,13 @@ class UsersTableSeeder extends Seeder
             // woraround to pass a path to the db
             $newUser->img_path = $images[rand(0,6)];
 
+            
             $newUser->save();
+            // aggiunge delle categorie random nella tabella pivo ai ristoranti
+            DB::table('user_restaurant_type')->insert([
+                'restaurant_type_id' => rand(1,5),
+                'user_id' => $i,
+            ]);
         }
         
     }
