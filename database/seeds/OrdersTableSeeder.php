@@ -17,7 +17,7 @@ class OrdersTableSeeder extends Seeder
         for ( $i = 0; $i < 50; $i++) {
             $newOrder = new Order();
             $newOrder->user_id = $faker->numberBetween(1, 15) ;
-            $newOrder->total_price = $faker->randomFloat(2, 1, 999);
+            $newOrder->total_price = $faker->randomFloat(2, 1, 200);
             $newOrder->customer_name = $faker->firstName($gender = null);
             $newOrder->customer_surname = $faker->lastName();
             $newOrder->customer_email = $faker->email();
