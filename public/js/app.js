@@ -37351,9 +37351,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Pc\Desktop\Boolean\classe 40 esercizi\progetto finale\team-7-deliveboo\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Users\Pc\Desktop\Boolean\classe 40 esercizi\progetto finale\team-7-deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\Pc\Desktop\Boolean\classe 40 esercizi\progetto finale\team-7-deliveboo\resources\sass\front\front.scss */"./resources/sass/front/front.scss");
+__webpack_require__(/*! E:\BOOLEAN\ESERCIZI\Progetto finale\team-7-deliveboo\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! E:\BOOLEAN\ESERCIZI\Progetto finale\team-7-deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! E:\BOOLEAN\ESERCIZI\Progetto finale\team-7-deliveboo\resources\sass\front\front.scss */"./resources/sass/front/front.scss");
 
 
 /***/ })

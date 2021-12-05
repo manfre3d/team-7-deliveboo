@@ -14458,7 +14458,7 @@ var app = new Vue({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Pc\Desktop\Boolean\classe 40 esercizi\progetto finale\team-7-deliveboo\resources\js\front\front.js */"./resources/js/front/front.js");
+module.exports = __webpack_require__(/*! E:\BOOLEAN\ESERCIZI\Progetto finale\team-7-deliveboo\resources\js\front\front.js */"./resources/js/front/front.js");
 
 
 /***/ })
