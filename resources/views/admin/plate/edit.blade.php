@@ -124,8 +124,8 @@
                         <div class="form-group">
 							<label for="availability">Disponibilità</label>
 							<select name="availability" class="form-control @error('availability') is-invalid @enderror">
-								<option value="0">-- Piatto non disponibile --</option>
 								<option value="1">-- Piatto disponibile --</option>								
+								<option value="0">-- Piatto non disponibile --</option>
 
 							</select>
 							@error('availability')
