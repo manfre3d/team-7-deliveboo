@@ -14,8 +14,16 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Accesso eseguito con successo!') }}
                 </div>
+                <ul>
+                    <li>
+                        <a href="{{route('admin.plates.index')}}" class="d-flex justify-content-center align-items-end">
+                            <button class="btn-primary btn">Visualizza il Menu</button>                            
+                        </a>
+
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

@@ -5,7 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Crea un Piatto') }}</div>
+                <div class="card-header d-flex justify-content-between">
+                    {{ __('Crea un Piatto') }}
+                    <a href="{{route('admin.plates.index')}}" class="d-flex justify-content-center align-items-end">
+                        <button class="btn-primary btn">Torna alla pagina precedente</button>                            
+                    </a>
+                </div>
+                
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('admin.plates.store') }}"  enctype="multipart/form-data">
@@ -64,7 +70,7 @@
 
                             <div class="col-md-6">
 
-                                <input id="price" type=number step=0.01 class="form-control @error('price') is-invalid @enderror" price="price" value="{{ old('price') }}" required autocomplete="price" autofocus/>
+                                <input id="price" type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" autofocus/>
                                 @error('price')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -91,10 +97,26 @@
                             </div>
                         </div>
                         
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                        <div class="form-group">
+							<label for="plate_type_id">Categoria</label>
+							<select name="plate_type_id" class="form-control @error('plate_type_id') is-invalid @enderror">
+								<option value="">-- Selezion una categoria --</option>
+
+								@foreach ($plateCategories as $category)
+								<option {{ old("plate_type_id") == $category["id"] ? 'selected' : null }} value="{{$category["id"]}}">{{$category["name"]}}</option>
+								@endforeach
+
+							</select>
+							@error('plate_type_id')
+							<div class="alert alert-danger">{{ $message }}</div>
+						  	@enderror
+						</div>
+
+
+                        <div class="form-group row">
+                            <div class="col">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Crea piatto') }}
                                 </button>
                             </div>
                         </div>

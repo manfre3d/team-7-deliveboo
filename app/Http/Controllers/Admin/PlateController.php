@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Plate;
+use App\PlateType;
 
 // facade used for user authentication
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,17 @@ use Illuminate\Support\Facades\Storage;
 
 class PlateController extends Controller
 {
+
+
+    protected $validationRules = [
+        'name'=>['required', 'string', 'max:255'],
+        'description'=>['nullable','string'],
+        'ingredients'=>['nullable','string'],
+        'price'=>['required'],
+        'availability'=>['nullable'],
+        'plate_type_id'=>['required'],
+        'img_path'=>['nullable','mimes:jpeg,jpg,png','max:1000'],
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +48,8 @@ class PlateController extends Controller
      */
     public function create()
     {
-        return view('admin.plate.create');
+        $plateCategories = PlateType::all();
+        return view('admin.plate.create', compact('plateCategories'));
     }
 
     /**
@@ -46,9 +59,13 @@ class PlateController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        //validazione
+        $request->validate($this->validationRules);
+
         $form_data = $request->all();
-        
+
+        // dd($form_data);
         // verifica se è stata caricata un'immagine
         if(array_key_exists('image', $form_data)) {
 
@@ -68,13 +85,12 @@ class PlateController extends Controller
         $newPlate= new Plate();
         $newPlate->fill($form_data);
 
-        $newPlate->user_id = Auth::id();
 
+        $newPlate->user_id = Auth::id();
 
         $newPlate->save();
 
-
-        return redirect()->route("admin.plate.index")->with('success',"Il piatto è stato creato");
+        return redirect()->route("admin.plates.index")->with('success',"Il piatto è stato creato");
 
     }
 
@@ -104,7 +120,9 @@ class PlateController extends Controller
         if( $plate->user_id != Auth::id() ) {
             abort("403");
         }
-        return view('admin.plate.update','plate');
+        $plateCategories = PlateType::all();
+
+        return view('admin.plate.edit',compact('plate','plateCategories'));
     }
 
     /**
@@ -115,7 +133,14 @@ class PlateController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Plate $plate)
-    {
+    {   
+        if( $plate->user_id != Auth::id() ) {
+            abort("403");
+        }
+
+        //validazione
+        $request->validate($this->validationRules);
+
         $form_data = $request->all();
         
         // verifica se è stata caricata un'immagine
@@ -139,10 +164,10 @@ class PlateController extends Controller
             // a partire da public/storage
             $form_data['img_path'] = $coverPath;
         }
-        $plate->uptda($form_data);
+        $plate->update($form_data);
 
 
-        return redirect()->route("admin.plate.index")->with('success',"Il piatto è stato modificato");
+        return redirect()->route("admin.plates.index")->with('success',"Il piatto è stato modificato");
     }
 
     /**
@@ -158,6 +183,6 @@ class PlateController extends Controller
             Storage::delete($plate->img_path);
         }
         $plate->delete();
-        return redirect()->route("admin.plate.index");
+        return redirect()->route("admin.plates.index");
     }
 }
