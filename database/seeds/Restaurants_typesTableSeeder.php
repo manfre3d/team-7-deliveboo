@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use App\RestaurantType;
-use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
 class Restaurants_typesTableSeeder extends Seeder
@@ -12,7 +11,7 @@ class Restaurants_typesTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker) 
+    public function run() 
     {
         $restaurantNames = [
             "Cinese",
@@ -24,7 +23,7 @@ class Restaurants_typesTableSeeder extends Seeder
 
         for ( $i = 0; $i < 5; $i++) {
             $newRestaurantsType = new RestaurantType();
-            $newRestaurantsType->name = $restaurantNames[rand(0,4)];
+            $newRestaurantsType->name = $restaurantNames[$i];
             $newRestaurantsType->slug = $this->getSlug($newRestaurantsType->name);
             $newRestaurantsType->save();
         }
