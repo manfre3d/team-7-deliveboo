@@ -12,6 +12,7 @@
        <br>
        <router-link :to="{ name: 'test2' }">Pagina test2(frontoffice)</router-link>
        <h1>sono header</h1>
+       <a href="/admin">Admin</a>
    </header>
 </template>
 
