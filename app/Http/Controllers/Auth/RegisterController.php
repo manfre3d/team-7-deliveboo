@@ -71,13 +71,12 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        if(array_key_exists('image', $data)) 
-        {
+        if(array_key_exists('image', $data))         {
 
-            $cover_path=Storage::put('restaurant_covers',$data['image']);
+            $coverPath=Storage::put('restaurant_covers',$data['image']);
           
         }else{
-            $cover_path=null;
+            $coverPath=null;
         }
         return User::create([
             'name' => $data['name'],
@@ -87,7 +86,7 @@ class RegisterController extends Controller
             'piva' => $data['piva'],
             'description' => $data['description'],
             'slug' => $this->getSlug($data['name']),
-            'img_path' => $cover_path
+            'img_path' => $coverPath
         ]);
     }
 
