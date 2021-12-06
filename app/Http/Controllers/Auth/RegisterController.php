@@ -80,11 +80,13 @@ class RegisterController extends Controller
 
         if (array_key_exists('new_restaurant_type', $data)) 
         {
-            $newType = RestaurantType::create([
-                'name' => $data['new_restaurant_type'][0],
-                'slug' => $this->getSlug($data['new_restaurant_type'][0])
-            ]);
-            $data['restaurant_type'][] = $newType['id'];
+            foreach ($data['new_restaurant_type'] as $elm) {
+                $newType = RestaurantType::create([
+                    'name' => $elm,
+                    'slug' => $this->getSlug($elm)
+                ]);
+                $data['restaurant_type'][] = $newType['id'];                
+            }
         }
 
         if ( array_key_exists('image', $data) ) 
