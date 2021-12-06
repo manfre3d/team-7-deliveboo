@@ -127,6 +127,40 @@
                             </div>
                         </div>
 
+                        {{-- checkbox scelta tipologia ristorante --}}
+                        <div class="form-group row my-4">
+                            <label for="restaurant_types" class="col-md-4 col-form-label text-md-right">
+                                {{ __('Tipologia Ristorante') }} <br>
+                                (max 2)
+                            </label>
+
+                            <div class="col-md-6">
+                                <div id="checkbox_container">
+                                    @foreach ($restaurant_types as $type)
+                                        <div class="custom-control custom-checkbox" id="{{$type['id']}}">
+                                            <input name="restaurant_type[]" value="{{$type['id']}}" type="checkbox" 
+                                                class="checkbox custom-control-input @error('restaurant_type') is-invalid @enderror" 
+                                                id="type-{{$type['id']}}">
+                                            <label class="custom-control-label" for="type-{{$type['id']}}">
+                                                {{$type['name']}}
+                                            </label>
+                                        </div>
+                                    @endforeach                                    
+                                </div>
+
+                                <div class="d-flex mt-2">
+                                    <input value="" placeholder="nuova tipologia" type="text" class="form-control" id="new_rest_type">
+                                    <button type="button" class="btn btn-secondary ml-3" id="add_new_rest_type">aggiungi</button>
+                                </div>
+
+                                @error('restaurant_type')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+						</div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

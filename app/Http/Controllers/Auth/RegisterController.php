@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\RestaurantType;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
@@ -43,6 +44,12 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm()
+    {
+        $restaurant_types = RestaurantType::all();
+        return view('auth.register', compact('restaurant_types'));
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -58,7 +65,7 @@ class RegisterController extends Controller
             'address' => ['required', 'string','max:150'],
             'piva' => ['required', 'string','max:25'],
             'image' => ['nullable','mimes:jpeg,jpg,png','max:1000'],
-            'description' => ['nullable','string'],
+            'description' => ['nullable','string']
         ]);
     }
 
@@ -71,14 +78,25 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        if(array_key_exists('image', $data))         {
-
-            $coverPath=Storage::put('restaurant_covers',$data['image']);
-          
-        }else{
-            $coverPath=null;
+        if (array_key_exists('new_restaurant_type', $data)) 
+        {
+            $newType = RestaurantType::create([
+                'name' => $data['new_restaurant_type'][0],
+                'slug' => $this->getSlug($data['new_restaurant_type'][0])
+            ]);
+            $data['restaurant_type'][] = $newType['id'];
         }
-        return User::create([
+
+        if ( array_key_exists('image', $data) ) 
+        {
+            $coverPath = Storage::put('restaurant_covers',$data['image']);
+        } 
+        else 
+        {
+            $coverPath = null;
+        }
+
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -86,8 +104,15 @@ class RegisterController extends Controller
             'piva' => $data['piva'],
             'description' => $data['description'],
             'slug' => $this->getSlug($data['name']),
-            'img_path' => $coverPath
+            'img_path' => $coverPath,
         ]);
+
+        if (array_key_exists('restaurant_type', $data)) 
+        {
+            $user->restaurantsTypes()->attach($data['restaurant_type']);
+        }
+
+        return $user;
     }
 
 
@@ -100,7 +125,8 @@ class RegisterController extends Controller
 
         $count = 2;
         
-        while($userExist) {
+        while($userExist) 
+        {
             $slug = Str::of($name)->slug('-') . "-{$count}";
             $userExist = User::where("slug", $slug)->first();
             $count++;
