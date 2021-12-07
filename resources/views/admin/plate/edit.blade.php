@@ -173,7 +173,5 @@
         </div>
     </div>
 </div>
-
-
-
+<script src="{{ asset('js/crud_plate_type.js') }}" defer></script>
 @endsection

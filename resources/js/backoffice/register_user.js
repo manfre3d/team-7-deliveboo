@@ -1,37 +1,3 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
-const { isUndefined, forEach } = require('lodash');
-
-require('./bootstrap');
-
-
-// select toggle per aggiungere categorie di piatti
-const createButton = document.getElementById("btn_create");
-const typeSelect = document.getElementById("plate_type_select");
-const newTypeSelect = document.getElementById("new_plate_type_select");
-
-createButton.addEventListener("click", function() {
-    if(newTypeSelect.hasAttribute("disabled")){
-
-        newTypeSelect.removeAttribute("disabled");
-        typeSelect.setAttribute("disabled", "");
-        typeSelect.value="";
-    }else{
-
-        typeSelect.removeAttribute("disabled");
-        newTypeSelect.setAttribute("disabled", "");
-        newTypeSelect.value="";
-
-    }
-
-});
-
-
-
 
 
 // funzione per aggiungere una checkbox alla selezione tipologia ristorante
@@ -65,7 +31,9 @@ document.querySelector('#add_new_rest_type').addEventListener('click', () => {
 
   // scrolla in fondo
   checkboxContainer.scrollTop = checkboxContainer.scrollHeight;
-});
+});  
+
+
 
 // funzione che conta le checkbox selezionate
 const countSelectedCheckbox = () => {
@@ -93,4 +61,3 @@ const preventInvalidSelection = () => {
 };
 
 preventInvalidSelection();
-

@@ -174,4 +174,5 @@
         </div>
     </div>
 </div>
+<script src="{{ asset('js/register_user.js') }}" defer></script>
 @endsection
