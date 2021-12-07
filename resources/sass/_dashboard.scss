@@ -13,9 +13,9 @@ body{
 .card-header:first-child{
     border-radius: 18px 18px 0 0 ;
 }
-.card-body{
-    text-align: center;
-}
+// .card-body{
+//     text-align: center;
+// }
 .card{
     border-radius: 20px;
     border: 2px solid $logoColor;
@@ -33,11 +33,17 @@ body{
 
     &:hover{
         color: $mainColor;
-        background-color: $hoverColor1;
+        background-color: white;
         border-color: $hoverColor1;
     }
 }
-
+.btn-warning{
+    &:hover{
+        color: black;
+        background-color: rgb(255, 217, 0);
+        border-color: rgb(255, 217, 0);
+    }
+}
 a:hover {
     text-decoration: none;
 }

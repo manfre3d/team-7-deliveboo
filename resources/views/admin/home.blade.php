@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Benvenuto nella tua Dashboard') }}</div>
 
-                <div class="card-body">
+                <div class="card-body text-center">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
