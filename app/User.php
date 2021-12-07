@@ -38,7 +38,7 @@ class User extends Authenticatable
     ];
     public function restaurantsTypes()
     {
-        return $this->belongsToMany("App\RestaurantType");
+        return $this->belongsToMany("App\RestaurantType", 'user_restaurant_type');
     }
     public function orders()
     {
