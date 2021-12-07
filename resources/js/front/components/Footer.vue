@@ -11,6 +11,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "../../../sass/front/variables.scss";
+
 
 </style>
