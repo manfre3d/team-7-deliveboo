@@ -6,3 +6,20 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+#checkbox_container {
+  max-height: 20vh;
+  overflow-y: scroll;
+  border: 1px solid #ced4da;
+  padding: 0 .5rem;
+}
+
+// Dashboard
+@import 'dashboard';
+
+// Index
+@import 'index';
+
+// Show
+@import 'show';

@@ -18,7 +18,7 @@
                         <h5 class="card-title">{{$plate['name']}}</h5>
                         <p class="card-text">{{$plate['description']}}</p>
                         <h6 class="card-subtitle mb-2 text-muted">{{$plate['ingredients']}}</h6>
-                        <h6 class="card-subtitle mb-2 text-muted">{{$plate['price']}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">€{{$plate['price']}}</h6>
                         <a href="{{route("admin.plates.edit",  $plate["id"])}}" class="m-1 d-flex flex-grow-1 justify-content-center align-items-end">
                             <button type="button" class="btn btn-warning">Modifica</button>
                         </a>
