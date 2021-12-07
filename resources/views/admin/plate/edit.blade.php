@@ -18,8 +18,8 @@
                         @method('PUT')
 
                         {{-- name input --}}
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                        <div class="form-group row col-11">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $plate->name }}" required autocomplete="name" autofocus>
@@ -35,11 +35,11 @@
                         
 
                         {{-- description textarea tag --}}
-                        <div class="form-group row">
-                            <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
+                        <div class="form-group row col-11">
+                            <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Descrizione') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="description"  class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('ingredients') }}" required autocomplete="description" autofocus>{{$plate->description}}</textarea>
+                                <textarea id="description"  class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="description" autofocus>{{$plate->description ?? old('description')}}</textarea>
 
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
@@ -50,11 +50,11 @@
                         </div>
 
                         {{-- ingredients textarea tag --}}
-                        <div class="form-group row">
-                            <label for="ingredients" class="col-md-4 col-form-label text-md-right">{{ __('Ingredients') }}</label>
+                        <div class="form-group row col-11">
+                            <label for="ingredients" class="col-md-4 col-form-label text-md-right">{{ __('Ingredienti') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="ingredients"  class="form-control @error('ingredients') is-invalid @enderror" name="ingredients" value="{{ old('ingredients') }}" required autocomplete="ingredients" autofocus>{{$plate['ingredients']}}</textarea>
+                                <textarea id="ingredients"  class="form-control @error('ingredients') is-invalid @enderror" rows="4" name="ingredients" value="{{ old('ingredients') }}" required autocomplete="ingredients" autofocus>{{$plate['ingredients']}}</textarea>
 
                                 @error('ingredients')
                                     <span class="invalid-feedback" role="alert">
@@ -65,12 +65,12 @@
                         </div>
 
                         {{-- price input --}}
-                        <div class="form-group row">
-                            <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
+                        <div class="form-group row col-11">
+                            <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Prezzo') }}</label>
 
                             <div class="col-md-6">
 
-                                <input id="price" type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" autofocus/>
+                                <input id="price" type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $plate->price ?? old('price') }}" required autocomplete="price" autofocus/>
                                 @error('price')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -81,8 +81,8 @@
 
 
                         {{-- image input tag --}}
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
+                        <div class="form-group">
+                            <div class="col-md-6 offset-md-3">
                                 {{-- label per l'input tag --}}
 
                                 @if($plate->img_path)
@@ -106,12 +106,12 @@
 
                         {{-- category select tag --}}
                         <div class="form-group">
-							<label for="plate_type_id">Categoria</label>
+							<label for="plate_type_id" class="mt-4">Categoria</label>
 							<select name="plate_type_id" class="form-control @error('plate_type_id') is-invalid @enderror">
 								<option value="">-- Selezion una categoria --</option>
 
 								@foreach ($plateCategories as $category)
-								<option {{ old("plate_type_id") == $category["id"] ? 'selected' : null }} value="{{$category["id"]}}">{{$category["name"]? $category["name"]: old("plate_type_id")}}</option>
+								<option {{ $category["id"] ? 'selected' : null }} value="{{$category["id"]}}">{{$category["name"]}}</option>
 								@endforeach
 
 							</select>
@@ -136,9 +136,9 @@
 
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-3">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Salva modifica') }}
                                 </button>
                             </div>
                         </div>
