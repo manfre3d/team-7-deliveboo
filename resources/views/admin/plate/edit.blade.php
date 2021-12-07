@@ -18,7 +18,7 @@
                         @method('PUT')
 
                         {{-- name input --}}
-                        <div class="form-group row">
+                        <div class="form-group row col-11">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
@@ -35,7 +35,7 @@
                         
 
                         {{-- description textarea tag --}}
-                        <div class="form-group row">
+                        <div class="form-group row col-11">
                             <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
 
                             <div class="col-md-6">
@@ -50,11 +50,11 @@
                         </div>
 
                         {{-- ingredients textarea tag --}}
-                        <div class="form-group row">
+                        <div class="form-group row col-11">
                             <label for="ingredients" class="col-md-4 col-form-label text-md-right">{{ __('Ingredients') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="ingredients"  class="form-control @error('ingredients') is-invalid @enderror" name="ingredients" value="{{ old('ingredients') }}" required autocomplete="ingredients" autofocus>{{$plate['ingredients']}}</textarea>
+                                <textarea id="ingredients"  class="form-control @error('ingredients') is-invalid @enderror" rows="4" name="ingredients" value="{{ old('ingredients') }}" required autocomplete="ingredients" autofocus>{{$plate['ingredients']}}</textarea>
 
                                 @error('ingredients')
                                     <span class="invalid-feedback" role="alert">
@@ -65,7 +65,7 @@
                         </div>
 
                         {{-- price input --}}
-                        <div class="form-group row">
+                        <div class="form-group row col-11">
                             <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
 
                             <div class="col-md-6">
@@ -81,8 +81,8 @@
 
 
                         {{-- image input tag --}}
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
+                        <div class="form-group">
+                            <div class="col-md-6 offset-md-3">
                                 {{-- label per l'input tag --}}
 
                                 @if($plate->img_path)
@@ -106,7 +106,7 @@
 
                         {{-- category select tag --}}
                         <div class="form-group">
-							<label for="plate_type_id">Categoria</label>
+							<label for="plate_type_id" class="mt-4">Categoria</label>
 							<select name="plate_type_id" class="form-control @error('plate_type_id') is-invalid @enderror">
 								<option value="">-- Selezion una categoria --</option>
 
@@ -136,7 +136,7 @@
 
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-3">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>

@@ -1,0 +1,14 @@
+
+.card-menu{
+    border: 1px solid $cardBorderColor;
+}
+.img-container{
+    padding-bottom: 15px;
+    img{
+        object-fit: cover;
+        object-position: top;
+        width: 250px;
+        height: 250px;
+        border-radius: 20px;
+    }
+}
