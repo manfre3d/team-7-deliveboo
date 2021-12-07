@@ -19,7 +19,7 @@
 
                         {{-- name input --}}
                         <div class="form-group row col-11">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $plate->name }}" required autocomplete="name" autofocus>
@@ -36,7 +36,7 @@
 
                         {{-- description textarea tag --}}
                         <div class="form-group row col-11">
-                            <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
+                            <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Descrizione') }}</label>
 
                             <div class="col-md-6">
                                 <textarea id="description"  class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="description" autofocus>{{$plate->description ?? old('description')}}</textarea>
@@ -51,7 +51,7 @@
 
                         {{-- ingredients textarea tag --}}
                         <div class="form-group row col-11">
-                            <label for="ingredients" class="col-md-4 col-form-label text-md-right">{{ __('Ingredients') }}</label>
+                            <label for="ingredients" class="col-md-4 col-form-label text-md-right">{{ __('Ingredienti') }}</label>
 
                             <div class="col-md-6">
                                 <textarea id="ingredients"  class="form-control @error('ingredients') is-invalid @enderror" rows="4" name="ingredients" value="{{ old('ingredients') }}" required autocomplete="ingredients" autofocus>{{$plate['ingredients']}}</textarea>
@@ -66,7 +66,7 @@
 
                         {{-- price input --}}
                         <div class="form-group row col-11">
-                            <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Price') }}</label>
+                            <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Prezzo') }}</label>
 
                             <div class="col-md-6">
 
@@ -138,7 +138,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-3">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Salva modifica') }}
                                 </button>
                             </div>
                         </div>
