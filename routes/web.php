@@ -14,8 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-// Rotte pubbliche
-Route::get('/', 'PageController@index');
+
 
 // Rotte Autenticazione
 Auth::routes();
@@ -26,3 +25,7 @@ Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('plates', 'PlateController');
 });
+
+// Rotte pubbliche
+Route::get('/{any}', 'PageController@index')->where('any', '.*');
+// Route::get('/', 'PageController@index');
