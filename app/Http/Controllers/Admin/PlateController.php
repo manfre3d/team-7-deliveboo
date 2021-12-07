@@ -22,7 +22,8 @@ class PlateController extends Controller
         'ingredients'=>['nullable','string'],
         'price'=>['required'],
         'availability'=>['nullable'],
-        'plate_type_id'=>['required'],
+        'plate_type_id'=>['required_without:new_plate_type_id'],
+        'new_plate_type_id'=>['required_without:plate_type_id'],
         'img_path'=>['nullable','mimes:jpeg,jpg,png','max:1000'],
     ];
     /**
@@ -145,7 +146,9 @@ class PlateController extends Controller
         if( $plate->user_id != Auth::id() ) {
             abort("403");
         }
-
+        
+        //validazione
+        $request->validate($this->validationRules);
         $form_data = $request->all();
 
         if(isset($form_data['new_plate_type_select']))
@@ -155,11 +158,7 @@ class PlateController extends Controller
             $newCategory->save();
 
             $form_data['plate_type_select']=$newCategory->name;
-            // $request->plate_type_select=$newCategory->name;
-            // dd($request);
         }
-        //validazione
-        $request->validate($this->validationRules);
 
         
         // verifica se è stata caricata un'immagine
