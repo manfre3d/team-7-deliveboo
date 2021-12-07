@@ -19,7 +19,7 @@ createButton.addEventListener("click", function() {
 
         newTypeSelect.removeAttribute("disabled");
         typeSelect.setAttribute("disabled", "");
-        typeSelect.value="0";
+        typeSelect.value="";
     }else{
 
         typeSelect.removeAttribute("disabled");
@@ -29,6 +29,8 @@ createButton.addEventListener("click", function() {
     }
 
 });
+
+
 
 
 

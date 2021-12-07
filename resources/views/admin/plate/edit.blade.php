@@ -134,10 +134,13 @@
                                     <option value="">-- Selezion una categoria --</option>
                                     
                                     @foreach ($plateCategories as $category)
-                                    <option {{ $category["id"] ? 'selected' : null }} value="{{$category["id"]}}">{{$category["name"]}}</option>
+                                    <option {{ $category["id"]==$plate['plate_type_id'] ? 'selected' : null }} value="{{$category["id"]}}">{{$category["name"]}}</option>
                                     @endforeach
                                     
                                 </select>
+                                @error('plate_type_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             {{-- availability select tag --}}
                             <div class="form-group">

@@ -96,21 +96,43 @@
                                 @enderror    
                             </div>
                         </div>
-                        
-                        <div class="form-group">
-							<label for="plate_type_id">Categoria</label>
-							<select name="plate_type_id" class="form-control @error('plate_type_id') is-invalid @enderror">
-								<option value="">-- Selezion una categoria --</option>
-
-								@foreach ($plateCategories as $category)
-								<option {{ old("plate_type_id") == $category["id"] ? 'selected' : null }} value="{{$category["id"]}}">{{$category["name"]}}</option>
-								@endforeach
-
-							</select>
-							@error('plate_type_id')
-							<div class="alert alert-danger">{{ $message }}</div>
-						  	@enderror
-						</div>
+                        <p>                            
+                            <button id="btn_create" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#typeCreate" aria-expanded="false" aria-controls="collapseExample">
+                                Crea una categoria
+                            </button>
+                        </p>
+                        <div class="collapse" id="typeCreate">
+                            <div class="form-group row">
+                                <label for="new_plate_type_select" class="col-md-4 col-form-label text-md-right">{{ __('Nome nuova categoria') }}</label>
+                                
+                                <div class="col-md-6">
+                                    <input id="new_plate_type_select" disabled type="text" class="form-control @error('new_plate_type_select') is-invalid @enderror" name="new_plate_type_select" value="" autocomplete="new_plate_type_select" autofocus>
+    
+                                    @error('new_plate_type_select')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div> 
+                            </div>
+                            
+                            {{-- category select tag --}}
+                            <div class="form-group">
+                                <label for="plate_type_id">Categoria</label>
+                                <select id="plate_type_select" name="plate_type_id" class="form-control @error('plate_type_id') is-invalid @enderror">
+                                    <option value="">-- Selezion una categoria --</option>
+                                    
+                                    @foreach ($plateCategories as $category)
+                                    <option value="{{$category["id"]}}">{{$category["name"]??old('name')}}</option>
+                                    @endforeach
+                                    
+                                </select>
+                                @error('plate_type_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
 
 
                         <div class="form-group row">
