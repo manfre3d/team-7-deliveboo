@@ -1,5 +1,5 @@
 <template>
-  <h1>sono la Homepage (frontoffice)</h1>
+  <h1>sono la Homepage</h1>
 </template>
 
 <script>
