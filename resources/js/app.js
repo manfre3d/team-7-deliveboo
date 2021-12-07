@@ -19,17 +19,14 @@ createButton.addEventListener("click", function() {
 
         newTypeSelect.removeAttribute("disabled");
         typeSelect.setAttribute("disabled", "");
-        typeSelect.value="1";
+        typeSelect.value="0";
+    }else{
+
+        typeSelect.removeAttribute("disabled");
+        newTypeSelect.setAttribute("disabled", "");
+        newTypeSelect.value="";
+
     }
-
-    
-    // if(typeSelect.hasAttribute("disabled")){
-
-    //     typeSelect.removeAttribute("disabled");
-    //     newTypeSelect.setAttribute("disabled", "");
-    //     newTypeSelect.value="";
-
-    // }
 
 });
 
