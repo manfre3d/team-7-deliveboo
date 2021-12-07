@@ -65,7 +65,9 @@ class RegisterController extends Controller
             'address' => ['required', 'string','max:150'],
             'piva' => ['required', 'string','max:25'],
             'image' => ['nullable','mimes:jpeg,jpg,png','max:1000'],
-            'description' => ['nullable','string']
+            'description' => ['nullable','string'],
+            'new_restaurant_type' => ['required_without:restaurant_type'],
+            'restaurant_type' => ['required_without:new_restaurant_type']
         ]);
     }
 
@@ -77,6 +79,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        dd($data);
 
         if (array_key_exists('new_restaurant_type', $data)) 
         {
