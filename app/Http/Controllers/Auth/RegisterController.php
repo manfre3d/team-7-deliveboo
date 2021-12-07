@@ -80,8 +80,6 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        dd($data);
-
         if (array_key_exists('new_restaurant_type', $data)) 
         {
             foreach ($data['new_restaurant_type'] as $elm) {
