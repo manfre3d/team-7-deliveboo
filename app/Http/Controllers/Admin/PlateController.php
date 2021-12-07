@@ -160,7 +160,7 @@ class PlateController extends Controller
             $newCategory->name= $request->new_plate_type_select;
             $newCategory->save();
             
-            $form_data['plate_type_select']=$newCategory->name;
+            $form_data['plate_type_id']=$newCategory->id;
         }
 
         
@@ -185,6 +185,8 @@ class PlateController extends Controller
             // a partire da public/storage
             $form_data['img_path'] = $coverPath;
         }
+        $plate->plate_type_id=$form_data['plate_type_id'];
+
         $plate->update($form_data);
 
 
