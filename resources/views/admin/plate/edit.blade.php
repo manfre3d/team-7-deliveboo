@@ -39,7 +39,7 @@
                             <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="description"  class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('ingredients') }}" required autocomplete="description" autofocus>{{$plate->description}}</textarea>
+                                <textarea id="description"  class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="description" autofocus>{{$plate->description ?? old('description')}}</textarea>
 
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
@@ -70,7 +70,7 @@
 
                             <div class="col-md-6">
 
-                                <input id="price" type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" autofocus/>
+                                <input id="price" type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $plate->price ?? old('price') }}" required autocomplete="price" autofocus/>
                                 @error('price')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -111,7 +111,7 @@
 								<option value="">-- Selezion una categoria --</option>
 
 								@foreach ($plateCategories as $category)
-								<option {{ old("plate_type_id") == $category["id"] ? 'selected' : null }} value="{{$category["id"]}}">{{$category["name"]? $category["name"]: old("plate_type_id")}}</option>
+								<option {{ $category["id"] ? 'selected' : null }} value="{{$category["id"]}}">{{$category["name"]}}</option>
 								@endforeach
 
 							</select>
