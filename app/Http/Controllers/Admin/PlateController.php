@@ -94,6 +94,14 @@ class PlateController extends Controller
 
     }
 
+    // public function category(Request $request)
+    // {
+    //     $newCategory= new PlateType();
+    //     $newCategory-> fill($request->all());
+    //     $newCategory->save();
+    //     return redirect()->route("admin.plates.index")->with('success',"La categoria di piatto è stato creato");
+    // }
+
     /**
      * Display the specified resource.
      *
@@ -138,10 +146,21 @@ class PlateController extends Controller
             abort("403");
         }
 
+        $form_data = $request->all();
+
+        if(isset($form_data['new_plate_type_select']))
+        {
+            $newCategory= new PlateType();
+            $newCategory->name= $request->new_plate_type_select;
+            $newCategory->save();
+
+            $form_data['plate_type_select']=$newCategory->name;
+            // $request->plate_type_select=$newCategory->name;
+            // dd($request);
+        }
         //validazione
         $request->validate($this->validationRules);
 
-        $form_data = $request->all();
         
         // verifica se è stata caricata un'immagine
         if(array_key_exists('image', $form_data)) {
