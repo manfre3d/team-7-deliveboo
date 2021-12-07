@@ -199,13 +199,21 @@ class PlateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Plate $plate)
+    public function destroy(Request $request)
     {   
+
+        $plate = Plate::find($request->id);
+
+        if( $plate->user_id != Auth::id() ) {
+            abort("403");
+        }
         if($plate->img_path){
             // cancella il path dell'img nel db
             Storage::delete($plate->img_path);
         }
+
         $plate->delete();
-        return redirect()->route("admin.plates.index");
+
+        return redirect()->route("admin.plates.index")->with('success',"Il piatto {$plate->name} è stato eliminato");
     }
 }
