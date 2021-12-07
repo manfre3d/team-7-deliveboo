@@ -18,11 +18,12 @@ class PlateController extends Controller
 
     protected $validationRules = [
         'name'=>['required', 'string', 'max:255'],
-        'description'=>['nullable','string'],
-        'ingredients'=>['nullable','string'],
+        'description'=>['nullable'],
+        'ingredients'=>['nullable'],
         'price'=>['required'],
         'availability'=>['nullable'],
-        'plate_type_id'=>['required'],
+        'plate_type_id'=>['required_without:new_plate_type_id'],
+        'new_plate_type_id'=>['required_without:plate_type_id'],
         'img_path'=>['nullable','mimes:jpeg,jpg,png','max:1000'],
     ];
     /**
