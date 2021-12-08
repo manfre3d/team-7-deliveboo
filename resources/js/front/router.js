@@ -4,7 +4,7 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter)
 
 import home from "./pages/Homepage.vue";
-import test1 from "./pages/test1.vue";
+import advanced_search from "./pages/AdvancedSearch.vue";
 import test2 from "./pages/test2.vue";
 import NotFound from "./pages/NotFound.vue";
 
@@ -19,9 +19,9 @@ const router = new VueRouter({
             component: home
         },
         {
-            path: '/test1',
-            name: 'test1',
-            component: test1
+            path: '/advanced_search',
+            name: 'advanced_search',
+            component: advanced_search
         },
         {
             path: '/test2',
