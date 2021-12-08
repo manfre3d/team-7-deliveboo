@@ -1,10 +1,10 @@
 <template>
-  <h1>sono la pagina frontoffice test1</h1>
+  <h1>advanced search</h1>
 </template>
 
 <script>
 export default {
-    name: "test1"
+    name: "advanced_search"
 }
 </script>
 
