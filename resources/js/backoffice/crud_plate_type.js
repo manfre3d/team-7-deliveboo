@@ -8,15 +8,10 @@ const newTypeSelect = document.getElementById("new_plate_type_select");
 if ( createButton != null ) {
   createButton.addEventListener("click", function() {
       if(newTypeSelect.hasAttribute("disabled")){
-
+          createButton.style.visibility = "hidden";			// Hide element
           newTypeSelect.removeAttribute("disabled");
           typeSelect.setAttribute("disabled", "");
           typeSelect.value="";
-      }else{
-
-          typeSelect.removeAttribute("disabled");
-          newTypeSelect.setAttribute("disabled", "");
-          newTypeSelect.value="";
       }
   });
 }

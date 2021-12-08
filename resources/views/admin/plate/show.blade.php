@@ -19,7 +19,7 @@
                     <h5 class="card-title">{{$plate['name']}}</h5>
                     <p class="card-text">{{$plate['description']}}</p>
                     <h6 class="card-subtitle mb-3 text-muted">{{$plate['ingredients']}}</h6>
-                    <h6 class="card-subtitle mb-3 text-muted">€{{$plate['price']}}</h6>
+                    <h6 class="card-subtitle mb-3 text-muted">€{{str_replace(".",",",number_format($plate['price'], 2))}}</h6>
 
                     <div class="d-flex justify-content-center">
                         <a href="{{route("admin.plates.edit",  $plate["id"])}}" class="m-1">

@@ -31,7 +31,7 @@
                                 <h5 class="card-title">{{$plate['name']}}</h5>
                                 <p class="card-text">{{$plate['description']}}</p>
                                 <h6 class="card-subtitle mb-2 text-muted">{{$plate['ingredients']}}</h6>
-                                <h6 class="card-subtitle mb-3 mt-3 text-muted d-flex flex-grow-1 justify-content-center align-items-end">€{{$plate['price']}}</h6>
+                                <h6 class="card-subtitle mb-3 mt-3 text-muted d-flex flex-grow-1 justify-content-center align-items-end">€{{str_replace(".",",",number_format($plate['price'], 2))}}</h6>
 
                                 {{-- button section of the card --}}
                                 <div class="d-flex justify-content-around buttons">
