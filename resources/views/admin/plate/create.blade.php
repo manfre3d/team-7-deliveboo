@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header d-flex justify-content-between">
+                <div class="card-header d-flex justify-content-between align-items-center">
                     {{ __('Crea un Piatto') }}
                     <a href="{{route('admin.plates.index')}}" class="d-flex justify-content-center align-items-end">
                         <button class="btn-primary btn">Torna alla pagina precedente</button>                            
@@ -103,7 +103,7 @@
                         </p>
                         <div class="collapse" id="typeCreate">
                             <div class="form-group row">
-                                <label for="new_plate_type_select" class="col-md-4 col-form-label text-md-right">{{ __('Nome nuova categoria') }}</label>
+                                <label for="new_plate_type_select" class="col-md-4 col-form-label">{{ __('Nome nuova categoria') }}</label>
                                 
                                 <div class="col-md-6">
                                     <input id="new_plate_type_select" disabled type="text" class="form-control @error('new_plate_type_select') is-invalid @enderror" name="new_plate_type_select" value="" autocomplete="new_plate_type_select" autofocus>
@@ -135,8 +135,8 @@
                         </div>
 
 
-                        <div class="form-group row">
-                            <div class="col">
+                        <div class="form-group d-flex justify-content-center">
+                            <div class="d-flex justify-content-center">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Crea piatto') }}
                                 </button>

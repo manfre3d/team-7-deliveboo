@@ -5,9 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header d-flex justify-content-between">
+                <div class="card-header d-flex justify-content-between align-items-center">
                     {{ __('Modifica un Piatto') }}
-                    <a href="{{route('admin.plates.index')}}" class="d-flex justify-content-center align-items-end">
+                    <a href="{{route('admin.plates.index')}}">
                         <button class="btn-primary btn">Torna alla pagina precedente</button>                            
                     </a>
                 </div>
@@ -115,7 +115,7 @@
                         </p>
                         <div class="collapse" id="typeCreate">
                             <div class="form-group row">
-                                <label for="new_plate_type_select" class="col-md-4 col-form-label text-md-right">{{ __('Nome nuova categoria') }}</label>
+                                <label for="new_plate_type_select" class="col-md-3 col-form-label text-md-left">{{ __('Nome nuova categoria') }}</label>
                                 
                                 <div class="col-md-6">
                                     <input id="new_plate_type_select" disabled type="text" class="form-control @error('new_plate_type_select') is-invalid @enderror" name="new_plate_type_select" value="" autocomplete="new_plate_type_select" autofocus>
@@ -124,43 +124,44 @@
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                        @enderror
-                                    </div>
-                                </div> 
-                            </div>
+                                    @enderror
+                                </div>
+                            </div> 
+                        </div>
                             
-                            {{-- category select tag --}}
-                            <div class="form-group">
-                                <label for="plate_type_id">Categoria</label>
-                                <select id="plate_type_select" name="plate_type_id" class="form-control @error('plate_type_id') is-invalid @enderror">
-                                    <option value="">-- Selezion una categoria --</option>
-                                    
-                                    @foreach ($plateCategories as $category)
-                                    <option {{ $category["id"]==$plate['plate_type_id'] ? 'selected' : null }} value="{{$category["id"]}}">{{$category["name"]}}</option>
-                                    @endforeach
-                                    
-                                </select>
-                                @error('plate_type_id')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            {{-- availability select tag --}}
-                            <div class="form-group">
-                                <label for="availability">Disponibilità</label>
+                        {{-- category select tag --}}
+                        <div class="form-group">
+                            <label for="plate_type_id">Categoria</label>
 
-							<select name="availability" class="form-control @error('availability') is-invalid @enderror">
-								<option value="1">-- Piatto disponibile --</option>								
-								<option value="0">-- Piatto non disponibile --</option>
+                            <select id="plate_type_select" name="plate_type_id" class="form-control @error('plate_type_id') is-invalid @enderror">
+                                <option value="">-- Selezion una categoria --</option>
+                                
+                                @foreach ($plateCategories as $category)
+                                <option {{ $category["id"]==$plate['plate_type_id'] ? 'selected' : null }} value="{{$category["id"]}}">{{$category["name"]}}</option>
+                                @endforeach
+                                
+                            </select>
+                            @error('plate_type_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        {{-- availability select tag --}}
+                        <div class="form-group">
+                            <label for="availability">Disponibilità</label>
 
-							</select>
-							@error('availability')
-							<div class="alert alert-danger">{{ $message }}</div>
-						  	@enderror
+                            <select name="availability" class="form-control @error('availability') is-invalid @enderror">
+                                <option value="1">-- Piatto disponibile --</option>								
+                                <option value="0">-- Piatto non disponibile --</option>
+
+                            </select>
+                            @error('availability')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
 						</div>
 
-                        <div class="form-group row mb-0">
+                        <div class="form-group row mb-0 justify-content-center">
 
-                            <div class="col-md-6 offset-md-3">
+                            <div>
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Salva modifica') }}
 
