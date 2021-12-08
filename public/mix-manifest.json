@@ -2,5 +2,8 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/css/front.css": "/css/front.css",
-    "/js/front.js": "/js/front.js"
+    "/js/crud_delete_plate.js": "/js/crud_delete_plate.js",
+    "/js/crud_plate_type.js": "/js/crud_plate_type.js",
+    "/js/front.js": "/js/front.js",
+    "/js/register_user.js": "/js/register_user.js"
 }
