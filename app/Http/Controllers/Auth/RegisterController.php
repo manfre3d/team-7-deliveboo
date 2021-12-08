@@ -66,8 +66,7 @@ class RegisterController extends Controller
             'piva' => ['required', 'string', 'min:11', 'max:11'],
             'image' => ['nullable','mimes:jpeg,jpg,png','max:1000'],
             'description' => ['nullable','string'],
-            'new_restaurant_type' => ['required_without:restaurant_type'],
-            'restaurant_type' => ['required_without:new_restaurant_type']
+            'restaurant_type' => ['required']
         ]);
     }
 
@@ -79,17 +78,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
-        if (array_key_exists('new_restaurant_type', $data)) 
-        {
-            foreach ($data['new_restaurant_type'] as $elm) {
-                $newType = RestaurantType::create([
-                    'name' => $elm,
-                    'slug' => $this->getSlug($elm)
-                ]);
-                $data['restaurant_type'][] = $newType['id'];                
-            }
-        }
 
         if ( array_key_exists('image', $data) ) 
         {
@@ -111,10 +99,7 @@ class RegisterController extends Controller
             'img_path' => $coverPath,
         ]);
 
-        if (array_key_exists('restaurant_type', $data)) 
-        {
-            $user->restaurantsTypes()->attach($data['restaurant_type']);
-        }
+        $user->restaurantsTypes()->attach($data['restaurant_type']);
 
         return $user;
     }
