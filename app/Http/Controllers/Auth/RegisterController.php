@@ -61,9 +61,9 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8','confirmed'],
             'address' => ['required', 'string','max:150'],
-            'piva' => ['required', 'string', 'min:11', 'max:11'],
+            'piva' => ['required', 'numeric','min:00000000001','max:99999999999'],
             'image' => ['nullable','mimes:jpeg,jpg,png','max:1000'],
             'description' => ['nullable','string'],
             'new_restaurant_type' => ['required_without:restaurant_type'],

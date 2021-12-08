@@ -20,7 +20,7 @@ class PlateController extends Controller
         'name'=>['required', 'string', 'max:255'],
         'description'=>['nullable'],
         'ingredients'=>['nullable'],
-        'price'=>['required'],
+        'price'=>['required','numeric','max:99.99'],
         'availability'=>['nullable'],
 
         'new_plate_type_select'=>['required_without:plate_type_id'],
