@@ -148,11 +148,6 @@
                                     @endforeach                                    
                                 </div>
 
-                                <div class="d-flex mt-2">
-                                    <input value="" placeholder="nuova tipologia" type="text" class="form-control" id="new_rest_type">
-                                    <button type="button" class="btn btn-secondary ml-3" id="add_new_rest_type">aggiungi</button>
-                                </div>
-
                                 @error('restaurant_type')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
