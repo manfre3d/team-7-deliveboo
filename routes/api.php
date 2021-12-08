@@ -20,5 +20,9 @@ use Illuminate\Support\Facades\Route;
 
 // http://127.0.0.1:8000/api/menu
 Route::get('/menu', 'Api\MenuController@menu')->name("api.menu");
+
+// http://127.0.0.1:8000/api/restaurants
 Route::get('/restaurants', 'Api\RestaurantController@restaurant')->name("api.restaurant");
+
+// http://127.0.0.1:8000/api/categories
 Route::get('/categories', 'Api\RestaurantCategoriesController@restaurantType')->name('api.restaurantCategory');
