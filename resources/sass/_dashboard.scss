@@ -18,7 +18,7 @@ body{
 // }
 .card{
     border-radius: 20px;
-    border: 2px solid $logoColor;
+    border: none;
     ul{
         margin-right: 30px;
         li{
@@ -57,9 +57,10 @@ a:hover {
     justify-content: center;
     align-items: center;
 }
-.image{
+.image_burger{
+    // margin-left: 120px;
     img{
-        width: 350px;
+        width: 300px;
     }
 }
 .logo{
@@ -72,4 +73,24 @@ a:hover {
         font-weight: bold;
         font-family: sans-serif;
     }
+}
+.img_account{
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: top;
+    width: 168px;
+    height: 168px;
+    border-radius: 20px;
+}
+.user_info{ 
+    ul{
+        max-width: 250px;
+        li{
+            list-style: none;
+            margin: 10px 0;
+        }
+    }
+}
+.salad{
+    height: 170px;
 }

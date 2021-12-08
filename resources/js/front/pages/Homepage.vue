@@ -1,13 +1,22 @@
 <template>
-  <h1>sono la Homepage (frontoffice)</h1>
+<div class="container">
+  <h1>sono la Homepage</h1>
+  <ul>
+    <RestaurantCategory/>
+  </ul>
+  </div>
 </template>
 
 <script>
+import RestaurantCategory from '../components/RestaurantCategory';
 export default {
-    name: "home"
+    components: {
+      RestaurantCategory
+    }
+    
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 </style>
