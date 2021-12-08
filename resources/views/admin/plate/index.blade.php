@@ -41,14 +41,10 @@
                                     <a href="{{route("admin.plates.edit",  $plate["id"])}}" class="m-1">
                                         <button type="button" class="btn btn-warning">Modifica</button>
                                     </a>
-                                    <form action="{{route("admin.plates.destroy", $plate["id"])}}" method="POST" class="m-1">
-                                    @csrf
-                                    @method("DELETE")
 
-                                    <button type="submit" class="btn btn-danger">
-                                        Elimina
-                                    </button>
-                                </form>
+                                    <button type="button" class="btn btn-danger btn-delete" data-id="{{$plate["id"]}}" data-toggle="modal" data-target="#deleteModal">
+										Elimina
+									</button>
                                 </div>  
                             </div>
                         </div>
@@ -59,5 +55,34 @@
         </div>
     </div>
 </div>
+
+<!-- Modale per la cancellazione di un piatto-->
+<div class="modal fade" id="deleteModal">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Conferma cancellazione Piatto</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<form action="{{route("admin.plates.destroy", 'id')}}" method="POST">
+			@csrf
+			@method("DELETE")
+
+            {{-- passaggio id del piatto tramite js --}}
+			<input type="hidden" id="delete-id" name="id">
+			<div class="modal-body">
+				Sei sicuro di voler cancellare il post?
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary">Si</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+			</div>
+		</form>
+		</div>
+	</div>
+</div>
+<script src="{{ asset('js/crud_delete_plate.js') }}" defer></script>
 
 @endsection

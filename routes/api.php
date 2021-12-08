@@ -19,5 +19,17 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-// http://127.0.0.1:8000/api/categories
-Route::get('/categories', 'Api\RestaurantCategoriesController@restaurantType')->name('api.restaurantCategory');
+Route::namespace('Api')->name('api.')->group(function() {
+    // restituisce tutti i ristoranti
+	Route::get('/restaurants', 'RestaurantController@index')->name("index");
+    // restituisce i ristoranti che hanno la categoria con l'id passato
+	Route::get('/restaurants/type/{type_id}', 'RestaurantController@type');
+    // restituisco il singolo ristorante
+	Route::get('/restaurants/{slug}', 'RestaurantController@show');
+
+    // restituisco lista piatti per singolo ristorante
+	Route::get('/plates/{user_id}', 'PlatesController@index');
+  
+  // restituisco tutte le categorie di ristorante 
+  Route::get('/categories', 'RestaurantCategoriesController@restaurantType')->name('api.restaurantCategory');
+});
