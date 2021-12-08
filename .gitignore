@@ -3,6 +3,9 @@
 /public/hot
 /public/storage
 /public/css/app.css
+/public/css/front.css
+/public/js/app.js
+/public/js/front.js
 /storage/*.key
 /vendor
 .env
