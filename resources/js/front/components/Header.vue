@@ -1,34 +1,47 @@
 <template>
-   <header>
-       <router-link :to="{ name: 'home' }">Homepage</router-link>
-     
-       <!-- <router-link :to="{ name: 'test1' }">Pagina test1 (frontoffice)</router-link> -->
-       <!-- <router-link :to="{ name: 'test2' }">Pagina test2(frontoffice)</router-link> -->
-       <a href="/login">Accedi</a>
-       <a href="/register">Registrati</a>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <button
+        class="navbar-toggler collapsed"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarsExample04"
+        aria-controls="navbarsExample04"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-   </header>
+      <div class="navbar-collapse collapse" id="navbarsExample04" style="">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <router-link :to="{ name: 'home' }" class="nav-link"
+              >Homepage<span class="sr-only">(current)</span></router-link
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Accedi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register">Registrati</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 </template>
 
 <script>
 export default {
-    name: "Header",
-
-}
+  name: "Header",
+};
 </script>
 
 <style lang="scss" scoped>
 @import "../../../sass/front/variables.scss";
-header {
-    background-color: $greenMain;
-    display: flex;
-    justify-content: space-evenly;
-    padding: 30px;
-}
 
 router-link,
 a {
-    font-size: 26px;
+  font-size: 26px;
 }
-
 </style>
