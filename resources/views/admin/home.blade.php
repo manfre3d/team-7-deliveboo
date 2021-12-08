@@ -30,7 +30,12 @@
 
         <div class="col-6 user_info d-flex justify-content-end">
             <ul>
-                <li><span><img class="img_account" src="{{asset('storage/'. $user->img_path)}}" alt=""></span></li>
+                @if ($user->img_path)
+                   <li><span><img class="img_account" src="{{asset('storage/'. $user->img_path)}}" alt=""></span></li> 
+                @else
+                    <li><span><img class="img_account" src="https://previews.123rf.com/images/margolana/margolana1506/margolana150600066/41581818-vector-black-and-wihte-background-with-healthy-food-vegetables-and-fruits-eco-food-silhouette.jpg" alt=""></span></li> 
+                @endif
+
                 <li><span>Nome Attività: {{$user->name}}</span></li>
                 <li><span>Indirizzo e-mail: {{$user->email}}</span></li>
                 <li><span>Indirizzo: {{$user->address}}</span></li>
