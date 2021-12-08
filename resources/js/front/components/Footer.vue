@@ -1,7 +1,7 @@
 <template>
-   <header>
+   <footer>
        <h1>sono footer</h1>
-   </header>
+   </footer>
 </template>
 
 <script>
