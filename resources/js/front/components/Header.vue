@@ -15,15 +15,16 @@
       <div class="navbar-collapse collapse" id="navbarsExample04" style="">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <router-link :to="{ name: 'home' }" class="nav-link"
-              >Homepage<span class="sr-only">(current)</span></router-link
-            >
+            <router-link :to="{ name: 'Home' }" class="nav-link">Homepage<span class="sr-only">(current)</span></router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/login">Accedi</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/register">Registrati</a>
+          </li>
+          <li class="nav-item active">
+            <router-link :to="{ name: 'Restaurant' }" class="nav-link">Esempio ristorante<span class="sr-only">(current)</span></router-link>
           </li>
         </ul>
       </div>

@@ -3,8 +3,8 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter)
 
-import home from "./pages/Homepage.vue";
-import test2 from "./pages/test2.vue";
+import Home from "./pages/Homepage.vue";
+import Restaurant from "./pages/Restaurant.vue";
 import NotFound from "./pages/NotFound.vue";
 
 
@@ -14,13 +14,13 @@ const router = new VueRouter({
     routes: [
         {
             path: '/',
-            name: 'home',
-            component: home
+            name: 'Home',
+            component: Home
         },
         {
-            path: '/test2',
-            name: 'test2',
-            component: test2,
+            path: '/restaurant',
+            name: 'Restaurant',
+            component: Restaurant
         },
         {
             path: '/*',

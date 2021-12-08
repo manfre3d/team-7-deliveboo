@@ -10,7 +10,6 @@
 <script>
 import RestaurantCategory from '../components/RestaurantCategory';
 export default {
-    name: "Home",
     components: {
       RestaurantCategory
     }
