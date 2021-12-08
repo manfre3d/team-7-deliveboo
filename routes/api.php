@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+
 Route::namespace('Api')->name('api.')->group(function() {
     // restituisce tutti i ristoranti
 	Route::get('/restaurants', 'RestaurantController@index')->name("index");
@@ -28,4 +29,7 @@ Route::namespace('Api')->name('api.')->group(function() {
 
     // restituisco lista piatti per singolo ristorante
 	Route::get('/plates/{user_id}', 'PlatesController@index');
+  
+  // restituisco tutte le categorie di ristorante 
+  Route::get('/categories', 'RestaurantCategoriesController@restaurantType')->name('api.restaurantCategory');
 });
