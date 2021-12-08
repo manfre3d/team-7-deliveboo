@@ -14,6 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::namespace('Api')->name('api.')->group(function() {
+    // restituisce tutti i ristoranti
+	Route::get('/restaurants', 'RestaurantController@index')->name("index");
+    // restituisce i ristoranti che hanno la categoria con l'id passato
+	Route::get('/restaurants/type/{type_id}', 'RestaurantController@type');
+    // restituisco il singolo ristorante
+	Route::get('/restaurants/{slug}', 'RestaurantController@show');
+
+    // restituisco lista piatti per singolo ristorante
+	Route::get('/plates/{user_id}', 'PlatesController@index');
 });
