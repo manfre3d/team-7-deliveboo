@@ -34,7 +34,7 @@
                                 <h6 class="card-subtitle mb-3 mt-3 text-muted d-flex flex-grow-1 justify-content-center align-items-end">€{{$plate['price']}}</h6>
 
                                 {{-- button section of the card --}}
-                                <div class="d-flex justify-content-center">
+                                <div class="d-flex justify-content-around buttons">
                                     <a href="{{route('admin.plates.show',$plate['id'])}}" class="m-1">
                                         <button class="btn-primary btn">Visualizza</button>                            
                                     </a>
@@ -42,9 +42,12 @@
                                         <button type="button" class="btn btn-warning">Modifica</button>
                                     </a>
 
-                                    <button type="button" class="btn btn-danger btn-delete" data-id="{{$plate["id"]}}" data-toggle="modal" data-target="#deleteModal">
+                                    <a href="#">
+                                        <button type="button" class="btn btn-danger btn-delete" data-id="{{$plate["id"]}}" data-toggle="modal" data-target="#deleteModal">
 										Elimina
-									</button>
+									    </button>
+                                    </a>
+                                    
                                 </div>  
                             </div>
                         </div>
