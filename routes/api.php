@@ -31,7 +31,7 @@ Route::namespace('Api')->name('api.')->group(function() {
 	Route::get('/plates/{user_id}', 'PlatesController@index');
 
     // restituisco un'immagine 
-	Route::get('/image/{img_name}', 'ImageController@index');
+	Route::get('/image/{folder}/{img_name}', 'ImageController@index');
   
     // restituisco tutte le categorie di ristorante 
     Route::get('/categories', 'RestaurantCategoriesController@restaurantType')->name('api.restaurantCategory');

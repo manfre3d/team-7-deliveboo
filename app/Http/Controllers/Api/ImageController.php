@@ -7,12 +7,14 @@ use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
-    public function index($img_name)
+    public function index($folder, $img_name)
     {
-        if (!Storage::exists('restaurant_covers/' . $img_name)) {
+
+        if (!Storage::exists("{$folder}/{$img_name}")) {
             abort(404);
+            
         }
 
-        return response()->file('storage/restaurant_covers/' . $img_name);
+        return response()->file("storage/{$folder}/{$img_name}");
     }
 }
