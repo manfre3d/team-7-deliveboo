@@ -102,7 +102,7 @@ class PlateController extends Controller
 
         $newPlate->save();
 
-        return redirect()->route("admin.plates.index")->with('success',"Il piatto {$plate->name} è stato creato");
+        return redirect()->route("admin.plates.index")->with('success',"Il piatto {$newPlate->name} è stato creato");
 
     }
 
