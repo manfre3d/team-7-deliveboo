@@ -29,7 +29,10 @@ Route::namespace('Api')->name('api.')->group(function() {
 
     // restituisco lista piatti per singolo ristorante
 	Route::get('/plates/{user_id}', 'PlatesController@index');
+
+    // restituisco un'immagine 
+	Route::get('/image/{img_name}', 'ImageController@index');
   
-  // restituisco tutte le categorie di ristorante 
-  Route::get('/categories', 'RestaurantCategoriesController@restaurantType')->name('api.restaurantCategory');
+    // restituisco tutte le categorie di ristorante 
+    Route::get('/categories', 'RestaurantCategoriesController@restaurantType')->name('api.restaurantCategory');
 });
