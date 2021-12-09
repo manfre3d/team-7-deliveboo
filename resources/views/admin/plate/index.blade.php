@@ -19,7 +19,13 @@
                     </div>
                 </div>
 
-                <div class="content d-flex flex-wrap">  
+                <div class="content d-flex flex-wrap">
+                    @if ($message = Session::get('success'))
+					<div class="alert alert-success alert-block col">
+						<button type="button" class="close" data-dismiss="alert">×</button>    
+						<strong>{{ $message }}</strong>
+					</div>
+					@endif  
                     <div class="p-5 d-flex col-12 d-flex flex-wrap mx-auto justify-content-around">
                         @foreach ($plates as $plate)
                             
