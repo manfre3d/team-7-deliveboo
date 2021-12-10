@@ -2,9 +2,7 @@
   <div class="container">
     <li v-for="category in categories" :key="category.id">
       {{ category.name }}
-      <!-- <img :src="'../img/restaurant_category/' + category.img_path" alt="category img"> -->
-      <img :src="'/images/restaurant_category/' + category.img_path" alt="category img">
-      <!-- <img src="../img/restaurant_category/cucina-cinese.jpg" alt="category img"> -->
+      <img :src="require('../img/restaurant_category/' + category.img_path)" alt="category img">
     </li>
   </div>
 </template>
