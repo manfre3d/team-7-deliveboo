@@ -1,14 +1,14 @@
 <template>
   <div class="container">
     <li v-for="category in categories" :key="category.id">
-      {{ category.name }}
+      <router-link to="">{{ category.name }}</router-link>
     </li>
   </div>
 </template>
 
 <script>
 export default {
-  name: "RestaurantCategory",
+  name: "RestaurantCategories",
   data() {
     return {
       categories: [],
@@ -29,5 +29,13 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.container {
+  border: 3px solid orange;
+  display: flex;
+  justify-content: space-between;
+}
+li {
+  border: 1px solid black;  
+}
 </style>
