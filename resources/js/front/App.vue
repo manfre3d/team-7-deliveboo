@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app_container">
     <Header />
     <main>
       <router-view></router-view>
@@ -24,4 +24,15 @@ export default {
 </script>
 
 <style lang="scss">
+body{
+  height: 100vh;
+  #app_container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    main{
+      flex-grow: 1;
+    }
+  }
+}
 </style>
