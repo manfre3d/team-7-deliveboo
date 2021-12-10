@@ -61,13 +61,13 @@ class UsersTableSeeder extends Seeder
             "Piazza della Vittoria, 12"
         ];
         $images = [
-            "restaurant_covers/seeder_images/file.jpg",
-            "restaurant_covers/seeder_images/junk-food.jpg",
-            "restaurant_covers/seeder_images/hamburgers.jpg",
-            "restaurant_covers/seeder_images/english-breakfast.jpg",
-            "restaurant_covers/seeder_images/chinese-food.jpg",
-            "restaurant_covers/seeder_images/Spanish-Seafood-Paella.jpg",
-            "restaurant_covers/seeder_images/spanish-cuisine.jpg"            
+            "file.jpg",
+            "junk-food.jpg",
+            "hamburgers.jpg",
+            "english-breakfast.jpg",
+            "chinese-food.jpg",
+            "Spanish-Seafood-Paella.jpg",
+            "spanish-cuisine.jpg"            
         ];
 
         for( $i = 1; $i <= 15; $i++ ) {
@@ -94,7 +94,7 @@ class UsersTableSeeder extends Seeder
             // slug generation
             $newUser->slug = $this->getSlug($newUser->name);
 
-            // woraround to pass a path to the db
+            // workaround to pass a path to the db
             $newUser->img_path = $images[rand(0,6)];
 
             
