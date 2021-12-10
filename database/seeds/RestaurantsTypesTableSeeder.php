@@ -4,14 +4,14 @@ use Illuminate\Database\Seeder;
 use App\RestaurantType;
 use Illuminate\Support\Str;
 
-class Restaurants_typesTableSeeder extends Seeder
+class RestaurantsTypesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run() 
+    public function run()
     {
         $restaurantCategories = [
             [
@@ -69,4 +69,5 @@ class Restaurants_typesTableSeeder extends Seeder
 
         return $slug;
     }
+    
 }
