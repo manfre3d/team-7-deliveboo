@@ -95,27 +95,7 @@
                                 <div class="invalid-feedback">{{$message}}</div>
                                 @enderror    
                             </div>
-                        </div>
-                        <p>                            
-                            <button id="btn_create" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#typeCreate" aria-expanded="false" aria-controls="collapseExample">
-                                Crea una categoria
-                            </button>
-                        </p>
-                        <div class="collapse" id="typeCreate">
-                            <div class="form-group row">
-                                <label for="new_plate_type_select" class="col-md-4 col-form-label">{{ __('Nome nuova categoria') }}</label>
-                                
-                                <div class="col-md-6">
-                                    <input id="new_plate_type_select" disabled type="text" class="form-control @error('new_plate_type_select') is-invalid @enderror" name="new_plate_type_select" value="" autocomplete="new_plate_type_select" autofocus>
-    
-                                    @error('new_plate_type_select')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div> 
-                            </div>
+                        </div>                        
                             
                             {{-- category select tag --}}
                             <div class="form-group">
