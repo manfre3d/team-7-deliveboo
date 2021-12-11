@@ -2,8 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\PlateType;
-
-class Plates_typeTableSeeder extends Seeder
+class PlatesTypeTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.

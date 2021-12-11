@@ -32,7 +32,11 @@
                         <div class="card mx-1 mt-3 card-menu" style="width: 20.5rem;">
                             <div class="card-body d-flex flex-column">
                                 <div class="img-container d-flex justify-content-center">
-                                    <img class="card-img-top" src="{{asset('storage/'.$plate->img_path)}}" alt="Card- plate image">
+                                    @if (!$plate->img_path==null)
+                                        <img class="card-img-top" src="{{asset('storage/'.$plate->img_path)}}" alt="Card plate image">   
+                                    @else
+                                        <img class="card-img-top" src="{{asset('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS27Vm-OQBERqxwBt1KGktBPAlEG77NGAoHUTDOey9svEDUyPPPMAgthitFHmH2rwhATkQ&usqp=CAU')}}" alt="Card plate image">    
+                                    @endif
                                 </div>
                                 <h5 class="card-title">{{$plate['name']}}</h5>
                                 <p class="card-text">{{$plate['description']}}</p>
