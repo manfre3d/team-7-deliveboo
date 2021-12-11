@@ -1,9 +1,11 @@
 <template>
-  <div class="container">
-    <li v-for="category in categories" :key="category.id">
-      <router-link to="">{{ category.name }}</router-link>
-    </li>
-  </div>
+  <section class="container">
+    <ul>
+      <li v-for="category in categories" :key="category.id">
+        <router-link to="">{{ category.name }}</router-link>
+      </li>
+    </ul>
+  </section>
 </template>
 
 <script>
@@ -32,10 +34,14 @@ export default {
 <style lang="scss" scoped>
 .container {
   border: 3px solid orange;
-  display: flex;
+}
+
+ul {
+display: flex;
   justify-content: space-between;
 }
+
 li {
-  border: 1px solid black;  
+  border: 1px solid black;
 }
 </style>

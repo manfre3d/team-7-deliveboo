@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-
 Vue.use(VueRouter)
 
 import Home from "./pages/Homepage.vue";
 import Restaurant from "./pages/Restaurant.vue";
 import NotFound from "./pages/NotFound.vue";
+
 
 
 
