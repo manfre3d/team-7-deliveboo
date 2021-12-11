@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,5 +27,9 @@ Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->
 });
 
 // Rotte pubbliche
+// pagamento
+Route::get('/checkout', 'PageController@checkout');
+Route::post('/checkout_process', 'PaymentsController@payment');
+// 
 Route::get('/{any}', 'PageController@index')->where('any', '.*');
 // Route::get('/', 'PageController@index');
