@@ -3,32 +3,41 @@
     <!-- tutti i ristoranti  -->
     <div v-if="category==0" class="row justify-content-center">
         <div class="card mx-1 mt-3 card-menu" style="width: 20.5rem;" v-for="restaurant in restaurants" :key="restaurant.id">
-            <div class="card-body d-flex flex-column">
 
-            <img  :src="require('../img/seeder_images/' + restaurant.img_path)" alt="restaurant img">
-            <div class="text_section_restaurant d-flex flex-wrap ">
-                <h4>{{ restaurant.name }}</h4>
-                <p>{{ restaurant.description }}</p>
-            </div>
+            <router-link :to="{name: 'Restaurant', params: {slug: restaurant.slug}}">
+              <div class="card-body d-flex flex-column">
 
-            </div>
+                <img  :src="require('../img/seeder_images/' + restaurant.img_path)" alt="restaurant img">
+                <div class="text_section_restaurant d-flex flex-wrap ">
+                    <h4>{{ restaurant.name }}</h4>
+                    <p>{{ restaurant.description }}</p>
+                </div>
+
+              </div>
+            </router-link>
         </div>
 
     </div>
     <!-- ristoranti filtrati -->
     <div v-if="category!=0" class="row justify-content-center">
         <div class="card mx-1 mt-3 card-menu" style="width: 20.5rem;" v-for="restaurant in filteredRestaurants" :key="restaurant.id">
-            <div class="card-body d-flex flex-column">
+            
+            <router-link  :to="{name: 'Restaurant', params: {slug: restaurant.slug}}">
+              
+              <div class="card-body d-flex flex-column">
 
-            <img  :src="require('../img/seeder_images/' + restaurant.img_path)" alt="restaurant img">
-            <div class="text_section_restaurant d-flex flex-wrap ">
-                <h4>{{ restaurant.name }}</h4>
-                <p style="width: 100%;">{{ restaurant.description }}</p>
-                <h6 class="badge badge-warning">{{categoriesNames[restaurant.pivot.restaurant_type_id-1]}}</h6>
-                
-            </div>
+                <img  :src="require('../img/seeder_images/' + restaurant.img_path)" alt="restaurant img">
+                <div class="text_section_restaurant d-flex flex-wrap ">
+                    <h4>{{ restaurant.name }}</h4>
+                    <p style="width: 100%;">{{ restaurant.description }}</p>
+                    <h6 class="badge badge-warning">{{categoriesNames[restaurant.pivot.restaurant_type_id-1]}}</h6>
+                    
+                </div>
 
-            </div>
+              </div>
+
+            </router-link>
+
         </div>
 
     </div>

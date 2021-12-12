@@ -3,11 +3,7 @@
   <h1 class="text-center">Sono la Homepage</h1>
   <h2>Categorie di Ristoranti</h2>
   <ul>
-
-    <RestaurantCategory @category="getCategory" />
-    <RestaurantCategories/>
-    <Restaurants/>
-    
+    <RestaurantCategories @category="getCategory"/>    
   </ul>
   <hr>
   <h2>Ristoranti</h2>
@@ -16,17 +12,13 @@
 </template>
 
 <script>
-import RestaurantCategory from '../components/RestaurantCategory';
 import RestaurantsList from '../components/RestaurantsList';
 import RestaurantCategories from '../components/RestaurantCategories';
-import Restaurants from '../components/Restaurants';
 
 export default {
     components: {
-      RestaurantCategory,
       RestaurantsList,
       RestaurantCategories,
-      Restaurants
     },
     data() {
       return {
