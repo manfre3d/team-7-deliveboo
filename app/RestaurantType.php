@@ -9,7 +9,7 @@ class RestaurantType extends Model
     public $table = 'restaurants_types';
 
     protected $fillable = [
-        'name','slug'
+        'name','slug','img_path'
     ];
 
     public function users()
