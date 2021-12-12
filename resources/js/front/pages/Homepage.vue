@@ -2,16 +2,20 @@
 <div class="container">
   <h1>sono la Homepage</h1>
   <ul>
-    <RestaurantCategory/>
+    <RestaurantCategories/>
+    <Restaurants/>
   </ul>
   </div>
 </template>
 
 <script>
-import RestaurantCategory from '../components/RestaurantCategory';
+import RestaurantCategories from '../components/RestaurantCategories';
+import Restaurants from '../components/Restaurants';
+
 export default {
     components: {
-      RestaurantCategory
+      RestaurantCategories,
+      Restaurants
     }
     
 }

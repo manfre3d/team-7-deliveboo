@@ -24,7 +24,7 @@
             <a class="nav-link" href="/register">Registrati</a>
           </li>
           <li class="nav-item active">
-            <router-link :to="{ name: 'Restaurant' }" class="nav-link">Esempio ristorante<span class="sr-only">(current)</span></router-link>
+            <router-link to="/restaurant" class="nav-link">Esempio ristorante</router-link>
           </li>
         </ul>
       </div>
