@@ -2,7 +2,7 @@
   <section class="container">
     <ul>
       <li v-for="restaurant in restaurants" :key="restaurant.id">
-        <router-link to="/restaurant">{{ restaurant.name }}</router-link>
+        <router-link @click="$emit('restaurant',restaurant.id)" :to="{name: 'Restaurant', params: {slug: restaurant.slug}}">{{ restaurant.name }}</router-link>
         </li>
     </ul>
   </section>
