@@ -3,12 +3,34 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Plate;
+use App\Order;
+use Illuminate\Support\Facades\DB;
+use Asm89\Stack\CorsService;
 use Braintree;
 
 class PaymentsController extends Controller
 {
     public function payment(Request $request)
     {
+        // verifico che il prezzo totale sia corretto
+        $cartData = json_decode($request['cart_json']);
+        $correctPrice = 0;
+        foreach ($cartData as $cartItem) 
+        {
+            $plate = Plate::where('id', $cartItem->id)->first();
+            $platePrice = $plate->price;
+            $correctPrice += $platePrice * $cartItem->quantity;
+        }
+        // normalizzo prezzi
+        $correctPrice = sprintf("%.2f", $correctPrice);
+        $formPrice = sprintf("%.2f", $request['amount']);
+        if ( $correctPrice != $formPrice )
+        {
+            return back()->withErrors('an error occurred: total price did not match');
+        }
+        
+
         $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
             'merchantId' => config('services.braintree.merchantId'),
@@ -27,11 +49,36 @@ class PaymentsController extends Controller
             ]
         ]);
 
-        if ($result->success) {
+        if ($result->success) 
+        {
             $transaction = $result->transaction;
 
+            // aggiungo ordine in db
+            $newOrder = Order::create([
+                'user_id' => $cartData[0]->user_id,
+                'total_price' => $formPrice,
+                'customer_name' => $request['customer_name'],
+                'customer_surname' => $request['customer_surname'],
+                'customer_email' => $request['customer_email'],
+                'customer_phone_number' => $request['customer_phone_number'],
+                'customer_address' => $request['customer_address']
+            ]);
+
+            // aggiungo i record alla pivot 
+            foreach ($cartData as $cartItem) 
+            {
+                DB::table('order_plate')->insert([
+                    'plate_id' => $cartItem->id,
+                    'order_id' => $newOrder->id,
+                    'quantity' => $cartItem->quantity,
+                ]);                
+            }
+
+            // restituisco view avvenuto pagamento
             return view('guest.payment_success');
-        } else {
+        } 
+        else 
+        {
             $errorString = "";
 
             foreach($result->errors->deepAll() as $error) {
