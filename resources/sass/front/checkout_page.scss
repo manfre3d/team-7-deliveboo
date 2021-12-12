@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #66df99;
+  background: linear-gradient(166deg, rgba(102,223,153,1) 33%, #f4f5f5 33%); 
+}
+
+header {
+  margin-bottom: 3rem;
+  padding: 1rem 2rem;
+}
+#cart_json,
+#amount {
+  display: none;
+}
+
+#payment-form {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  margin-bottom: 3rem;
+
+  .form_input_section {
+    border-radius: .35rem;
+    background-color: white;
+    -webkit-box-shadow: 2px 2px 23px -4px rgba(0, 0, 0, 0.15); 
+    box-shadow: 2px 2px 23px -4px rgba(0, 0, 0, 0.15);
+    width: 65%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 1.25rem;
+    padding: 2.75rem;
+    input {
+      padding: .5rem;
+      margin-bottom: 1rem;
+      margin-top: .5rem;
+    }
+    .braintree_dropin,
+    .submit_btn {
+      width: 100%;
+    }
+    .submit_btn {
+      padding: .75rem;
+      cursor: pointer;
+      background-color: #66df99;
+      border-radius: .25rem;
+      margin-top: .25rem;
+      color: #fff;
+      font-weight: 600;
+      border: none;
+    }
+    .input_wrapper {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+    }
+    .address.input_wrapper {
+      width: 100%;
+      margin-bottom: 0;
+    }
+    .email,
+    .name {
+      padding-right: 1rem;
+    }
+  }
+
+  .cart_section {
+    background-color: white;
+    border-radius: .35rem;
+    width: 35%;
+    padding: 2rem 1.5rem;
+    -webkit-box-shadow: 2px 2px 23px -4px rgba(0, 0, 0, 0.15); 
+    box-shadow: 2px 2px 23px -4px rgba(0, 0, 0, 0.15);
+    #cart_data {
+      max-height: 70vh;
+      overflow-y: auto;     
+      margin-right: -1.25rem;
+      padding-right: 1rem;
+    }
+    .cart_item {
+      display: flex;
+      margin: 1.25rem 0;
+      .ingredients {
+        color: rgba(0, 0, 0, 0.651);
+      }
+      .info_wrapper {
+        padding-right: 1rem;
+        padding-left: 1rem;
+        width: 70%;
+      }
+      .modify_quantity {
+        border-radius: 50%;
+        height: 1.25rem;
+        font-weight: 600;
+        width: 1.25rem;
+        border: 2px solid #000;
+        background-color: transparent;
+        cursor: pointer;
+      }
+      .product_price {
+        margin-left: auto;
+      }
+      .product_name {
+        text-transform: capitalize;
+        margin-bottom: .15rem;
+      }
+    }
+    .input-label {
+      display: flex;
+      margin-top: 3rem;
+      span {
+        margin-left: auto;
+      }
+    }
+  }
+
+}
