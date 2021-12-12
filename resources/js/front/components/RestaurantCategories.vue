@@ -5,7 +5,7 @@
         <div class="card mx-1 mt-3 card-menu" style="width: 20.5rem;cursor:pointer;" @click="$emit('category',category.id)">
           <div class="card-body d-flex flex-column">
 
-          <img  :src="require('../img/restaurant_category/' + category.img_path)" alt="category img">
+          <img v-if="category.img_path" :src="require('../img/restaurant_category/' + category.img_path)" alt="category img">
           {{ category.name }}
 
           </div>
