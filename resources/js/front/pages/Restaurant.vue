@@ -80,7 +80,7 @@ export default {
       restaurant: null,
       plates:[],
       cart: [],
-      restaurantId: 0 ,
+      restaurantId: 0,
     };
   },
 
@@ -136,9 +136,23 @@ export default {
 
   methods: {
     addToCart: function (plate) {
-      if(!this.cart.includes(plate)){
+      
+      // se il carrello non contiene niente
+      if(this.cart.length==0){
         this.cart.push(plate);
+
+        // se invece il carrello contiene già un'elemento,
+        // verifica che il piatto che si stà pushando è dello stesso ristorante
+      }else if(this.cart[0]['user_id']==plate.user_id){
+        this.cart.push(plate);
+
+        // se la verifica precedente non è rispettata,
+        // comunicalo all'utente e fai qualcosa (dai l'opzione di cancellare il cancello?)
+      }else{
+        alert('Puoi ordinare da un ristorante alla volta');
       }
+      
+
     },
     removeToCart: function (id) {
       // this.cart = this.cart.filter((elm) => {
