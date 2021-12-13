@@ -1,8 +1,6 @@
 
-
 // prendo i dati del carrello in local storage
-const localStorageCart = JSON.parse(localStorage.cart);
-const cart = localStorageCart.data;
+const cart = JSON.parse(localStorage.cart);
 
 // funzione che aggiorna il prezzo totale
 const updatePrice = () => {
@@ -50,9 +48,9 @@ const printCart = () => {
   });
 
   // aggiungo eventi di modifica quantità ai bottoni
-  const increaseBtnList = document.querySelectorAll('.modify_quantity');
+  const editQuantityButtons = document.querySelectorAll('.modify_quantity');
 
-  increaseBtnList.forEach( elm => {
+  editQuantityButtons.forEach( elm => {
     elm.addEventListener('click', (e) => {
       const buttonTarget = e.target.closest(".modify_quantity");
       const idTarget = parseInt(buttonTarget.id);
@@ -83,7 +81,6 @@ const printCart = () => {
   // salvo il carrello in un input nel form
   document.querySelector('#cart_json').value = JSON.stringify(cart);
   // aggiorno il local storage
-  localStorageCart.data = cart;
-  localStorage.cart = JSON.stringify(localStorageCart);
+  localStorage.cart = JSON.stringify(cart);
 };
 printCart();
