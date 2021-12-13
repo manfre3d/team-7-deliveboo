@@ -4,27 +4,44 @@ use Illuminate\Database\Seeder;
 use App\RestaurantType;
 use Illuminate\Support\Str;
 
-class Restaurants_typesTableSeeder extends Seeder
+class RestaurantsTypesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run() 
+    public function run()
     {
-        $restaurantNames = [
-            "Cinese",
-            "Sushi",
-            "Pizzeria",
-            "Cucina molecolare",
-            "Indiano",
+        $restaurantCategories = [
+            [
+                "name"=>"Cinese",
+                "img"=>"cucina-cinese.jpg"
+            ],
+            [
+                "name"=>"Sushi",
+                "img"=>"cucina-sushi.jpg"
+            ],
+            [
+                "name"=>"Pizzeria",
+                "img"=>"cucina-pizza.webp"
+            ],
+            [
+                "name"=>"Cucina molecolare",
+                "img"=>"cucina-molecolare.jpg"
+            ],
+            [
+                "name"=>"Indiano",
+                "img"=>"cucina-indiana.jpg"
+            ]
         ];
 
-        for ( $i = 0; $i < 5; $i++) {
+        foreach($restaurantCategories as $category) {
             $newRestaurantsType = new RestaurantType();
-            $newRestaurantsType->name = $restaurantNames[$i];
+            $newRestaurantsType->name = $category['name'];
             $newRestaurantsType->slug = $this->getSlug($newRestaurantsType->name);
+            $newRestaurantsType->img_path = $category['img'];
+
             $newRestaurantsType->save();
         }
     }
@@ -52,4 +69,5 @@ class Restaurants_typesTableSeeder extends Seeder
 
         return $slug;
     }
+    
 }

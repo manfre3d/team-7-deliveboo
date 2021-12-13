@@ -61,7 +61,7 @@ class PlatesTableSeeder extends Seeder
 
         for( $i = 0; $i < 90; $i++ ) {
             $newPlate = new Plate();
-            $newPlate->user_id = 1;
+            $newPlate->user_id = rand(1, 15);
             $newPlate->plate_type_id = rand(1, 5);
             $newPlate->name = $faker->words(3, true);
             $newPlate->description = $faker->text();
