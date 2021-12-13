@@ -28,12 +28,13 @@
                   Aggiungi al carrello
                 </button>
             </div>
+            <!-- possibile img -->
             <!-- <img v-if="restaurant.img_path" :src="require('../img/seeder_images/' + restaurant.img_path)" alt="restaurant img"> -->
           </li>
         </ul>
 
 
-        <!-- versione a schede per i piatti -->
+        <!-- vecchia versione a schede per i piatti -->
         <!-- <div  class="plate col-4 card card-menu" v-for="(plate, index) in plates" :key="index">
           <div v-if="plates!=0" class="card-body d-flex flex-column" >
 
@@ -52,15 +53,43 @@
       </div>
       <div class="cart d-flex flex-column col-6">
         <h2>Carrello</h2>
-        <ul class="cart-container">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nome</th>
+              <!-- <th scope="col">Quantita'</th> -->
+              <th scope="col">Prezzo</th>
+              <th scope="col">Azione</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(plate, index) in cart" :key="index">
+              <th scope="row">{{index+1}}</th>
+              <td>{{ plate.name }}</td>
+              <!-- <td>{{plate.quantity}}</td> -->
+              <td>{{ plate.price.toFixed(2) }}</td>
+              <td>
+                <button class="btn cart-remove" @click="removeToCart(plate.id)">
+                  Rimuovi
+                </button>
+              </td>
+            </tr>            
+          </tbody>
+        </table>
+
+        <!-- vecchia visualizzazione carello con ul -->
+        <!-- <ul class="cart-container">
           <li v-for="(plate, index) in cart" :key="index">
-            <h4>{{ plate.name }}</h4>
-            <div>{{ plate.price.toFixed(2) }} €</div>
-            <button class="btn cart-remove" @click="removeToCart(plate.id)">
+            <h4>{{ plate.dish.name }}</h4>
+            <div>{{ plate.dish.price.toFixed(2) }} €</div>
+            <button class="btn cart-remove" @click="removeToCart(plate.dish.id)">
               Rimuovi
             </button>
           </li>
-        </ul>
+        </ul> -->
+
+
         <div class="total-container">
           <h2>Totale:</h2>
           <span id="total-price">€{{ getTotalPrice() }}</span>
