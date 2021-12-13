@@ -49,7 +49,7 @@ class PlatesTableSeeder extends Seeder
         // ne genero 10 realistici e il resto con dei faker
         for( $i = 0; $i < 10; $i++ ) {
             $newPlate = new Plate();
-            $newPlate->user_id = rand(1, 15);
+            $newPlate->user_id = 1;
             $newPlate->plate_type_id = rand(1, 5);
             $newPlate->name = $names[$i];
             $newPlate->description = $descriprions[$i];
