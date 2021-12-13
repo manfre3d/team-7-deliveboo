@@ -1,0 +1,179 @@
+
+@import 'variables';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: $greenMain;
+  background: linear-gradient(166deg, $greenMain 33%, #f4f5f5 33%); 
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+header {
+  margin-bottom: 3rem;
+  padding: 1rem 2rem;
+}
+#cart_json,
+#amount {
+  display: none;
+}
+
+#payment-form {
+  max-width: 1400px;
+  margin: auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  @media screen and (max-width: 900px) {
+    & {
+      flex-direction: column-reverse;
+    }
+  }
+
+  .form_input_section {
+    border-radius: .35rem;
+    background-color: white;
+    -webkit-box-shadow: 2px 2px 23px -4px rgba(0, 0, 0, 0.15); 
+    box-shadow: 2px 2px 23px -4px rgba(0, 0, 0, 0.15);
+    width: 65%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 1.25rem;
+    padding: 2.75rem;
+    @media screen and (max-width: 1100px) {
+      & {
+        width: 55%;
+      }
+    }
+    @media screen and (max-width: 900px) {
+      & {
+        width: 100%;
+      }
+    }
+    @media screen and (max-width: 600px) {
+      & {
+        padding: 1.5rem;
+      }
+    }
+    input {
+      padding: .5rem;
+      margin-bottom: 1rem;
+      margin-top: .5rem;
+    }
+    .braintree_dropin,
+    .submit_btn {
+      width: 100%;
+    }
+    .submit_btn {
+      padding: .75rem;
+      cursor: pointer;
+      background-color: $greenMain;
+      border-radius: .25rem;
+      margin-top: .25rem;
+      color: #fff;
+      font-weight: 600;
+      border: none;
+    }
+    .input_wrapper {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      @media screen and (max-width: 600px) {
+        & {
+          width: 100%;
+        }
+      }
+    }
+    .address.input_wrapper {
+      width: 100%;
+      margin-bottom: 0;
+    }
+    .email,
+    .name {
+      padding-right: 1rem;
+      @media screen and (max-width: 600px) {
+        & {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  .cart_section {
+    background-color: white;
+    border-radius: .35rem;
+    width: 35%;
+    padding: 2.75rem 1.5rem;
+    -webkit-box-shadow: 2px 2px 23px -4px rgba(0, 0, 0, 0.15); 
+    box-shadow: 2px 2px 23px -4px rgba(0, 0, 0, 0.15);
+    @media screen and (max-width: 1100px) {
+      & {
+        width: 45%;
+      }
+    }
+    @media screen and (max-width: 900px) {
+      & {
+        width: 100%;
+        margin-bottom: 2rem;
+      }
+    }
+    #cart_data {
+      max-height: 70vh;
+      overflow-y: auto;     
+      padding-right: 1rem;    
+      @media screen and (max-width: 900px) {
+        & {
+          max-height: 25vh;
+        }
+      }
+    }
+
+    .cart_item {
+      display: flex;
+      margin: 1.25rem 0;
+      .ingredients {
+        color: rgba(0, 0, 0, 0.651);
+      }
+      .info_wrapper {
+        padding-right: 1rem;
+        padding-left: 1rem;
+        width: 70%;
+      }
+      .modify_quantity {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        vertical-align: middle;
+      }
+      .quantity_wrapper {
+        min-width: 5rem;
+      }
+      .product_price {
+        margin-left: auto;
+      }
+      .product_name {
+        text-transform: capitalize;
+        margin-bottom: .15rem;
+      }
+    }
+    hr {
+      margin-top: 2rem;
+      border: $greenMain 1px solid;
+    }
+    .input-label {
+      display: flex;
+      margin-top: 2rem;
+      span {
+        margin-left: auto;
+      }
+    }
+  }
+
+}

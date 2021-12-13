@@ -13,6 +13,7 @@ class Order extends Model
         "customer_email",
         "customer_phone_number",
         "customer_address",
+        "user_id"
     ];
     public function user()
     {

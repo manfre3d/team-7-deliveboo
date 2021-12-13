@@ -35,6 +35,9 @@ mix.js('resources/js/backoffice/app.js', 'public/js')
     .js('resources/js/front/front.js', 'public/js')
     .js('resources/js/backoffice/crud_delete_plate.js', 'public/js')
     .js('resources/js/backoffice/register_user.js', 'public/js')
+    .js('resources/js/backoffice/checkout.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/front/checkout_page.scss', 'public/css')
     .sass('resources/sass/front/front.scss', 'public/css')
     .copy( 'resources/js/front/img', 'public/images', false );
+
