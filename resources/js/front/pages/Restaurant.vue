@@ -1,5 +1,5 @@
 <template>
-  <section >
+  <section class="container">
     <div v-if="restaurant!=null">
 
       <div class="restaurant-info">
@@ -58,7 +58,9 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Nome</th>
-              <!-- <th scope="col">Quantita'</th> -->
+
+              <th scope="col">Quantita'</th>
+
               <th scope="col">Prezzo</th>
               <th scope="col">Azione</th>
             </tr>
@@ -67,7 +69,9 @@
             <tr v-for="(plate, index) in cart" :key="index">
               <th scope="row">{{index+1}}</th>
               <td>{{ plate.name }}</td>
-              <!-- <td>{{plate.quantity}}</td> -->
+
+              <td>{{plate.quantity}}</td>
+
               <td>{{ plate.price.toFixed(2) }}</td>
               <td>
                 <button class="btn cart-remove" @click="removeToCart(plate.id)">
@@ -121,18 +125,27 @@ export default {
       .then((response) => {
         //handle success
         this.restaurant = response.data.data;
-        console.log(this.restaurant);
         this.restaurantId = this.restaurant.id;
-        console.log(this.restaurantId);
+
+        if (localStorage.cart!=[]) {
+          
+
+          let previewsCart = JSON.parse(localStorage.cart);
+          if(previewsCart[0].user_id!=this.restaurantId){
+
+            localStorage.cart='';
+            
+          }else{
+            this.cart=previewsCart;
+          }
+    
+        }
       })
       .catch((error) => {
         //handle error
         console.log(error);
       });
       
-    if (localStorage.cart) {
-      this.cart = JSON.parse(localStorage.cart);
-    }
   },
  
  
@@ -148,7 +161,7 @@ export default {
       axios
       .get(`/api/plates/${this.restaurantId}`)
       .then((response) => {
-        console.log(response);
+
         if(response.data.data=="no results found"){
           this.plates=0;
         }else{
@@ -166,44 +179,54 @@ export default {
   methods: {
     addToCart: function (plate) {
       
-      // se il carrello non contiene niente
       if(this.cart.length==0){
         this.cart.push(plate);
 
-        // se invece il carrello contiene già un'elemento,
-        // verifica che il piatto che si stà pushando è dello stesso ristorante
-      }else if(this.cart[0]['user_id']==plate.user_id){
-        this.cart.push(plate);
+        Vue.set(this.cart[this.cart.length-1], 'quantity', 1);
 
-        // se la verifica precedente non è rispettata,
-        // comunicalo all'utente e fai qualcosa (dai l'opzione di cancellare il cancello?)
+        // if(this.cart[0]['user_id']==plate.user_id )
       }else{
-        alert('Puoi ordinare da un ristorante alla volta');
+        let find=false;
+        this.cart.forEach((elm)=>{
+          
+          if(elm.id==plate.id){
+            find=true;
+            elm.quantity++;
+          }
+
+        })
+        if(find==false){
+
+          this.cart.push(plate);
+          Vue.set(this.cart[this.cart.length-1], 'quantity', 1);
+        }
       }
       
 
     },
     removeToCart: function (id) {
-      // this.cart = this.cart.filter((elm) => {
-      //   if (elm.id != id) {
-      //     return true;
-      //   }
-      //   return false;
-      // });
       let count = 0;
       this.cart.forEach ((elm, index) => {
-        if (elm.id == id && count == 0) {
+        // se l'id del piatto da rimuovere è uguale a quello del piatto nel carrello, il contatore è a 0 è
+        // la quantità del piatto del carrello è 1
+        if (elm.id == id && count == 0 && elm.quantity==1) {
           this.cart.splice(index, 1);
           count++;
+
+        // se l'id del piatto da rimuovere è uguale a quello del piatto nel carrello, il contatore è a 0 è
+        // la quantità del piatto del carrello è > 1
+        }else if(elm.id == id && count == 0 && elm.quantity>1){
+          elm.quantity--;
         }
       })
-      console.log(this.cart)
     },
     getTotalPrice: function () {
       let tot = 0;
 
       this.cart.forEach((elm) => {
-        tot += elm.price;
+
+        // sommo i prezzi alla variabile totale, moltiplicando per la quantità dell'elemento
+        tot += elm.price * elm.quantity;
       });
       
       return tot.toFixed(2);
