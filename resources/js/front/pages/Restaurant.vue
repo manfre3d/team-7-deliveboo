@@ -97,6 +97,8 @@
         <div class="total-container">
           <h2>Totale:</h2>
           <span id="total-price">€{{ getTotalPrice() }}</span>
+          <a class="btn cart-remove nav-link text-white" href="/checkout">Procedi al pagamento</a>
+
         </div>
       </div>
 
