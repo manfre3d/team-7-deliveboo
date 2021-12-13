@@ -23,9 +23,6 @@
           <li class="nav-item">
             <a class="nav-link" href="/register">Registrati</a>
           </li>
-          <li class="nav-item active">
-            <router-link to="/restaurant" class="nav-link">Esempio ristorante</router-link>
-          </li>
         </ul>
       </div>
     </nav>

@@ -58,7 +58,9 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Nome</th>
+
               <th scope="col">Quantita'</th>
+
               <th scope="col">Prezzo</th>
               <th scope="col">Azione</th>
             </tr>
@@ -67,7 +69,9 @@
             <tr v-for="(plate, index) in cart" :key="index">
               <th scope="row">{{index+1}}</th>
               <td>{{ plate.name }}</td>
+
               <td>{{plate.quantity}}</td>
+
               <td>{{ plate.price.toFixed(2) }}</td>
               <td>
                 <button class="btn cart-remove" @click="removeToCart(plate.id)">
