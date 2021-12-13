@@ -44,15 +44,15 @@
           <input type="text" name="customer_address" id="customer_address" placeholder="indirizzo di consegna">
         </div>
 
-          <input type="text" name="cart_json" id="cart_json" value="">
+        <input type="text" name="cart_json" id="cart_json" value="">
 
-          {{-- drop in braintree --}}
-          <div class="bt-drop-in-wrapper braintree_dropin">
-            <div id="bt-dropin"></div>
-          </div>      
+        {{-- drop in braintree --}}
+        <div class="bt-drop-in-wrapper braintree_dropin">
+          <div id="bt-dropin"></div>
+        </div>      
 
-          <input id="nonce" name="payment_method_nonce" type="hidden" />
-          <button class="button submit_btn" type="submit"><span>pagamento</span></button>
+        <input id="nonce" name="payment_method_nonce" type="hidden" />
+        <button class="button submit_btn" type="submit"><span>pagamento</span></button>
       </section>
 
       <section class="cart_section">
@@ -60,6 +60,8 @@
 
         <ul id="cart_data">
         </ul>
+
+        <hr>
 
         <label for="amount">
           <h3 class="input-label">Totale:<span id="total_price"></span></h3>

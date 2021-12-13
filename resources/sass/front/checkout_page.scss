@@ -1,3 +1,6 @@
+
+@import 'variables';
+
 * {
   margin: 0;
   padding: 0;
@@ -6,8 +9,9 @@
 }
 
 body {
-  background: #66df99;
-  background: linear-gradient(166deg, rgba(102,223,153,1) 33%, #f4f5f5 33%); 
+  background: $greenMain;
+  background: linear-gradient(166deg, $greenMain 33%, #f4f5f5 33%); 
+  background-repeat: no-repeat;
 }
 
 header {
@@ -47,7 +51,7 @@ header {
     .submit_btn {
       padding: .75rem;
       cursor: pointer;
-      background-color: #66df99;
+      background-color: $greenMain;
       border-radius: .25rem;
       margin-top: .25rem;
       color: #fff;
@@ -94,13 +98,10 @@ header {
         width: 70%;
       }
       .modify_quantity {
-        border-radius: 50%;
-        height: 1.25rem;
-        font-weight: 600;
-        width: 1.25rem;
-        border: 2px solid #000;
         background-color: transparent;
+        border: none;
         cursor: pointer;
+        vertical-align: middle;
       }
       .product_price {
         margin-left: auto;
@@ -110,9 +111,13 @@ header {
         margin-bottom: .15rem;
       }
     }
+    hr {
+      margin-top: 2rem;
+      border: $greenMain 1px solid;
+    }
     .input-label {
       display: flex;
-      margin-top: 3rem;
+      margin-top: 2rem;
       span {
         margin-left: auto;
       }
