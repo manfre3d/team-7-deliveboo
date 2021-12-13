@@ -12,6 +12,7 @@ body {
   background: $greenMain;
   background: linear-gradient(166deg, $greenMain 33%, #f4f5f5 33%); 
   background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 header {
@@ -24,10 +25,17 @@ header {
 }
 
 #payment-form {
-  width: 80%;
+  max-width: 1400px;
   margin: auto;
+  padding: 0 2rem;
   display: flex;
+  align-items: flex-start;
   margin-bottom: 3rem;
+  @media screen and (max-width: 900px) {
+    & {
+      flex-direction: column-reverse;
+    }
+  }
 
   .form_input_section {
     border-radius: .35rem;
@@ -39,6 +47,21 @@ header {
     flex-wrap: wrap;
     margin-right: 1.25rem;
     padding: 2.75rem;
+    @media screen and (max-width: 1100px) {
+      & {
+        width: 55%;
+      }
+    }
+    @media screen and (max-width: 900px) {
+      & {
+        width: 100%;
+      }
+    }
+    @media screen and (max-width: 600px) {
+      & {
+        padding: 1.5rem;
+      }
+    }
     input {
       padding: .5rem;
       margin-bottom: 1rem;
@@ -62,6 +85,11 @@ header {
       width: 50%;
       display: flex;
       flex-direction: column;
+      @media screen and (max-width: 600px) {
+        & {
+          width: 100%;
+        }
+      }
     }
     .address.input_wrapper {
       width: 100%;
@@ -70,6 +98,11 @@ header {
     .email,
     .name {
       padding-right: 1rem;
+      @media screen and (max-width: 600px) {
+        & {
+          padding-right: 0;
+        }
+      }
     }
   }
 
@@ -77,14 +110,31 @@ header {
     background-color: white;
     border-radius: .35rem;
     width: 35%;
-    padding: 2rem 1.5rem;
+    padding: 2.75rem 1.5rem;
     -webkit-box-shadow: 2px 2px 23px -4px rgba(0, 0, 0, 0.15); 
     box-shadow: 2px 2px 23px -4px rgba(0, 0, 0, 0.15);
+    @media screen and (max-width: 1100px) {
+      & {
+        width: 45%;
+      }
+    }
+    @media screen and (max-width: 900px) {
+      & {
+        width: 100%;
+        margin-bottom: 2rem;
+      }
+    }
     #cart_data {
       max-height: 70vh;
       overflow-y: auto;     
-      padding-right: 1rem;
+      padding-right: 1rem;    
+      @media screen and (max-width: 900px) {
+        & {
+          max-height: 25vh;
+        }
+      }
     }
+
     .cart_item {
       display: flex;
       margin: 1.25rem 0;
