@@ -1,23 +1,42 @@
 <template>
 <div class="container">
-  <h1>sono la Homepage</h1>
+  <h1 class="text-center">Sono la Homepage</h1>
+  <h2>Categorie di Ristoranti</h2>
   <ul>
-    <RestaurantCategories/>
-    <Restaurants/>
+    <RestaurantCategories @category="getCategory"/>    
   </ul>
+  <hr>
+  <h2>Ristoranti</h2>
+  <RestaurantsList :selectedCategory="category"/>
   </div>
 </template>
 
 <script>
+import RestaurantsList from '../components/RestaurantsList';
 import RestaurantCategories from '../components/RestaurantCategories';
-import Restaurants from '../components/Restaurants';
 
 export default {
     components: {
+      RestaurantsList,
       RestaurantCategories,
-      Restaurants
+    },
+    data() {
+      return {
+        category: 0,
+        restaurants:[],
+        filteredRestaurants:[],
+
+      }
+    },
+    methods:{
+      getCategory(categorySelected){
+
+        // console.log(categorySelected);
+        this.category=categorySelected;
+
+      }
+
     }
-    
 }
 </script>
 

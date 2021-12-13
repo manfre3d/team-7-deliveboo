@@ -44,7 +44,7 @@ export default {
 @import "../../../sass/front/variables.scss";
 footer{
     width: 100%;
-    min-height: 80px;
+    margin-top: 30px;
     padding: 20px 0;
     background-color: $lightgray;
     color:$gold;
