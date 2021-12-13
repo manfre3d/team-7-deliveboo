@@ -66,11 +66,11 @@
           <tbody>
             <tr v-for="(plate, index) in cart" :key="index">
               <th scope="row">{{index+1}}</th>
-              <td>{{ plate.dish.name }}</td>
+              <td>{{ plate.name }}</td>
               <td>{{plate.quantity}}</td>
-              <td>{{ plate.dish.price.toFixed(2) }}</td>
+              <td>{{ plate.price.toFixed(2) }}</td>
               <td>
-                <button class="btn cart-remove" @click="removeToCart(plate.dish.id)">
+                <button class="btn cart-remove" @click="removeToCart(plate.id)">
                   Rimuovi
                 </button>
               </td>
@@ -110,7 +110,6 @@ export default {
       plates:[],
       cart: [],
       restaurantId: 0,
-      counter:0,
     };
   },
 
@@ -122,18 +121,27 @@ export default {
       .then((response) => {
         //handle success
         this.restaurant = response.data.data;
-        console.log(this.restaurant);
         this.restaurantId = this.restaurant.id;
-        console.log(this.restaurantId);
+
+        if (localStorage.cart!=[]) {
+          
+
+          let previewsCart = JSON.parse(localStorage.cart);
+          if(previewsCart[0].user_id!=this.restaurantId){
+
+            localStorage.cart='';
+            
+          }else{
+            this.cart=previewsCart;
+          }
+    
+        }
       })
       .catch((error) => {
         //handle error
         console.log(error);
       });
       
-    if (localStorage.cart) {
-      this.cart = JSON.parse(localStorage.cart);
-    }
   },
  
  
@@ -149,7 +157,7 @@ export default {
       axios
       .get(`/api/plates/${this.restaurantId}`)
       .then((response) => {
-        console.log(response);
+
         if(response.data.data=="no results found"){
           this.plates=0;
         }else{
@@ -166,65 +174,47 @@ export default {
 
   methods: {
     addToCart: function (plate) {
-      let obj={
-        "dish":plate,
-        "quantity":1
-      }
-      // se il carrello non contiene niente, contatore parte da 0
+      
       if(this.cart.length==0){
-        this.cart.push(obj);
-        this.counter=0;
+        this.cart.push(plate);
 
-        // se invece il carrello contiene già un'elemento,
-        // verifica che il piatto che si stà pushando è dello stesso ristorante
-      }else if(this.cart[0]['dish']['user_id']==plate.user_id ){
-        
+        Vue.set(this.cart[this.cart.length-1], 'quantity', 1);
+
+        // if(this.cart[0]['user_id']==plate.user_id )
+      }else{
+        let find=false;
         this.cart.forEach((elm)=>{
           
-          // verifica che il piatto che si sta' inserrendo non sia già presente
-          // in caso lo è aumenta la quantità
-          if(elm.dish.id==plate.id && this.counter==0){
-            console.log('hello');
+          if(elm.id==plate.id){
+            find=true;
             elm.quantity++;
+          }
 
-          // se il piatto non è presente, e il contatore è 0, aggiungilo
-          }else if(elm.dish.id!=plate.id && this.counter==0){
-            this.cart.push(obj);
-            this.counter++;
-          }else if(elm.dish.id!=plate.id && this.counter>0)
-            console.log("ciao");
         })
+        if(find==false){
 
-        // se le verifiche precedenti non sono rispettate,
-        // comunicalo all'utente e fai qualcosa (dai l'opzione di cancellare il cancello?)
-      }else{
-        alert('Puoi ordinare da un ristorante alla volta');
+          this.cart.push(plate);
+          Vue.set(this.cart[this.cart.length-1], 'quantity', 1);
+        }
       }
       
 
     },
     removeToCart: function (id) {
-      // this.cart = this.cart.filter((elm) => {
-      //   if (elm.id != id) {
-      //     return true;
-      //   }
-      //   return false;
-      // });
       let count = 0;
       this.cart.forEach ((elm, index) => {
         // se l'id del piatto da rimuovere è uguale a quello del piatto nel carrello, il contatore è a 0 è
         // la quantità del piatto del carrello è 1
-        if (elm.dish.id == id && count == 0 && elm.quantity==1) {
+        if (elm.id == id && count == 0 && elm.quantity==1) {
           this.cart.splice(index, 1);
           count++;
 
         // se l'id del piatto da rimuovere è uguale a quello del piatto nel carrello, il contatore è a 0 è
         // la quantità del piatto del carrello è > 1
-        }else if(elm.dish.id == id && count == 0 && elm.quantity>1){
+        }else if(elm.id == id && count == 0 && elm.quantity>1){
           elm.quantity--;
         }
       })
-      console.log(this.cart)
     },
     getTotalPrice: function () {
       let tot = 0;
@@ -232,7 +222,7 @@ export default {
       this.cart.forEach((elm) => {
 
         // sommo i prezzi alla variabile totale, moltiplicando per la quantità dell'elemento
-        tot += elm.dish.price * elm.quantity;
+        tot += elm.price * elm.quantity;
       });
       
       return tot.toFixed(2);
