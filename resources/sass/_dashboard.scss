@@ -2,11 +2,11 @@ body{
     background-color: $basicColor;
 }
 .bg_color{
-    background-color: $secondaryColor;
+    background-color: $logoColor;
     // #01A082;
 }
 .card-header{
-    background-color: $mainColor;
+    background-color: $logoColor;
     color: $basicColor;
     text-align: center;
 }
@@ -28,8 +28,8 @@ body{
 }
 .btn-primary {
     color: $basicColor;
-    background-color: $mainColor;
-    border-color: $mainColor;
+    background-color: $logoColor;
+    border-color: $logoColor;
 
     &:hover{
         color: $mainColor;

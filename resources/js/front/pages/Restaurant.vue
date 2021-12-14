@@ -3,7 +3,7 @@
     <div v-if="restaurant!=null">
 
       <div class="restaurant-info">
-        <h1>Ristorante{{restaurant.name}}</h1>
+        <h1>Ristorante {{restaurant.name}}</h1>
       </div>
 
       <h4>Menù</h4>
