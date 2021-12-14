@@ -23,7 +23,7 @@ Route::namespace('Api')->name('api.')->group(function() {
     // restituisce tutti i ristoranti
 	Route::get('/restaurants', 'RestaurantController@index')->name("index");
     // restituisce i ristoranti che hanno la categoria con l'id passato
-	Route::get('/restaurants/type/{type_id}', 'RestaurantController@type');
+	Route::get('/restaurants/type/{list_type_id}', 'RestaurantController@type');
     // restituisco il singolo ristorante
 	Route::get('/restaurants/{slug}', 'RestaurantController@show');
 
