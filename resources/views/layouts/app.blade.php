@@ -23,7 +23,8 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg_color shadow-sm">
-            <div class="container">
+            <div class="container logo">
+              <img src="https://newsmondo.it/wp-content/uploads/2021/08/FB_Deliveroo.jpg" alt="Deliveboo logo">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Deliveboo
                 </a>
