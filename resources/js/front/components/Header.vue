@@ -1,15 +1,7 @@
 <template>
   <header>
     <nav class="navbar navbar-expand-md navbar-dark">
-      <button
-        class="navbar-toggler collapsed"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarsExample04"
-        aria-controls="navbarsExample04"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -17,7 +9,7 @@
         <ul class="navbar-nav mr-auto flex-grow-1">
           <li class="nav-item active">
             <div class="logo d-flex align-items-center">
-              <img src="https://newsmondo.it/wp-content/uploads/2021/08/FB_Deliveroo.jpg" alt=""/>
+              <img src="https://newsmondo.it/wp-content/uploads/2021/08/FB_Deliveroo.jpg" alt="Deliveboo logo">
               <router-link :to="{ name: 'Home' }" class="nav-link text-white">
               <h2>deliveboo</h2>
               <span class="sr-only">(current)</span>
@@ -34,10 +26,6 @@
           </li>
         </ul>
       </div>
-
-    
-
-      
     </nav>
   </header>
 </template>
@@ -70,5 +58,4 @@ export default {
   } 
 }
 }
-
 </style>
