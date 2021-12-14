@@ -1,28 +1,31 @@
 <template>
-  <section class="container">
+  <section class="container-fluid">
     <div class="row">
       <div class="col-12">
         <h2>Le categorie di ristoranti più amate</h2>
       </div>
     </div>
 
-    <ul class="row justify-content-center" style="margin-bottom: 20px">
-      <li class="d-flex col col-md-6 col-lg-4 flex-grow-0 justify-content-center" v-for="category in categories" :key="category.id">
-        <div class="card mx-1 card-menu" style=" cursor: pointer" @click="$emit('category', category.id)">
+    <ul class="row justify-content-center">
+      <li class="d-flex col col-md-6 col-lg-3 justify-content-center" v-for="category in categories" :key="category.id">
+        <div v-if="category.id < 5" class="card mx-1 card-menu" style=" cursor: pointer" @click="$emit('category', category.id)">
           <div class="card-body">
             <img v-if="category.img_path" :src="require('../img/restaurant_category/' + category.img_path)" alt="category img">
             <h4>{{ category.name }}</h4>
           </div>
         </div>
       </li>
+    </ul>
 
       <!-- Stampa tag categorie -->
-      <li class="row justify-content-center tag">
-        <h4 class="d-flex flex-wrap justify-content-center mx-1" v-for="category in categories" :key="category.id" @click="$emit('category', category.id)">
+    <h2>Cerchi qualcos'altro?</h2>
+    <ul>
+      <li class="row tag">
+        <div class="d-flex flex-wrap justify-content-center mx-1" v-for="category in categories" :key="category.id" @click="$emit('category', category.id)">
           <router-link class="badge" to="">
-            {{category.name}}
+            <h4>{{category.name}}</h4>
           </router-link>
-        </h4>
+        </div>
       </li>
     </ul>
   </section>
@@ -54,7 +57,7 @@ export default {
 <style lang="scss" scoped>
 @import "../../../sass/front/variables.scss";
 
-.container {
+.container-fluid{
   padding: 3.75rem 0;
 }
 
@@ -67,7 +70,12 @@ export default {
   font-weight: 700;
   color: $titleColor;
 }
-.container{
+@mixin tag{
+  background-color: #ececec;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+.container-fluid{
   @include centered;
   h2{
     color: $titleColor;
@@ -87,23 +95,22 @@ export default {
       padding-top: .62rem;
     }
     img{
-      height: 200px;
-      width: 350px;
+      height: 12.5rem;
+      width: 15.62rem;
       object-fit: cover;
     }
-    
   }
   .card {
     border: none;
   }
 }
 .tag{
-  h4{
-    .badge{
+  .badge{
+    padding-left: 15px;
+    h4{
       @include title;
-      background-color: #ececec;
-      margin-top: 3.75rem;
-    }
+      @include tag;
+    }  
   }
 }
 </style>
