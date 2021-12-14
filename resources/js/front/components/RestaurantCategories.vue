@@ -9,9 +9,9 @@
     <ul class="row justify-content-center" style="margin-bottom: 20px">
       <li class="d-flex col col-md-6 col-lg-4 flex-grow-0 justify-content-center" v-for="category in categories" :key="category.id">
         <div class="card mx-1 card-menu" style=" cursor: pointer" @click="$emit('category', category.id)">
-          <div class="card-body d-flex flex-column">
+          <div class="card-body">
             <img v-if="category.img_path" :src="require('../img/restaurant_category/' + category.img_path)" alt="category img">
-            <span>{{ category.name }}</span>
+            <h4>{{ category.name }}</h4>
           </div>
         </div>
       </li>
@@ -82,9 +82,14 @@ export default {
     }
   }
   .card-body {
-    span{
+    h4{
       @include title;
       padding-top: .62rem;
+    }
+    img{
+      height: 200px;
+      width: 350px;
+      object-fit: cover;
     }
     
   }
