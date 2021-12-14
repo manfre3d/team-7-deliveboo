@@ -23,14 +23,13 @@ export default {
   max-width: 85%;
   margin: auto;
 }
-
 .container-fluid {
   background-color: $mainColor;
   margin-right: 12.5rem;
 }
 .hero_container {
   @include centered;
-  padding-bottom: 3.12rem;
+  padding-bottom: 1.25rem;
   h1 {
     color: $basicColor;
     font-weight: 600;
