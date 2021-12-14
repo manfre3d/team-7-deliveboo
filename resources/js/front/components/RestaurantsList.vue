@@ -5,9 +5,11 @@
     <div class="row" v-if="category == 0">
       <div  v-for="restaurant in restaurants" :key="restaurant.id" class="col-sm-12 col-md-6 col-lg-4 img_container d-flex flex-column align-items-center">
         <router-link :to="{ name: 'Restaurant', params: { slug: restaurant.slug } }">
+          
           <img
-            :src="require('../img/seeder_images/' + restaurant.img_path)"
-              alt="restaurant img"/>
+          :src="checkImg(restaurant.img_path)"
+          alt="restaurant img"/>
+
           <h4>{{ restaurant.name }}</h4>
         </router-link>
       </div>
@@ -17,13 +19,14 @@
       <div v-for="restaurant in filteredRestaurants" :key="restaurant.id" class="col-sm-12 col-md-6 col-lg-4 img_container d-flex flex-column align-items-center">
         <router-link :to="{ name: 'Restaurant', params: { slug: restaurant.slug } }">
           <img
-            :src="require('../img/seeder_images/' + restaurant.img_path)"
-              alt="restaurant img"/>
+          :src="checkImg(restaurant.img_path)"
+          alt="restaurant img"/>
+
           <h4>{{ restaurant.name }}</h4>
         </router-link>
         <h6 class="badge badge-warning">
-                {{ categoriesNames[restaurant.pivot.restaurant_type_id - 1] }}
-              </h6>
+          {{ categoriesNames[restaurant.pivot.restaurant_type_id - 1] }}
+        </h6>
       </div>
     </div>
 
@@ -91,6 +94,7 @@ export default {
       categoriesNames: [],
       restaurants: [],
       filteredRestaurants: [],
+      imgPath:"",
     };
   },
   mounted() {
@@ -138,6 +142,17 @@ export default {
           console.log(error);
         });
     },
+    checkImg(img_path){
+      
+      try {
+        let fileName = require('../img/seeder_images/'+ img_path);
+        console.log("file found");
+        return require('../img/seeder_images/'+ img_path);
+      } catch (e) {
+        this.imgPath=`http://127.0.0.1:8000/api/image/${img_path}`;
+        return this.imgPath;
+      }
+    }
   },
 };
 </script>
