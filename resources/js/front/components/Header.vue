@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="container-fluid">
     <nav class="navbar navbar-expand-md navbar-dark">
       <button
         class="navbar-toggler collapsed"
