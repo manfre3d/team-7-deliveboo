@@ -131,7 +131,6 @@
                         <div class="form-group row my-4">
                             <label for="restaurant_types" class="col-md-4 col-form-label text-md-right">
                                 {{ __('Tipologia Ristorante*') }} <br>
-                                (max 2)
                             </label>
 
                             <div class="col-md-6">
