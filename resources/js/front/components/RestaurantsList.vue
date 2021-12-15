@@ -1,6 +1,35 @@
 <template>
   <section class="container-fluid">
-     <!-- tutti i ristoranti  -->
+    <div class="row">
+      <div v-if="category.length!=0" class="d-flex flex-wrap col">
+        <h2 class="col-12">Filtri selezionati</h2> 
+        <div class="left-col col-6">
+          <ul class="col-12 d-flex">
+            <li v-for="(categories,index) in category" :key="index" class="d-flex flex-wrap">
+              <h3><span class="badge badge-secondary d-flex align-content-center mx-1">
+                {{categoriesNames[categories-1]}}
+                
+              <button class="btn_delete_filter mx-2" @click="removeFilter(category)">X</button>
+              </span></h3>
+              
+            </li>
+          </ul>
+
+        </div>
+        <div class="right-col col-6 d-flex justify-content-end">
+          <button class="btn_delete_filter mx-2" @click="removeAllFilters()">
+            <h3>
+              <span class="badge badge-secondary d-flex align-content-center mx-1">      
+              Rimuovi tutti i filtri          
+              </span>
+            </h3>
+
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- tutti i ristoranti  -->
     <div class="row justify-content-center" v-if="category == 0">
       <div class="col-sm-2 col-md-6 col-lg-4 d-flex justify-content-center img_container" v-for="restaurant in restaurants" :key="restaurant.id">
         <router-link :to="{ name: 'Restaurant', params: { slug: restaurant.slug } }">
@@ -14,7 +43,7 @@
         </router-link>
       </div>
     </div>
-<!-- ristoranti filtrati -->
+    <!-- ristoranti filtrati -->
     <div class="row" v-if="category != 0">
       <div v-for="restaurant in filteredRestaurants" :key="restaurant.id" class="col-sm-12 col-md-6 col-lg-4 img_container d-flex flex-column align-items-center">
         <router-link :to="{ name: 'Restaurant', params: { slug: restaurant.slug } }">
@@ -40,7 +69,7 @@ export default {
   props: ["selectedCategory"],
   data() {
     return {
-      category: 0,
+      category: [],
       categories: [],
       categoriesNames: [],
       restaurants: [],
@@ -76,17 +105,30 @@ export default {
   },
   watch: {
     selectedCategory: function () {
-      this.category = this.selectedCategory;
+      if(!this.category.includes(this.selectedCategory)){
+        this.category.push(this.selectedCategory);
+
+      }
+      
       this.searchForCategory(this.category);
     },
   },
   methods: {
     searchForCategory(id_category) {
       // console.log(id_category);
+      let stringCategories='';
+      id_category.forEach((elm,index)=>{
+        if(index==0){
+          stringCategories+=elm;
+        }else{
+          stringCategories+='-'+elm;
+        }
+      });
+      console.log(stringCategories);
       axios
-        .get("http://127.0.0.1:8000/api/restaurants/type/" + id_category)
+        .get("http://127.0.0.1:8000/api/restaurants/type/" + stringCategories)
         .then((response) => {
-          // console.log(response.data.data);
+          console.log(response.data.data);
           this.filteredRestaurants = response.data.data;
         })
         .catch((error) => {
@@ -103,6 +145,34 @@ export default {
         this.imgPath=`http://127.0.0.1:8000/api/image/${img_path}`;
         return this.imgPath;
       }
+    },
+    removeFilter(category_id){
+
+      let indexOfElement=this.category.indexOf(category_id);
+      this.category.splice(indexOfElement, 1);
+
+      this.searchForCategory(this.category);
+    //   let stringCategories='';
+    //   this.category.forEach((elm,index)=>{
+    //     if(index==0){
+    //       stringCategories+=elm;
+    //     }else{
+    //       stringCategories+='-'+elm;
+    //     }
+    //   });
+    //   console.log(stringCategories);
+    //   axios
+    //     .get("http://127.0.0.1:8000/api/restaurants/type/" + stringCategories)
+    //     .then((response) => {
+    //       console.log(response.data.data);
+    //       this.filteredRestaurants = response.data.data;
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+    },
+    removeAllFilters(){
+      this.category=[];
     }
   },
 };
@@ -149,5 +219,13 @@ export default {
   a{
     text-decoration: none;
   }
+}
+.btn_delete_filter {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: white;
+  vertical-align: middle;
 }
 </style>
