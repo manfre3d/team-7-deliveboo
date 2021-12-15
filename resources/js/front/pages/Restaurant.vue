@@ -1,9 +1,11 @@
 <template>
-    <div>
+    <div class="general-container">
         <!-- Section restaurant-info -->
         <section class="restaurant-info" v-if="restaurant!=null">
             <div class="container">
-                
+                <h2>Ristorante {{restaurant.name}}</h2>
+                <p>{{restaurant.description}}</p>
+                <p>{{restaurant.address}}</p>
             </div>
     <!-- Section order -->
         </section>   
@@ -236,6 +238,9 @@ export default {
 <style lang="scss" scoped>
 @import "../../../sass/front/variables.scss";
 
+.general-container {
+    
+}
 .container {
     border: 3px solid blue;
 }
@@ -255,8 +260,26 @@ ul {
     padding: 50px 100px;
   }
 }
+// ---------------Restaurant info section------------------
+.restaurant-info {
+    .container {
+        border: 5px solid red;
+        text-align: center;
+        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 50px 0;
+    }
+    
+    
+}
+
+
+// -----------------Order Section-----------------
 .order {
     padding: 50px 20px;
+   
 }
 .price {
     text-align: end;
