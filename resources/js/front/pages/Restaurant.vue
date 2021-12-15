@@ -1,36 +1,27 @@
 <template>
-
-  <section class="container">
-    <div v-if="restaurant!=null">
-
-      <div class="restaurant-info">
-        <h1>Ristorante{{restaurant.name}}</h1>
-      </div>
-
-      <h4>Menù</h4>
-      <!-- <ul>
-        <li v-for="(plate, index) in plates" :key="index">
-          {{ plate.name }} {{ plate.price }}€
-        </li>
-      </ul> -->
-    </div>
-
-    <div class="d-flex">
-      <div class="plates d-flex col-6" >
-
-
-        <!-- lista di piatti del ristorante -->
-        <ul class="list-group"  style="width: 100%;">
-          <li class="list-group-item" v-for="(plate, index) in plates" :key="index">
-            <div v-if="plate.name" class="text_section_restaurant d-flex flex-wrap ">
-                <h4 style="width: 100%;">{{ plate.name }}</h4>
-                <div v-if="plate.price" class="price" style="width: 50%;">Prezzo: {{ plate.price.toFixed(2) }} €</div>
+    <div>
+        <!-- Section restaurant-info -->
+        <section class="restaurant-info" v-if="restaurant!=null">
+            <div class="container">
+                
+            </div>
+    <!-- Section order -->
+        </section>   
+        <section class="order container">
+    <div class="row">
+   <!-- Menu -->
+    <div class="col-12 col-lg-6 col-xl-6  a">
+        <ul>
+          <li class="menu-plate" v-for="(plate, index) in plates" :key="index">
+            <div v-if="plate.name" >
+                <h2>{{ plate.name }}</h2>
+                <p>{{plate.description}}</p>
+                <div v-if="plate.price" class="price"><strong>Prezzo:</strong> {{ plate.price.toFixed(2) }} €</div>
                 <button  
                 class="btn add-cart" 
                 @click="addToCart(plate)" 
                 :data-toggle="modalConnection" 
-                data-target="#exampleModalCenter" 
-                style="width: 50%;">
+                data-target="#exampleModalCenter">
                   Aggiungi al carrello
                 </button>
 
@@ -59,20 +50,17 @@
             <!-- possibile img -->
             <!-- <img v-if="restaurant.img_path" :src="require('../img/seeder_images/' + restaurant.img_path)" alt="restaurant img"> -->
           </li>
-        </ul>
-
-          
-      </div>
-      
+        </ul>  
+    </div>
       <!-- Carrello del ristorante -->
-      <div class="col-lg-6 col-xl-5 a">
-        <table class="table">
+      <div class="col-12 col-lg-6 col-xl-6 cart a">
+        <table class="table ">
           <thead>
             <tr>
               <th>Piatto</th>
               <th class="responsive-desktop" colspan="2">Quantità</th>
               <th class="responsive">Quantità</th>
-              <th>Prezzo</th>
+              <th colspan="2">Prezzo</th>
             </tr>
           </thead>
           <tbody>
@@ -81,59 +69,40 @@
 
               <td class="responsive-desktop" colspan="2">
                 <button @click="removeToCart(plate.id)">
-                  <i class="fas fa-minus"></i>
+                  <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205"><path fill="#00ccbc" d="M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z"></path></svg>
                 </button>
                 {{ plate.quantity }}
                 <button @click="addToCart(plate)">
-                  <i class="fas fa-plus"></i>
-                  </button>
-
-            <!-- Parte Manfredi da implementare -->
-              <!-- <td >
-                <div class="quantity_wrapper d-flex">
-                  <button type="button" @click="removeToCart(plate.id)" class="modify_quantity decrease mx-1">
-                    <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205"><path fill="#00ccbc" d="M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z"></path></svg>
-                  </button>
-                  <span class="quantity"> {{plate.quantity}}</span>
-                  <button type="button" @click="addToCart(plate)" class="modify_quantity increase mx-1">
-                    <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205"><path fill="#00ccbc" d="M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z"></path></svg>
-                  </button>
-                </div>
-
-              </td>
-
-              <td>{{ plate.price.toFixed(2) }}</td>
-              <td>
-                <button class="btn cart-remove" @click="removeElementCart(plate.id)">
-                  Rimuovi
-                </button> -->
-                
+                  <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205"><path fill="#00ccbc" d="M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z"></path></svg>
+                </button>
               </td>
               <td class="responsive">
                 <button @click="removeToCart(plate.id)">
-                  <i class="fas fa-minus-circle"></i>
+                  <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205"><path fill="#00ccbc" d="M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z"></path></svg>
                 </button>
                 {{ plate.quantity }}
                 <button @click="addToCart(plate)">
-                  <i class="fas fa-plus-circle"></i>
+                  <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205"><path fill="#00ccbc" d="M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z"></path></svg>
                 </button>
               </td>
-              <td>{{ plate.price.toFixed(2) }} &euro;</td>
-              <td><button>Rimuovi</button></td>
+              <td colspan="2">{{ plate.price.toFixed(2) }} &euro;</td>
+              <td><button  @click="removeElementCart(plate.id)"><i class="fas fa-trash-alt text-danger"></i></button></td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
               <td>Prezzo totale</td>
-              <td>{{ getTotalPrice() }} &euro;</td>
-              <td ><a href="/checkout">Procedi al pagamento</a></td>
+              <td colspan="2">{{ getTotalPrice() }} &euro;</td>
+              <td><a href="/checkout">Procedi al pagamento</a></td>
               <td></td>
             </tr>
           </tfoot>
         </table>
+        <button class="clear-cart" @click="removeAllCart()">Svuota il carrello</button>
       </div>
+      </div>
+        </section>
     </div>
-  </section>
 </template>
 
 <script>
@@ -265,34 +234,80 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.row {
-  border: 5px solid blue;
-  .a {
-    border: 5px solid red;
-  }
+@import "../../../sass/front/variables.scss";
+
+.container {
+    border: 3px solid blue;
 }
 
+
+ul {
+    list-style: none;
+}
+
+.row {
+//   border: 5px solid blue;
+// display: flex;
+  .a {
+    // border: 5px solid red;
+    // justify-content: space-between;
+    // margin: 0 50px;
+    padding: 50px 100px;
+  }
+}
+.order {
+    padding: 50px 20px;
+}
+.price {
+    text-align: end;
+}
+
+.add-cart {
+    border: 1px solid $mainColor;
+    font-weight: bold;
+}
+
+.menu-plate {
+    padding: 40px 0;
+    border-top: 1px dashed rgb(128, 128, 128);
+}
+
+// Carrello
 th,
 td {
   text-align: center;
-  border: 3px solid purple;
+//   border: 3px solid purple;
 }
 
 button {
   border: none;
-  // border-radius: 5px;
   background-color: transparent;
-  // padding: 0 6px;
+}
+
+.cart {
+    // padding-top: 50px!important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .responsive {
   display: none;
 }
+
+.clear-cart{
+    border: 1px solid;
+    border-radius: 3px;
+    width: max-content;
+}
+
+
 @media screen and (max-width: 520px) {
   th,
   td,
   tr {
-    padding: 0;
+    // padding: 0;
+    vertical-align: middle;
   }
   .responsive {
     display: grid;
@@ -300,12 +315,11 @@ button {
   .responsive-desktop {
     display: none;
   }
-}
 
-.modify_quantity {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  vertical-align: middle;
+  .row {
+      .a {
+      padding: 0;
+  }
+  }
 }
 </style>
