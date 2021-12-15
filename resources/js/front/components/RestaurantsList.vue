@@ -146,8 +146,8 @@ export default {
       
       try {
         let fileName = require('../img/seeder_images/'+ img_path);
-        console.log("file found");
         return require('../img/seeder_images/'+ img_path);
+        
       } catch (e) {
         this.imgPath=`http://127.0.0.1:8000/api/image/${img_path}`;
         return this.imgPath;
