@@ -1,24 +1,23 @@
 body{
-    background-color: $basicColor;
+    background-color: $body-bg;
+}
+.logo img{
+    width: 4.37rem;
 }
 .bg_color{
-    background-color: $secondaryColor;
-    // #01A082;
+    background-color: $logoColor;
 }
 .card-header{
-    background-color: $mainColor;
+    background-color: $logoColor;
     color: $basicColor;
     text-align: center;
 }
 .card-header:first-child{
     border-radius: 18px 18px 0 0 ;
 }
-// .card-body{
-//     text-align: center;
-// }
 .card{
     border-radius: 20px;
-    border: none;
+    border: 1px solid lightgray;
     ul{
         margin-right: 30px;
         li{
@@ -28,18 +27,17 @@ body{
 }
 .btn-primary {
     color: $basicColor;
-    background-color: $mainColor;
-    border-color: $mainColor;
+    background-color: $logoColor;
+    border-color: $logoColor;
 
     &:hover{
-        color: $mainColor;
-        background-color: white;
-        border-color: $hoverColor1;
+        background-color: $hoverColor;
+        border-color: $hoverColor;
     }
 }
 .btn-warning{
     &:hover{
-        color: black;
+        color: $basicColor2;
         background-color: rgb(255, 217, 0);
         border-color: rgb(255, 217, 0);
     }
@@ -58,7 +56,6 @@ a:hover {
     align-items: center;
 }
 .image_burger{
-    // margin-left: 120px;
     img{
         width: 300px;
     }
@@ -93,4 +90,5 @@ a:hover {
 }
 .salad{
     height: 170px;
+    border-radius: 20px;
 }

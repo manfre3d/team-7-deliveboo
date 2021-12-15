@@ -44,32 +44,26 @@ export default {
 @import "../../../sass/front/variables.scss";
 footer{
     width: 100%;
-    margin-top: 30px;
-    padding: 20px 0;
+    padding-top: 1.87rem;
+    padding: 1.25rem 0;
     background-color: $lightgray;
     color:$gold;
     bottom: 0;
-    border-top: 1px solid $lightgray;
+    border-top: 0.06rem solid $lightgray;
 
     a {
-        color: $lightgrey-light;
-       
-        text-decoration: none;
+    color: $lightgrey-light;
+    text-decoration: none;
     }
     
     a:hover 
     {
-        color: $silver;
-        text-decoration: none; 
-        transition: color .2s ease-in-out !important;
-
+    color: $silver;
+    text-decoration: none; 
+    transition: color .2s ease-in-out;
     }
     .row{
         margin: 0;
     }
-
 }
-
-
-
 </style>

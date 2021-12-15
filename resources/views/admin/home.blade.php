@@ -22,7 +22,7 @@
                         </a>
                     </li>
                 </ul>
-                <div class="image_burger offset-md-1 offset-lg-2">
+                <div class="image_burger d-flex justify-content-center">
                     <img src="{{asset('images/dashboard/dashboard.jpeg')}}" alt="Image burger">
                 </div>
             </div>

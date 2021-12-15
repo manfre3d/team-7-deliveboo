@@ -1,15 +1,7 @@
 <template>
   <header class="container-fluid">
     <nav class="navbar navbar-expand-md navbar-dark">
-      <button
-        class="navbar-toggler collapsed"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarsExample04"
-        aria-controls="navbarsExample04"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -17,15 +9,15 @@
         <ul class="navbar-nav mr-auto flex-grow-1">
           <li class="nav-item active">
             <div class="logo d-flex align-items-center">
-              <img src="https://newsmondo.it/wp-content/uploads/2021/08/FB_Deliveroo.jpg" alt=""/>
+              <img src="https://newsmondo.it/wp-content/uploads/2021/08/FB_Deliveroo.jpg" alt="Deliveboo logo">
               <router-link :to="{ name: 'Home' }" class="nav-link text-white">
-              Homepage
+              <h2>deliveboo</h2>
               <span class="sr-only">(current)</span>
             </router-link>
             </div>
           </li>
         </ul>
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto login">
           <li class="nav-item back-link">
             <a class="nav-link text-white" href="/login">Accedi</a>
           </li>
@@ -34,10 +26,6 @@
           </li>
         </ul>
       </div>
-
-    
-
-      
     </nav>
   </header>
 </template>
@@ -53,16 +41,21 @@ export default {
   header {
     background: $mainColor;
   }
-
-.nav-link {
-  &:hover {
-    color: blue!important;
-  }
-}
 .logo {
   img {
-    width: 70px;
+    width: 4.37rem;
+  }
+  h2{
+    font-size: 2rem;
   }
 }
-
+.login{
+  li{
+   a{
+    color: #fff;
+    font-size: 1.06rem;
+    font-weight: 500;
+  } 
+}
+}
 </style>
