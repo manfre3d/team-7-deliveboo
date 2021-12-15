@@ -87,13 +87,13 @@ class PaymentsController extends Controller
 
             // recupero le email del ristoratore e dell'utente che sta' ordinando
             $emails=[$newOrder->customer_email,$restaurant['email']];
-
+            $emailNames=[$newOrder->customer_name,$restaurant['name']];
             // eseguo un ciclo per inviare tante email, quante ne sono contenute in $emails
-            foreach ($emails as $email){
+            foreach ($emails as $key=>$email){
 
                 Mail::send('emails.orderCreated',compact('newOrder','restaurant','platesOrdered'),
-                function($message) use ($email){
-                    $message->to(strval($email),'Code Online')
+                function($message) use ($email,$emailNames,$key){
+                    $message->to(strval($email),strval($emailNames[$key]))
                     ->subject('Order Created Subject');
                 });
             }
