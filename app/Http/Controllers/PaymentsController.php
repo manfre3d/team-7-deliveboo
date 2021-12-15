@@ -7,7 +7,9 @@ use App\Plate;
 use App\Order;
 use Illuminate\Support\Facades\DB;
 use Asm89\Stack\CorsService;
+use App\User;
 use Braintree;
+use Illuminate\Support\Facades\Mail;
 
 class PaymentsController extends Controller
 {
@@ -72,6 +74,28 @@ class PaymentsController extends Controller
                     'order_id' => $newOrder->id,
                     'quantity' => $cartItem->quantity,
                 ]);                
+            }
+
+            // prendo il ristorante a cui si sta' facendo un ordine
+            $restaurant = User::where('id', $newOrder->user_id)->first();
+
+            // recupero i piatti che sono stati ordinati
+            foreach ($cartData as $cartItem) 
+            {
+                $platesOrdered []= Plate::where('id', $cartItem->id)->first();
+            }
+
+            // recupero le email del ristoratore e dell'utente che sta' ordinando
+            $emails=[$newOrder->customer_email,$restaurant['email']];
+
+            // eseguo un ciclo per inviare tante email, quante ne sono contenute in $emails
+            foreach ($emails as $email){
+
+                Mail::send('emails.orderCreated',compact('newOrder','restaurant','platesOrdered'),
+                function($message) use ($email){
+                    $message->to(strval($email),'Code Online')
+                    ->subject('Order Created Subject');
+                });
             }
 
             // restituisco view avvenuto pagamento
