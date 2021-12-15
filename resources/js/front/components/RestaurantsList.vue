@@ -25,8 +25,8 @@
 
           <h4>{{ restaurant.name }}</h4>
         </router-link>
-        <h6 class="badge badge-warning">
-          {{ categoriesNames[restaurant.pivot.restaurant_type_id - 1] }}
+        <h6 class="badge badge-warning" v-for="(type,index) in restaurant.types" :key="index">
+          {{ categoriesNames[type - 1] }}
 
         </h6>
       </div>
