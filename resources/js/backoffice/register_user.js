@@ -18,7 +18,7 @@ const countSelectedCheckbox = () => {
 const checkboxList = document.querySelectorAll('#checkbox_container .checkbox');
 checkboxList.forEach( elm => {
   elm.addEventListener('click', (e) => {
-    if ( countSelectedCheckbox() > 2 ) {
+    if ( countSelectedCheckbox() > 5 ) {
       e.preventDefault();
     }
   })
