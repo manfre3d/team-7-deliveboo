@@ -242,7 +242,7 @@ export default {
     
 }
 .container {
-    border: 3px solid blue;
+    // border: 3px solid blue;
 }
 
 
@@ -263,7 +263,7 @@ ul {
 // ---------------Restaurant info section------------------
 .restaurant-info {
     .container {
-        border: 5px solid red;
+        // border: 5px solid red;
         text-align: center;
         min-height: 300px;
         display: flex;
