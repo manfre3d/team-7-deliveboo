@@ -1,14 +1,14 @@
 <template>
-  <section class="container-xl justify-content-center">
-    <!-- Emanuela -->
+  <section class="container-fluid">
      <!-- tutti i ristoranti  -->
-    <div class="row" v-if="category == 0">
-      <div  v-for="restaurant in restaurants" :key="restaurant.id" class="col-sm-12 col-md-6 col-lg-4 img_container d-flex flex-column align-items-center">
+    <div class="row justify-content-center" v-if="category == 0">
+      <div class="col-sm-2 col-md-6 col-lg-4 d-flex justify-content-center img_container" v-for="restaurant in restaurants" :key="restaurant.id">
         <router-link :to="{ name: 'Restaurant', params: { slug: restaurant.slug } }">
-          
+      
           <img
           :src="checkImg(restaurant.img_path)"
           alt="restaurant img"/>
+
 
           <h4>{{ restaurant.name }}</h4>
         </router-link>
@@ -18,6 +18,7 @@
     <div class="row" v-if="category != 0">
       <div v-for="restaurant in filteredRestaurants" :key="restaurant.id" class="col-sm-12 col-md-6 col-lg-4 img_container d-flex flex-column align-items-center">
         <router-link :to="{ name: 'Restaurant', params: { slug: restaurant.slug } }">
+
           <img
           :src="checkImg(restaurant.img_path)"
           alt="restaurant img"/>
@@ -26,60 +27,10 @@
         </router-link>
         <h6 class="badge badge-warning">
           {{ categoriesNames[restaurant.pivot.restaurant_type_id - 1] }}
+
         </h6>
       </div>
     </div>
-
-    <!-- End Emanuela -->
-    
-    
-    <!-- tutti i ristoranti  -->
-     <!-- <div v-if="category == 0" class="row justify-content-center">
-      <div
-        class="card mx-1 mt-3 card-menu"
-        style="width: 20.5rem"
-        v-for="restaurant in restaurants"
-        :key="restaurant.id">
-        <router-link :to="{ name: 'Restaurant', params: { slug: restaurant.slug } }">
-          <div class="card-body d-flex flex-column">
-            <img
-              :src="require('../img/seeder_images/' + restaurant.img_path)"
-              alt="restaurant img">
-            <div class="text_section_restaurant d-flex flex-wrap">
-              <h4>{{ restaurant.name }}</h4>
-              <p>{{ restaurant.description }}</p>
-            </div>
-          </div>
-        </router-link>
-      </div>
-    </div> -->
-    <!-- ristoranti filtrati -->
-     <!-- <div v-if="category != 0" class="row justify-content-center">
-      <div
-        class="card mx-1 mt-3 card-menu"
-        style="width: 20.5rem"
-        v-for="restaurant in filteredRestaurants"
-        :key="restaurant.id"
-      >
-        <router-link
-          :to="{ name: 'Restaurant', params: { slug: restaurant.slug } }"
-        >
-          <div class="card-body d-flex flex-column">
-            <img
-              :src="require('../img/seeder_images/' + restaurant.img_path)"
-              alt="restaurant img"
-            />
-            <div class="text_section_restaurant d-flex flex-wrap">
-              <h4>{{ restaurant.name }}</h4>
-              <p style="width: 100%">{{ restaurant.description }}</p>
-              <h6 class="badge badge-warning">
-                {{ categoriesNames[restaurant.pivot.restaurant_type_id - 1] }}
-              </h6>
-            </div>
-          </div>
-        </router-link>
-      </div>
-    </div>  -->
   </section>
 </template>
 
@@ -158,22 +109,45 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.row {
-  margin: 0;
-}
+@import "../../../sass/front/variables.scss";
 
-.container-xl {
-  // border: 3px solid green;
+@mixin centered {
+    max-width: 85%;
+    margin: auto;
 }
-
-.img_container {
-  // border: 5px solid red;
-  // margin: 0 10px 60px 10px;
-  padding: 40px;
+@mixin title{
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $titleColor;
+  padding-top: .62rem;
+}
+@mixin tag{
+  background-color: $basicColor;
+  padding: 0.5rem 0.62rem;
+  border-radius: 0.31rem;
+}
+.container-fluid{
+  background-color: $bgColor3;
+  padding-bottom: 5rem;
+}
+.row{
+  @include centered;
+}
+.img_container{
+  padding-top: 5rem;
   img {
-    height: 300px;
-    width: 100%;
+    height: 12.5rem;
+    width: 17rem;
     object-fit: cover;
+  }
+  .badge{
+    @include tag;
+  }
+  h4{
+    @include title;
+  }
+  a{
+    text-decoration: none;
   }
 }
 </style>

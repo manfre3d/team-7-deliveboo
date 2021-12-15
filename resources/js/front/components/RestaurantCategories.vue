@@ -1,43 +1,31 @@
 <template>
-  <section class="container">
+  <section class="container-fluid">
     <div class="row">
       <div class="col-12">
         <h2>Le categorie di ristoranti più amate</h2>
       </div>
     </div>
 
-    <ul class="row justify-content-center" style="margin-bottom: 20px">
-      <li
-        class="d-flex col col-md-6 col-lg-4 flex-grow-0 justify-content-center"
-        v-for="category in categories"
-        :key="category.id">
-        <div
-          class="card mx-1 card-menu"
-          style=" cursor: pointer"
-          @click="$emit('category', category.id)">
-          <div class="card-body d-flex flex-column">
-            <img
-              v-if="category.img_path"
-              :src="require('../img/restaurant_category/' + category.img_path)"
-              alt="category img"/>
-            {{ category.name }}
+    <ul class="row justify-content-center">
+      <li class="d-flex col col-md-6 col-lg-3 justify-content-center" v-for="category in categories" :key="category.id">
+        <div v-if="category.id < 5" class="card mx-1 card-menu" style=" cursor: pointer" @click="$emit('category', category.id)">
+          <div class="card-body">
+            <img v-if="category.img_path" :src="require('../img/restaurant_category/' + category.img_path)" alt="category img">
+            <h4>{{ category.name }}</h4>
           </div>
         </div>
       </li>
-      <li
-        class="row justify-content-center"
-        style="width: 100%; margin-top: 20px"
-      >
-        <h4
-          class="d-flex flex-wrap justify-content-center mx-1"
-          v-for="category in categories"
-          :key="category.id"
-          @click="$emit('category', category.id)"
-        >
-          <router-link class="badge badge-warning" to="">{{
-            category.name
-          }}</router-link>
-        </h4>
+    </ul>
+
+      <!-- Stampa tag categorie -->
+    <h2>Cerchi qualcos'altro?</h2>
+    <ul>
+      <li class="row tag">
+        <div class="d-flex flex-wrap justify-content-center mx-1" v-for="category in categories" :key="category.id" @click="$emit('category', category.id)">
+          <router-link class="badge" to="">
+            <h4>{{category.name}}</h4>
+          </router-link>
+        </div>
       </li>
     </ul>
   </section>
@@ -69,56 +57,60 @@ export default {
 <style lang="scss" scoped>
 @import "../../../sass/front/variables.scss";
 
-.container {
-  // border: 5px solid red;
-  padding: 100px 0;
+.container-fluid{
+  padding: 3.75rem 0;
 }
-// .container {
-//   border: 3px solid orange;
-//   border-radius: 15px;
-//   ul {
-//     display: flex;
-//     justify-content: space-between;
-//     list-style: none;
-//   }
-// }
 
 @mixin centered {
     max-width: 85%;
     margin: auto;
 }
-.container{
+@mixin title{
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: $titleColor;
+}
+@mixin tag{
+  background-color: #ececec;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+.container-fluid{
   @include centered;
-  // margin-top: -150px;
   h2{
     color: $titleColor;
-    font-size: 50px;
+    font-size: 2.5rem;
     font-weight: 600;
-    margin-bottom: 40px;
+    padding-bottom: 1.87rem;
   }
   ul{
     width: 100%;
       li{
         list-style: none;
-      // border: 1px solid black;
-      // margin: 30px 0;
-      // background-color: hotpink;
-      // margin-bottom: 40px;
-      // padding: 20px 0;
     }
   }
   .card-body {
-    text-align: center;
-    font-size: 26px;
+    h4{
+      @include title;
+      padding-top: .62rem;
+    }
+    img{
+      height: 12.5rem;
+      width: 15.62rem;
+      object-fit: cover;
+    }
   }
   .card {
     border: none;
   }
-  
 }
-
-
-
-
-
+.tag{
+  .badge{
+    padding-left: 15px;
+    h4{
+      @include title;
+      @include tag;
+    }  
+  }
+}
 </style>

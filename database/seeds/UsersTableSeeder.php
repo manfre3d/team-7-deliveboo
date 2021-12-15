@@ -100,10 +100,24 @@ class UsersTableSeeder extends Seeder
             
             $newUser->save();
             // aggiunge delle categorie random nella tabella pivo ai ristoranti
-            DB::table('user_restaurant_type')->insert([
-                'restaurant_type_id' => rand(1,5),
-                'user_id' => $i,
-            ]);
+            $num_of_types = rand(1,3);
+            $unique_id_list = [];
+            for ( $j = 0; $j < $num_of_types; $j++ )
+            {
+                
+                do 
+                {
+                    $new_id = rand(1,5);
+                } 
+                while ( in_array( $new_id, $unique_id_list ) );
+                $unique_id_list[] = $new_id;
+
+                DB::table('user_restaurant_type')->insert([
+                    'restaurant_type_id' => $new_id,
+                    'user_id' => $i,
+                ]);                
+            }
+
         }
         
     }
