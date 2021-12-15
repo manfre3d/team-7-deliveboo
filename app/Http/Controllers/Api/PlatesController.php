@@ -12,14 +12,23 @@ class PlatesController extends Controller
     {
         $plates = Plate::where('user_id', $user_id)->get();
 
+        $available_plates = [];
+        foreach ($plates as $key => $plate) 
+        {
+            if ( $plate->availability )
+            {
+                $available_plates[] = $plate;
+            }
+        }
+
         if ( count($plates) == 0 ) 
         {
-            $plates = 'no results found';
+            $available_plates = [];
         }
 
         return response()->json([
             'success' => true,
-            'data' => $plates
+            'data' => $available_plates
         ]);
     }
 }
