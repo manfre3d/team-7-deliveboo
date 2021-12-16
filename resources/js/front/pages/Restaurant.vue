@@ -1,7 +1,9 @@
 <template>
     <div class="general-container">
+      
         <!-- Section restaurant-info -->
         <section class="restaurant-info" v-if="restaurant!=null">
+          <i class="fas fa-cart-plus openbtn" @click="openNav()"></i>
             <div class="container">
                 <h2>Ristorante {{restaurant.name}}</h2>
                 <p>{{restaurant.description}}</p>
@@ -9,53 +11,11 @@
             </div>
     <!-- Section order -->
         </section>   
-        <section class="order container">
-    <div class="row">
-   <!-- Menu -->
-    <div class="col-12 col-lg-6 col-xl-6  a">
-        <ul>
-          <li class="menu-plate" v-for="(plate, index) in plates" :key="index">
-            <div v-if="plate.name" >
-                <h2>{{ plate.name }}</h2>
-                <p>{{plate.description}}</p>
-                <div v-if="plate.price" class="price"><strong>Prezzo:</strong> {{ plate.price.toFixed(2) }} €</div>
-                <button  
-                class="btn add-cart" 
-                @click="addToCart(plate)" 
-                :data-toggle="modalConnection" 
-                data-target="#exampleModalCenter">
-                  Aggiungi al carrello
-                </button>
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Attenzione!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        Puoi ordinare solo da un ristorante alla volta.<br>
-                        Desideri svuotare il tuo carrello?
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" @click="removeAllCart()"  data-dismiss="modal" class="btn add-cart">Si</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-            <!-- possibile img -->
-            <!-- <img v-if="restaurant.img_path" :src="require('../img/seeder_images/' + restaurant.img_path)" alt="restaurant img"> -->
-          </li>
-        </ul>  
-    </div>
-      <!-- Carrello del ristorante -->
-      <div class="col-12 col-lg-6 col-xl-6 cart a">
+        <!-- Sidebar shopping cart -->
+        <div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" @click="closeNav()">×</a>
+  <div class="cart a">
         <table class="table ">
           <thead>
             <tr>
@@ -100,9 +60,65 @@
             </tr>
           </tfoot>
         </table>
-        <button class="clear-cart" @click="removeAllCart()">Svuota il carrello</button>
+        <button class="clear-cart btn" @click="removeAllCart()">Svuota il carrello</button>
       </div>
-      </div>
+        </div>
+
+  
+        
+        <!-- Section Menu -->
+        <section class="order container">
+   
+
+
+
+   <!-- Menu -->
+    
+        <ul class="row d-flex">
+          <li class="menu-plate col-10 col-md-5 col-xl-3  a " v-for="(plate, index) in plates" :key="index">
+            <div v-if="plate.name" >
+                <h3 class="plate-name">{{ plate.name }}</h3>
+                <p>{{plate.description}}</p>
+                <div v-if="plate.price" class="price"><strong>Prezzo:</strong> {{ plate.price.toFixed(2) }} €</div>
+                <button  
+                class="btn add-cart" 
+                @click="addToCart(plate)" 
+                :data-toggle="modalConnection" 
+                data-target="#exampleModalCenter">
+                  Aggiungi al carrello
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Attenzione!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        Puoi ordinare solo da un ristorante alla volta.<br>
+                        Desideri svuotare il tuo carrello?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" @click="removeAllCart()"  data-dismiss="modal" class="btn add-cart">Si</button>
+                        <button type="button" class="btn add-cart " data-dismiss="modal">No</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <!-- possibile img -->
+            <!-- <img v-if="restaurant.img_path" :src="require('../img/seeder_images/' + restaurant.img_path)" alt="restaurant img"> -->
+          </li>
+        </ul>  
+   
+
+
+      <!-- Carrello del ristorante -->
+      
         </section>
     </div>
 </template>
@@ -231,6 +247,15 @@ export default {
 
       return tot.toFixed(2);
     },
+    /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+    openNav: function() {
+      document.getElementById("mySidebar").style.width = "100vw";
+    },
+
+/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+    closeNav: function () {
+  document.getElementById("mySidebar").style.width = "0";
+    },
   },
 };
 </script>
@@ -257,7 +282,10 @@ ul {
     // border: 5px solid red;
     // justify-content: space-between;
     // margin: 0 50px;
-    padding: 50px 100px;
+    padding: 50px 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 8px;
+    margin: 30px;
   }
 }
 // ---------------Restaurant info section------------------
@@ -278,22 +306,26 @@ ul {
 
 // -----------------Order Section-----------------
 .order {
-    padding: 50px 20px;
-   
+    border-radius: 8px;   
 }
 .price {
     text-align: end;
+    margin: 20px 0;
 }
 
-.add-cart {
+.add-cart,
+.clear-cart {
     border: 1px solid $mainColor;
     font-weight: bold;
+    &:hover {
+      background-color: $mainColor;
+    }
 }
 
 .menu-plate {
     padding: 40px 0;
-    border-top: 1px dashed rgb(128, 128, 128);
 }
+
 
 // Carrello
 th,
@@ -318,11 +350,73 @@ button {
   display: none;
 }
 
-.clear-cart{
-    border: 1px solid;
-    border-radius: 3px;
-    width: max-content;
+
+// Sidebar shopping cart
+.sidebar {
+  height: 100vh;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  display: flex;
+  justify-content: center;
 }
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: $mainColor;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+      position: fixed;
+    right: 10px;
+    margin-top: 10px;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+// --------------------------------------------
 
 
 @media screen and (max-width: 520px) {
@@ -341,7 +435,7 @@ button {
 
   .row {
       .a {
-      padding: 0;
+      padding: 20px;
   }
   }
 }
