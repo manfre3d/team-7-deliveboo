@@ -358,6 +358,7 @@ ul {
 
 .menu-plate {
     padding: 40px 0;
+    border: 1px solid;
 }
 
 
