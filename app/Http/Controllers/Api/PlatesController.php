@@ -21,11 +21,6 @@ class PlatesController extends Controller
             }
         }
 
-        if ( count($plates) == 0 ) 
-        {
-            $available_plates = [];
-        }
-
         return response()->json([
             'success' => true,
             'data' => $available_plates
