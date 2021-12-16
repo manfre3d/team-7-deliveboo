@@ -14,13 +14,15 @@
                 <div class="col-12 col-lg-7">
                   <h2>Ristorante {{restaurant.name}}</h2>
                 <p>{{restaurant.description}}</p>
-                <p>{{restaurant.address}}</p>
+                <p><span>Indirizzo: </span>{{restaurant.address}}</p>
+                <p><span>Email: </span> {{restaurant.email}}</p>
                 </div>
               </div>
-                
             </div>
     <!-- Section order -->
         </section>   
+
+        <Menu/>
 
         <!-- Sidebar shopping cart -->
         <div id="mySidebar" class="sidebar">
@@ -134,8 +136,12 @@
 </template>
 
 <script>
+import Menu from '../components/Menu.vue'
 export default {
   name: "Restaurant",
+  components: {
+    Menu
+  },
   data() {
     return {
       restaurant: null,
@@ -153,7 +159,6 @@ export default {
         //handle success
         this.restaurant = response.data.data;
         this.restaurantId = this.restaurant.id;
-        console.log(this.restaurant)
 
         if (localStorage.cart != []) {
           let previewsCart = JSON.parse(localStorage.cart);
@@ -301,8 +306,14 @@ ul {
 
 .restaurant-info {
   // border: 5px solid blue;
-  background-color: rgb(253, 223, 208);
+  // background-color: rgb(255, 223, 208);
+  background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(255,223,208,1) 100%);
   padding: 50px 20px;
+
+  span {
+    font-weight: 600;
+    font-size: 18px;
+  }
 
   h2 {
     margin: 30px 0;
@@ -322,7 +333,7 @@ ul {
 // -----------------Order Section-----------------
 .order {
     border-radius: 8px;
-    padding: 50px 0;
+    // padding: 30px 0;
 }
 .price {
     text-align: end;
@@ -419,7 +430,8 @@ button {
   border-radius: 5px;
       position: fixed;
     right: 10px;
-    margin-top: 10px;
+    margin-top: 15px;
+    z-index: 10;
 }
 
 .openbtn:hover {
