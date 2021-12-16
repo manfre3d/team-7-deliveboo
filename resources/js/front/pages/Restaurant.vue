@@ -309,6 +309,10 @@ ul {
   // background-color: rgb(255, 223, 208);
   background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(255,223,208,1) 100%);
   padding: 50px 20px;
+  
+  .row {
+    align-items: center;
+  }
 
   span {
     font-weight: 600;
@@ -334,6 +338,9 @@ ul {
 .order {
     border-radius: 8px;
     // padding: 30px 0;
+    .row {
+      justify-content: center;
+    }
 }
 .price {
     text-align: end;
@@ -400,10 +407,7 @@ button {
 }
 
 .sidebar a {
-  padding: 8px 8px 8px 32px;
   text-decoration: none;
-  font-size: 25px;
-  color: #818181;
   display: block;
   transition: 0.3s;
 }
