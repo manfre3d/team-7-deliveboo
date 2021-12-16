@@ -6,10 +6,10 @@
       </div>
     </div>
 
-    <ul class="row justify-content-center">
-      <li class="d-flex col col-md-6 col-lg-3 justify-content-center" v-for="category in categories" :key="category.id">
-        <div v-if="category.id < 5" class="card mx-1 card-menu" style=" cursor: pointer" @click="$emit('category', category.id)">
-          <div class="card-body">
+    <ul class="d-flex flex-wrap">
+      <li class="d-flex col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-3 col-xxl-3 justify-content-center" v-for="category in categories" :key="category.id">
+        <div class="card mx-1 card-menu" style=" cursor: pointer" @click="$emit('category', category.id)" v-if="category.id < 5">
+          <div class="card_body">
             <img v-if="category.img_path" :src="require('../img/restaurant_category/' + category.img_path)" alt="category img">
             <h4>{{ category.name }}</h4>
           </div>
@@ -89,14 +89,15 @@ export default {
         list-style: none;
     }
   }
-  .card-body {
+  .card_body {
+    padding: 0;
     h4{
       @include title;
       padding-top: .62rem;
     }
     img{
       height: 12.5rem;
-      width: 15.62rem;
+      width: 15rem;
       object-fit: cover;
     }
   }
