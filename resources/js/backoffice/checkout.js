@@ -1,4 +1,9 @@
 
+// se carrello vuoto redirect to home
+if ( typeof localStorage.cart != String  ) {
+  window.location.replace("/");
+}
+
 // prendo i dati del carrello in local storage
 const cart = JSON.parse(localStorage.cart);
 
