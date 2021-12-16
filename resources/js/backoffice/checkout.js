@@ -84,3 +84,16 @@ const printCart = () => {
   localStorage.cart = JSON.stringify(cart);
 };
 printCart();
+
+
+// page pre loader js
+const paymentForm= document.getElementById("payment-form");
+const preLoader= document.getElementById("loader-wrapper");
+const preLoaderText= document.getElementById("description-text-loader");
+
+paymentForm.addEventListener('submit', ()=>{
+  console.log("ciao");
+  paymentForm.style.display = "none";
+  preLoader.style.display = "flex";
+  preLoaderText.style.display = "flex";
+});

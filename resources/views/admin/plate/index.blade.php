@@ -86,7 +86,7 @@
             {{-- passaggio id del piatto tramite js --}}
 			<input type="hidden" id="delete-id" name="id">
 			<div class="modal-body">
-				Sei sicuro di voler cancellare il post?
+				Sei sicuro di voler cancellare il piatto?
 			</div>
 			<div class="modal-footer">
 				<button type="submit" class="btn btn-primary">Si</button>

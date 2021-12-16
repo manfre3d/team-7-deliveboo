@@ -52,9 +52,9 @@
         </div>      
 
         <input id="nonce" name="payment_method_nonce" type="hidden" />
-        <button class="button submit_btn" type="submit"><span>pagamento</span></button>
+        <button id="form_submit" class="button submit_btn" type="submit"><span>Pagamento</span></button>
       </section>
-
+      
       <section class="cart_section">
         <h3>Carrello</h3>
 
@@ -62,21 +62,26 @@
         </ul>
 
         <hr>
-
+        
         <label for="amount">
           <h3 class="input-label">Totale:<span id="total_price"></span></h3>
           <div class="input-wrapper amount-wrapper">
-              <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
+            <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10">
           </div>
         </label>
       </section>
     </form>
+    {{-- page pre loader html --}}
+    <div id="loader-wrapper" class="loader-wrapper">
+      <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+    <h2 id="description-text-loader" class="description-text">Pagamento in corso.. </h2>
   </main>
-
+  
   <script src="https://js.braintreegateway.com/web/dropin/1.32.0/js/dropin.min.js"></script>
-    <script>
-        var form = document.querySelector('#payment-form');
-        // token generato
+  <script>
+    var form = document.querySelector('#payment-form');
+    // token generato
         var client_token = "{{ $token }}";
 
         // creo drop in braintree
