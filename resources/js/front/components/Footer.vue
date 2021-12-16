@@ -12,7 +12,7 @@
             <div class="col-6 col-md-3">
                 <div class="pb-2" href="">Nicola Felice</div>
                 <a href="https://github.com/nicola-felice" target="_blank"><i class="fab fa-github-square fa-2x pr-1"></i></a>
-                <a href="" target="_blank"><i class="fab fa-linkedin fa-2x pl-1"></i></a>
+                <a href="https://www.linkedin.com/in/nicola-felice-web-dev/" target="_blank"><i class="fab fa-linkedin fa-2x pl-1"></i></a>
             </div>
 
             <div class="col-6 col-md-3 mt-3 mt-md-0">
