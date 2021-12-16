@@ -2,33 +2,29 @@
   <section class="container-fluid">
      <!-- tutti i ristoranti  -->
     <div class="row justify-content-center" v-if="category == 0">
-      <div class="col-sm-2 col-md-6 col-lg-4 d-flex justify-content-center img_container" v-for="restaurant in restaurants" :key="restaurant.id">
+      <div class="col-sm-2 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center img_container" v-for="restaurant in restaurants" :key="restaurant.id">
         <router-link :to="{ name: 'Restaurant', params: { slug: restaurant.slug } }">
-      
-          <img
-          :src="checkImg(restaurant.img_path)"
-          alt="restaurant img"/>
-
-
+          <img :src="checkImg(restaurant.img_path)" alt="restaurant img">
           <h4>{{ restaurant.name }}</h4>
         </router-link>
       </div>
     </div>
 <!-- ristoranti filtrati -->
     <div class="row" v-if="category != 0">
-      <div v-for="restaurant in filteredRestaurants" :key="restaurant.id" class="col-sm-12 col-md-6 col-lg-4 img_container d-flex flex-column align-items-center">
+      <div v-for="restaurant in filteredRestaurants" :key="restaurant.id" class="col-sm-12 col-md-6 col-lg-4 col-xl-3 img_container d-flex flex-column align-items-center">
         <router-link :to="{ name: 'Restaurant', params: { slug: restaurant.slug } }">
 
           <img
           :src="checkImg(restaurant.img_path)"
-          alt="restaurant img"/>
+          alt="restaurant img">
 
           <h4>{{ restaurant.name }}</h4>
         </router-link>
-        <h6 class="badge badge-warning" v-for="(type,index) in restaurant.types" :key="index">
+        <div class="tags">
+          <h6 class="badge badge-warning" v-for="(type,index) in restaurant.types" :key="index">
           {{ categoriesNames[type - 1] }}
-
         </h6>
+        </div> 
       </div>
     </div>
   </section>
@@ -122,12 +118,12 @@ export default {
   padding-top: .62rem;
 }
 @mixin tag{
-  background-color: $basicColor;
+  // background-color: $basicColor;
   padding: 0.5rem 0.62rem;
   border-radius: 0.31rem;
 }
 .container-fluid{
-  background-color: $bgColor3;
+  background-color: #F9FAFA;
   padding-bottom: 5rem;
 }
 .row{
@@ -135,19 +131,35 @@ export default {
 }
 .img_container{
   padding-top: 5rem;
+  padding-bottom: 30px;
   img {
     height: 12.5rem;
     width: 17rem;
     object-fit: cover;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
   }
   .badge{
     @include tag;
   }
   h4{
     @include title;
+    background-color: white;
+    padding: 10px 0 20px 10px;
+    box-shadow: 0px 0px 5px 0px #b1b0b0;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
   }
   a{
     text-decoration: none;
   }
+  h6{
+    background-color: white;
+    margin-right: 5px;
+    // color: #00CCBD;
+  }
+}
+.tags{
+  display: flex;
 }
 </style>
