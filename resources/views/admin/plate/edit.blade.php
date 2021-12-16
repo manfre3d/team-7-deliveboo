@@ -129,7 +129,7 @@
 
                             <select name="availability" class="form-control @error('availability') is-invalid @enderror">
                                 <option value="1">-- Piatto disponibile --</option>								
-                                <option value="0">-- Piatto non disponibile --</option>
+                                <option {{ ($plate->availability)? '' : 'selected' }} value="0">-- Piatto non disponibile --</option>
 
                             </select>
                             @error('availability')
