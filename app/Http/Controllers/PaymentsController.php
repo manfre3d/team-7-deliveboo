@@ -76,6 +76,8 @@ class PaymentsController extends Controller
                 ]);                
             }
 
+            // dd($cartData);
+
             // prendo il ristorante a cui si sta' facendo un ordine
             $restaurant = User::where('id', $newOrder->user_id)->first();
 
@@ -99,7 +101,7 @@ class PaymentsController extends Controller
             }
 
             // restituisco view avvenuto pagamento
-            return view('guest.payment_success');
+            return view('guest.payment_success', compact('cartData', 'amount'));
         } 
         else 
         {

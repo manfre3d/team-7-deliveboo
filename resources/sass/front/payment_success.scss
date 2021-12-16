@@ -1,0 +1,65 @@
+@import 'variables';
+
+.payment_success{
+    background: rgb(0,204,190);
+    background: linear-gradient(185deg, rgba(0,204,190,1) 51%, rgba(0,126,138,1) 51%);
+    background-repeat: no-repeat;
+    font-family: sans-serif;
+    height: 100vh;  
+}
+.logo_container{
+    padding: 50px 0;
+}
+.logo_container{
+    img{
+        width: 150px;
+    }
+}
+.container_main{
+    h1{
+        color:white;
+        background-color: #007e8a;
+        padding: 10px;
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 30px;
+        border-radius: 5px;
+    }  
+}
+.riepilogo{
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 30px;
+    width: 400px;
+    h3{
+        color: #2E3333;
+        padding: 20px;
+        border-bottom: 3px solid #007E8A;
+    }
+    ul{
+        li{
+            list-style: none;
+        }
+    }
+}
+h5{
+    border-top: 3px solid rgb(0,204,190);
+    padding-top: 15px;
+}
+footer{
+    background-color: rgba(0,126,138,1);
+    h4{
+        padding: 50px;
+        a{
+            color: white;
+            text-decoration: none;
+            padding-bottom: 50px;
+            &:hover{
+                color: rgb(0,204,190);
+            }
+        }
+    }
+}
+.list{
+    padding: 10px;
+}
