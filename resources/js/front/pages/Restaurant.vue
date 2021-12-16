@@ -1,13 +1,23 @@
 <template>
     <div class="general-container">
-      
+      <div class="container">
+        <i class="fas fa-cart-plus openbtn" @click="openNav()"></i>
+      </div>
         <!-- Section restaurant-info -->
         <section class="restaurant-info" v-if="restaurant!=null">
-          <i class="fas fa-cart-plus openbtn" @click="openNav()"></i>
-            <div class="container">
-                <h2>Ristorante {{restaurant.name}}</h2>
+          
+            <div class="container b">
+              <div class="row">
+                <div class="col-12 col-lg-4">
+                  <img class="restaurant-image" :src="require(`../img/seeder_images/` + restaurant.img_path)" alt="">
+                </div>
+                <div class="col-12 col-lg-7">
+                  <h2>Ristorante {{restaurant.name}}</h2>
                 <p>{{restaurant.description}}</p>
                 <p>{{restaurant.address}}</p>
+                </div>
+              </div>
+                
             </div>
     <!-- Section order -->
         </section>   
@@ -55,7 +65,7 @@
             <tr>
               <td>Prezzo totale</td>
               <td colspan="2">{{ getTotalPrice() }} &euro;</td>
-              <td><a href="/checkout">Procedi al pagamento</a></td>
+              <td><a href="/checkout">Checkout</a></td>
               <td></td>
             </tr>
           </tfoot>
@@ -143,6 +153,7 @@ export default {
         //handle success
         this.restaurant = response.data.data;
         this.restaurantId = this.restaurant.id;
+        console.log(this.restaurant)
 
         if (localStorage.cart != []) {
           let previewsCart = JSON.parse(localStorage.cart);
@@ -263,12 +274,10 @@ export default {
 <style lang="scss" scoped>
 @import "../../../sass/front/variables.scss";
 
-.general-container {
-    
-}
-.container {
-    // border: 3px solid blue;
-}
+
+// .container {
+//      border: 3px solid blue;
+// }
 
 
 ul {
@@ -289,24 +298,31 @@ ul {
   }
 }
 // ---------------Restaurant info section------------------
+
 .restaurant-info {
-    .container {
-        // border: 5px solid red;
-        text-align: center;
-        min-height: 300px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 50px 0;
-    }
-    
-    
+  // border: 5px solid blue;
+  background-color: rgb(253, 223, 208);
+  padding: 50px 20px;
+
+  h2 {
+    margin: 30px 0;
+  }
+  
+  img {
+    width: inherit;
+    max-width: 350px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  }
 }
+
 
 
 // -----------------Order Section-----------------
 .order {
-    border-radius: 8px;   
+    border-radius: 8px;
+    padding: 50px 0;
 }
 .price {
     text-align: end;
@@ -362,9 +378,14 @@ button {
   background-color: white;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;
+  padding-top:100px;
   display: flex;
   justify-content: center;
+
+  .table {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 8px;
+  }
 }
 
 .sidebar a {
@@ -424,7 +445,7 @@ button {
   td,
   tr {
     // padding: 0;
-    vertical-align: middle;
+    vertical-align: middle!important;
   }
   .responsive {
     display: grid;
