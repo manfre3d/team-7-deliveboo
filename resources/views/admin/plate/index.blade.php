@@ -30,7 +30,7 @@
                         @foreach ($plates as $plate)
                             
                         <div class="card mx-1 mt-3 card-menu" style="width: 20.5rem;">
-                            <div class="card-body d-flex flex-column">
+                            <div class="card-body d-flex flex-column {{ ($plate->availability)? '' : 'not_available_plate'}}">
                                 <div class="img-container d-flex justify-content-center">
                                     @if (!$plate->img_path==null)
                                         <img class="card-img-top" src="{{asset('storage/'.$plate->img_path)}}" alt="Card plate image">   
@@ -86,7 +86,7 @@
             {{-- passaggio id del piatto tramite js --}}
 			<input type="hidden" id="delete-id" name="id">
 			<div class="modal-body">
-				Sei sicuro di voler cancellare il post?
+				Sei sicuro di voler cancellare il piatto?
 			</div>
 			<div class="modal-footer">
 				<button type="submit" class="btn btn-primary">Si</button>

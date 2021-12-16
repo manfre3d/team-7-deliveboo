@@ -15,6 +15,25 @@
   padding: 0 .5rem;
 }
 
+.not_available_plate {
+  position: relative;
+  & > *:not(.buttons) {
+    opacity: 0.3;
+  }
+  &::after {
+    content: 'non visibile';
+    display: inline-block;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-align: center;
+  }
+}
+
 // Dashboard
 @import 'dashboard';
 

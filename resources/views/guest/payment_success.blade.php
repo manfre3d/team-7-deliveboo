@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +35,9 @@
               </a>
           </h4>
       </footer>
+      
+      <script src="{{ asset('js/checkout_cart_delete.js') }}" defer></script>  
+
 </body>
 </html>
 

@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="container-fluid">
     <nav class="navbar navbar-expand-md navbar-dark">
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
