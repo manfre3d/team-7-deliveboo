@@ -55,10 +55,12 @@
             display: inline-block;
             width: 250px;
             word-spacing: 2px;
+            font-size: 15px;
         }
 
         .order.price {
             text-align: end;
+            width: 45px;
         }
         footer{
             display: flex;
