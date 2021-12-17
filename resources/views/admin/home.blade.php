@@ -21,6 +21,11 @@
                             <button class="btn-primary btn">Visualizza il Menu</button>                            
                         </a>
                     </li>
+                    <li class="my-1">
+                        <a href="{{route('admin.orders.index')}}" class="d-flex justify-content-center">
+                            <button class="btn-primary btn">Visualizza gli Ordini dell'Attività</button>                            
+                        </a>
+                    </li>
                 </ul>
                 <div class="image_burger d-flex justify-content-center">
                     <img src="{{asset('images/dashboard/dashboard.jpeg')}}" alt="Image burger">
