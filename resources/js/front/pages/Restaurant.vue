@@ -14,7 +14,7 @@
             <div class="container b">
               <div class="row">
                 <div class="col-12 col-lg-4">
-                  <img class="restaurant-image" :src="require(`../img/seeder_images/` + restaurant.img_path)" alt="">
+                  <!-- <img class="restaurant-image" :src="require(`../img/seeder_images/` + restaurant.img_path)" alt=""> -->
                 </div>
                 <div class="col-12 col-lg-7">
                   <h2>Ristorante {{restaurant.name}}</h2>
@@ -84,10 +84,7 @@
   
         
         <!-- Section Menu -->
-        <section class="order container">
-   
-
-
+        <section class="order container-xl">
 
    <!-- Menu -->
     
@@ -181,7 +178,6 @@ export default {
     cart: {
       handler(newCart) {
         localStorage.cart = JSON.stringify(newCart);
-        console.log(newCart)
       },
       deep: true,
     },
@@ -296,9 +292,10 @@ export default {
 @import "../../../sass/front/variables.scss";
 
 
-// .container {
-//      border: 3px solid blue;
-// }
+.general-container {
+  background-image: url("../img/menu-pattern1.jpg") ;
+  background-attachment: fixed;
+}
 
 
 ul {
@@ -328,6 +325,7 @@ ul {
   
   .row {
     align-items: center;
+    margin: 0!important;
   }
 
   span {
@@ -375,6 +373,7 @@ ul {
 .menu-plate {
     padding: 40px 0;
     border: 1px solid;
+    background-color: white;
 }
 
 
@@ -421,7 +420,6 @@ button {
 
 
   .table {
-        // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         border-radius: 8px;
   }
 }
@@ -502,10 +500,17 @@ button {
   }
 }
 
-@media screen and (max-width: 576px) and (max-height: 700px) {
+@media screen and (max-width: 576px) and (max-height: 900px) {
   .sidebar {
     top:0;
     height: 100vh;
+    // width: 100vw!important;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .order{
+    max-width: 1400px!important;
   }
 }
 </style>
