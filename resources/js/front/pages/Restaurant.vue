@@ -265,7 +265,7 @@ export default {
     },
     /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
     openNav: function() {
-      document.getElementById("mySidebar").style.width = "100vw";
+      document.getElementById("mySidebar").style.width = "min-content";
     },
 
 /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
@@ -388,21 +388,24 @@ button {
 
 // Sidebar shopping cart
 .sidebar {
-  height: 100vh;
+  height: min-content;
   width: 0;
   position: fixed;
   z-index: 1;
-  top: 0;
+  top: 50px;
   right: 0;
   background-color: white;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top:100px;
+  padding:40px 0;
   display: flex;
   justify-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 8px;
+
 
   .table {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         border-radius: 8px;
   }
 }
@@ -420,9 +423,8 @@ button {
 .sidebar .closebtn {
   position: absolute;
   top: 0;
-  right: 25px;
+  left: 25px;
   font-size: 36px;
-  margin-left: 50px;
 }
 
 .openbtn {
@@ -449,10 +451,10 @@ button {
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
-}
+// @media screen and (max-height: 450px) {
+//   .sidebar {padding-top: 15px;}
+//   .sidebar a {font-size: 18px;}
+// }
 
 // --------------------------------------------
 
@@ -475,6 +477,19 @@ button {
       .a {
       padding: 20px;
   }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .openbtn {
+    right: 20px;
+  }
+}
+
+@media screen and (max-width: 576px) and (max-height: 700px) {
+  .sidebar {
+    top:0;
+    height: 100vh;
   }
 }
 </style>
