@@ -13,13 +13,13 @@ body{
     text-align: center;
 }
 .card-header:first-child{
-    border-radius: 18px 18px 0 0 ;
+    border-radius: 1.125rem 1.125rem 0 0 ;
 }
 .card{
-    border-radius: 20px;
-    border: 1px solid lightgray;
+    border-radius: 1.25rem;
+    border: 0.0625rem solid lightgray;
     ul{
-        margin-right: 30px;
+        margin-right: 1.875rem;
         li{
             list-style: none;
         }
@@ -57,38 +57,38 @@ a:hover {
 }
 .image_burger{
     img{
-        width: 300px;
+        width: 18.75rem;
     }
 }
 .logo{
     img{
-        width: 50px;
+        width: 3.125rem;
     }
     h2{
         color: $logoColor;
-        font-size: 30px;
+        font-size: 1.875rem;
         font-weight: bold;
         font-family: sans-serif;
     }
 }
 .img_account{
-    border-radius: 10px;
+    border-radius: 0.625rem;
     object-fit: cover;
     object-position: top;
-    width: 168px;
-    height: 168px;
-    border-radius: 20px;
+    width: 10.5rem;
+    height: 10.5rem;
+    border-radius: 1.25rem;
 }
 .user_info{ 
     ul{
-        max-width: 250px;
+        max-width: 15.625rem;
         li{
             list-style: none;
-            margin: 10px 0;
+            margin: 0.625rem 0;
         }
     }
 }
 .salad{
-    height: 170px;
-    border-radius: 20px;
+    height: 10.625rem;
+    border-radius: 1.25rem;
 }

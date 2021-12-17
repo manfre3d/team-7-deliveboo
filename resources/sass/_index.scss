@@ -2,15 +2,17 @@
     border: 1px solid $cardBorderColor;
 }
 .img-container{
-    padding-bottom: 15px;
     img{
         object-fit: cover;
         object-position: top;
-        width: 250px;
-        height: 250px;
-        border-radius: 20px;
+        width: 15.625rem;
+        height: 15.625rem;
+        border-radius: .75rem;
+        max-width: 100%;
+        @media screen and (max-width: 400px) {
+            & {
+                height: 65vw;
+            }            
+        }
     }
-}
-.buttons a .btn-danger{
-    margin-top: 3px;
 }
