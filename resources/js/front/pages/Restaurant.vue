@@ -1,7 +1,12 @@
 <template>
     <div class="general-container">
       <div class="container">
-        <i class="fas fa-cart-plus openbtn" @click="openNav()"></i>
+        <i class="fas fa-cart-plus openbtn" @click="openNav()">
+          <span></span>
+          {{cartCounter()}}
+          <span></span>
+        </i>
+        
       </div>
         <!-- Section restaurant-info -->
         <section class="restaurant-info" v-if="restaurant!=null">
@@ -21,7 +26,7 @@
             </div>
     <!-- Section order -->
         </section>   
-
+  
         <Menu/>
 
         <!-- Sidebar shopping cart -->
@@ -176,9 +181,11 @@ export default {
     cart: {
       handler(newCart) {
         localStorage.cart = JSON.stringify(newCart);
+        console.log(newCart)
       },
       deep: true,
     },
+    
 
     restaurant: function () {
       axios
@@ -262,6 +269,15 @@ export default {
       });
 
       return tot.toFixed(2);
+    },
+
+    cartCounter: function() {
+      let counter = 0;
+
+      this.cart.forEach((elm)=>{
+        counter += elm.quantity
+      });
+      return counter;
     },
     /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
     openNav: function() {
