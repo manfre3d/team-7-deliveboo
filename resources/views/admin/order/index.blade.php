@@ -24,25 +24,24 @@
 					</div>
 					@endif  
 
-                    <div class="p-5 d-flex col-12 d-flex flex-wrap mx-auto justify-content-around">
+                    <div class="d-flex col-12 d-flex flex-wrap mx-auto justify-content-around mb-3">
 
                         @foreach ($orders as $order)                        
                         <div class="card mx-1 mt-3 card-menu" style="width: 20.5rem;">
-                            <div class="card-body d-flex flex-column ">
-                                <h3>Ordine a:</h3>
-                                <h5 class="card-title">{{$order['customer_name']}} {{$order['customer_surname']}}</h5>
-                                <h3>Email:</h3>
-                                <h5 class="card-title">{{$order['customer_email']}}</h5>
-                                <h3>Numero di Telefono:</h3>
-                                <h5 class="card-title">{{$order['customer_phone_number']}}</h5>
-                                <h3>Indirizzo:</h3>
-                                <h5 class="card-title">{{$order['customer_address']}}</h5>
-                                <h6 class="card-subtitle mb-3 mt-3 text-muted d-flex flex-grow-1 justify-content-center align-items-end">€{{str_replace(".",",",number_format($order['total_price'], 2))}}</h6>
-                                <a href="{{route('admin.orders.show',$order['id'])}}" class="m-1">
-                                    <button class="btn-primary btn">Dettagli ordine</button>                            
+                            <h5 class="riepilogo">Riepilogo ordine n°{{$order->id}}</h5>
+                            <div class="card-body d-flex flex-column padding">
+                                <h5>Ordinato da:</h5>
+                                <h6 class="card-title">{{$order['customer_name']}} {{$order['customer_surname']}}</h6>
+                                <h5>Email:</h5>
+                                <h6 class="card-title">{{$order['customer_email']}}</h6>
+                                <h5>Numero di Telefono:</h5>
+                                <h6 class="card-title">{{$order['customer_phone_number']}}</h6>
+                                <h5>Indirizzo:</h5>
+                                <h6 class="card-title">{{$order['customer_address']}}</h6>
+                                <h6 class="card-subtitle mb-3 mt-3 text-muted d-flex flex-grow-1 align-items-end">Importo pagato: €{{str_replace(".",",",number_format($order['total_price'], 2))}}</h6>
+                                <a href="{{route('admin.orders.show',$order['id'])}}" class="m-1 d-flex justify-content-center">
+                                    <button class="btn-primary btn mb-2">Dettagli ordine</button>                            
                                 </a>
-
-                                 
                             </div>
                         </div>
                         @endforeach
