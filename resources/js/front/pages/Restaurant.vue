@@ -19,7 +19,7 @@
             />
           </div>
           <div class="col-12 col-lg-7 restaurant-description">
-            <h2>Ristorante {{ restaurant.name }}</h2>
+            <h2 class="restaurant-name">Ristorante {{ restaurant.name }}</h2>
             <p>
               <a
                 class="btn btn-info"
@@ -667,8 +667,11 @@ button {
   }
 }
 
-// @media  and (max-width: 992px) {
-// }
+@media screen and (max-width: 991px) {
+  .restaurant-name {
+    padding-top: 50px;
+  }
+}
 
 ::-webkit-scrollbar {
   width: 1em;
