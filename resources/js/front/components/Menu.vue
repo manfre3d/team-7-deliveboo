@@ -21,9 +21,12 @@ section {
     align-items: center;
     padding-top: 80px;
     background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+box-shadow: 0px 0px 39px -10px rgba(0,207,182,0.76);
+-webkit-box-shadow: 0px 0px 39px -10px rgba(0,207,182,0.76);
+-moz-box-shadow: 0px 0px 39px -10px rgba(0,207,182,0.76);
     margin-bottom: 80px;
-        // border: 1px solid black;
+        
 }
 
 @media screen and (max-width: 576px){
@@ -61,4 +64,6 @@ section {
         padding: 50px 0;
     }
 }
+
+
 </style>
