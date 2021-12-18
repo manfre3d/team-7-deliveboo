@@ -123,7 +123,7 @@
                   </svg>
                 </button>
               </td>
-              <td colspan="2">{{ plate.price.toFixed(2).replace(".",",") }} &euro;</td>
+              <td colspan="2">{{ plate.price.toFixed(2) }} &euro;</td>
               <td>
                 <button @click="removeElementCart(plate.id)">
                   <i class="fas fa-trash-alt text-danger"></i>
@@ -371,7 +371,7 @@ export default {
         tot += elm.price * elm.quantity;
       });
 
-      return tot.toFixed(2).replace(".",",");
+      return tot.toFixed(2);
     },
 
     cartCounter: function () {
@@ -671,25 +671,5 @@ button {
   .restaurant-name {
     padding-top: 50px;
   }
-}
-
-::-webkit-scrollbar {
-  width: 1em;
-}
-
-::-webkit-scrollbar-track {
-  background-color: rgb(255, 255, 255);
-  border-radius: 20px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    180deg,
-    rgba(4, 203, 191, 1) 0%,
-    rgba(57, 255, 243, 1) 41%,
-    rgba(183, 250, 246, 1) 62%,
-    rgba(255, 255, 255, 1) 100%
-  );
-  border-radius: 20px;
 }
 </style>

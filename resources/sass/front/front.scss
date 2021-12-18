@@ -1,3 +1,6 @@
+@import "../../sass/front/variables.scss";
+
+
 // Reset
 * {
     margin: 0;
@@ -13,11 +16,15 @@ body::-webkit-scrollbar {
   }
    
   body::-webkit-scrollbar-track {
-      background-color: rgb(255, 255, 255);
+      background-color: transparent;
     border-radius: 20px;
   }
    
   body::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, rgba(4,203,191,1) 0%, rgba(57,255,243,1) 41%, rgba(183,250,246,1) 62%, rgba(255,255,255,1) 100%);
+    background: $mainColor;
     border-radius: 20px;
   }
+
+  body {
+    overflow: overlay;
+}
