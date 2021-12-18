@@ -70,7 +70,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="logo">
-                    <img src="{{ asset('images/dashboard/logo.png') }}" alt="logo deliveboo">
+                    <img class="img1" src="{{ asset('images/dashboard/logo.png') }}" alt="logo deliveboo">
                     <h2>deliveboo</h2>
                 </div>
             </div>

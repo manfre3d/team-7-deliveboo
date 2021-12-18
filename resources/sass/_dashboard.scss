@@ -71,16 +71,24 @@ a:hover {
         max-width: 80%;
     }
 }
+
 .logo {
-    margin-top: 50px;
+    .img1 {
+        margin-top: 50px;
+    }
+}
+.logo {
+    
     img {
         width: 50px;
+        
     }
     h2 {
         color: $logoColor;
         font-size: 30px;
         font-weight: bold;
         font-family: sans-serif;
+        margin-top: 50px;
     }
 }
 .img_account {
