@@ -5,8 +5,10 @@ const chartOrders = document.querySelector('#orders').getContext('2d');
 
 // prendo lista ordini per mese e incassi per mese
 const js_script = document.getElementById('js_script');
+
 let ordersByMonths = js_script.getAttribute('data-orders');
 ordersByMonths = JSON.parse(ordersByMonths);
+
 let revenueByMonth = js_script.getAttribute('data-revenue');
 revenueByMonth = JSON.parse(revenueByMonth);
 
@@ -60,4 +62,11 @@ let ordersChart = new Chart(chartOrders, {
     },    
   },
 
+});
+
+
+const selectYear = document.querySelector('#year_selection_chart');
+selectYear.addEventListener('change', (e) => {
+  const yearUrlParam = e.target.value;
+  window.location.replace(`/admin/grafici-ordini${yearUrlParam}`);
 });

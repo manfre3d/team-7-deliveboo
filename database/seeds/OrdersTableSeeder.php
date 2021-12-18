@@ -24,15 +24,19 @@ class OrdersTableSeeder extends Seeder
             $newOrder->customer_phone_number = $faker->phoneNumber();
             $newOrder->customer_address = $faker->address();
             $newOrder->timestamps = false;
-            $newOrder->created_at = $this->getRandomMonth('2021');
+            $newOrder->created_at = $this->getRandomDate();
             $newOrder->save();
         }
     }
 
-    public function getRandomMonth($year)
+    public function getRandomDate()
     {
+        $years = ['2021', '2020', '2019'];
+
+        $year = $years[rand(0, 2)];
         $month = rand(1, 12);
         $day = rand(1, 25);
+        
         return "{$year}-{$month}-{$day}";
     }
 }
