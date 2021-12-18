@@ -135,7 +135,7 @@
             <tr>
               <td>Prezzo totale</td>
               <td colspan="2">{{ getTotalPrice() }} &euro;</td>
-              <td><a href="/checkout">Checkout</a></td>
+              <td><a v-if="cart.length > 0" href="/checkout">Procedi al pagamento</a></td>
               <td></td>
             </tr>
           </tfoot>

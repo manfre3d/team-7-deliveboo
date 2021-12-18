@@ -13,7 +13,7 @@
                             <button class="btn-primary btn">Crea un piatto</button>                            
                         </a>
                         <a href="{{route('admin.home')}}" class="d-flex justify-content-center align-items-end">
-                            <button class="btn-primary btn">Torna alla pagina precedente</button>                            
+                            <button class="btn-primary btn">Dashboard</button>                            
                         </a>
 
                     </div>
@@ -26,12 +26,13 @@
 						<strong>{{ $message }}</strong>
 					</div>
 					@endif  
-                    <div class="p-5 d-flex col-12 d-flex flex-wrap mx-auto justify-content-around">
+                    <div class="p-lg-5 d-flex col-12 d-flex flex-wrap mx-auto justify-content-around">
                         @foreach ($plates as $plate)
                             
                         <div class="card mx-1 mt-3 card-menu col-12 col-lg-3">
+
                             <div class="card-body d-flex flex-column {{ ($plate->availability)? '' : 'not_available_plate'}}">
-                                <div class="img-container d-flex justify-content-center">
+                                <div class="img-container d-flex justify-content-center pb-4">
                                     @if (!$plate->img_path==null)
                                         <img class="card-img-top" src="{{asset('storage/'.$plate->img_path)}}" alt="Card plate image">   
                                     @else
@@ -44,7 +45,7 @@
                                 <h6 class="card-subtitle mb-3 mt-3 text-muted d-flex flex-grow-1 justify-content-center align-items-end">€{{str_replace(".",",",number_format($plate['price'], 2))}}</h6>
 
                                 {{-- button section of the card --}}
-                                <div class="d-flex justify-content-around buttons">
+                                <div class="d-flex justify-content-around buttons flex-wrap">
                                     <a href="{{route('admin.plates.show',$plate['id'])}}" class="m-1">
                                         <button class="btn-primary btn">Visualizza</button>                            
                                     </a>
@@ -52,7 +53,7 @@
                                         <button type="button" class="btn btn-warning">Modifica</button>
                                     </a>
 
-                                    <a href="#">
+                                    <a href="#" class="m-1">
                                         <button type="button" class="btn btn-danger btn-delete" data-id="{{$plate["id"]}}" data-toggle="modal" data-target="#deleteModal">
 										Elimina
 									    </button>

@@ -8,7 +8,7 @@
                 <div class="card-header d-flex justify-content-between align-items-center">
                     {{ __('Crea un Piatto') }}
                     <a href="{{route('admin.plates.index')}}" class="d-flex justify-content-center align-items-end">
-                        <button class="btn-primary btn">Torna alla pagina precedente</button>                            
+                        <button class="btn-primary btn">Torna al Menu</button>                            
                     </a>
                 </div>
                 
@@ -18,10 +18,10 @@
                         @csrf
 
                         {{-- name input --}}
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+                        <div class="form-group col-12 row col-lg-11 input_container">
+                            <label for="name" class="col-lg-3 col-form-label text-lg-right">{{ __('Nome') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-lg-9">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
@@ -35,10 +35,10 @@
                         
 
                         {{-- description textarea tag --}}
-                        <div class="form-group row">
-                            <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Descrizione') }}</label>
+                        <div class="form-group col-12 row col-lg-11 input_container">
+                            <label for="description" class="col-lg-3 col-form-label text-lg-right">{{ __('Descrizione') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-lg-9">
                                 <textarea id="description"  class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="description" autofocus>{{ old('description') }}</textarea>
 
                                 @error('description')
@@ -50,10 +50,10 @@
                         </div>
 
                         {{-- ingredients textarea tag --}}
-                        <div class="form-group row">
-                            <label for="ingredients" class="col-md-4 col-form-label text-md-right">{{ __('Ingredienti') }}</label>
+                        <div class="form-group col-12 row col-lg-11 input_container">
+                            <label for="ingredients" class="col-lg-3 col-form-label text-lg-right">{{ __('Ingredienti') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-lg-9">
                                 <textarea id="ingredients"  class="form-control @error('ingredients') is-invalid @enderror" name="ingredients" required autocomplete="ingredients" autofocus>{{ old('ingredients') }}</textarea>
 
                                 @error('ingredients')
@@ -65,10 +65,10 @@
                         </div>
 
                         {{-- price input --}}
-                        <div class="form-group row">
-                            <label for="price" class="col-md-4 col-form-label text-md-right">{{ __('Prezzo') }}</label>
+                        <div class="form-group col-12 row col-lg-11 input_container">
+                            <label for="price" class="col-lg-3 col-form-label text-lg-right">{{ __('Prezzo') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col-lg-9">
 
                                 <input id="price" type="number" step="0.01" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" autofocus/>
                                 @error('price')
@@ -81,8 +81,8 @@
 
 
                         {{-- image input tag --}}
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
+                        <div class="form-group col-12 row col-lg-11 input_container my-4">
+                            <div class="col-lg-9 offset-lg-3">
                                 {{-- label per l'input tag --}}
                                 <label name="image">Inserisci l'immagine del piatto da creare</label>
                             
@@ -99,18 +99,22 @@
                             
                             {{-- category select tag --}}
                             <div class="form-group">
-                                <label for="plate_type_id">Categoria</label>
-                                <select id="plate_type_select" name="plate_type_id" class="form-control @error('plate_type_id') is-invalid @enderror">
-                                    <option value="">-- Selezion una categoria --</option>
-                                    
-                                    @foreach ($plateCategories as $category)
-                                    <option value="{{$category["id"]}}">{{$category["name"]??old('name')}}</option>
-                                    @endforeach
-                                    
-                                </select>
-                                @error('plate_type_id')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
+                                <label class="col-12" for="plate_type_id">Categoria</label>
+
+                                <div class="col-12">
+                                    <select id="plate_type_select" name="plate_type_id" class="form-control @error('plate_type_id') is-invalid @enderror">
+                                        <option value="">-- Selezion una categoria --</option>
+                                        
+                                        @foreach ($plateCategories as $category)
+                                        <option value="{{$category["id"]}}">{{$category["name"]??old('name')}}</option>
+                                        @endforeach
+                                        
+                                    </select>
+                                    @error('plate_type_id')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror                                    
+                                </div>
+
                             </div>
                         </div>
 

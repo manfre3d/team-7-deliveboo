@@ -20,15 +20,16 @@ body {
     color: $basicColor;
     text-align: center;
 }
-.card-header:first-child {
-    border-radius: 18px 18px 0 0;
+
+.card-header:first-child{
+    border-radius: 1.125rem 1.125rem 0 0 ;
 }
-.card {
-    border-radius: 20px;
-    border: 1px solid lightgray;
-    ul {
-        margin-right: 30px;
-        li {
+.card{
+    border-radius: 1.25rem;
+    border: 0.0625rem solid lightgray;
+    ul{
+        margin-right: 1.875rem;
+        li{
             list-style: none;
         }
     }
@@ -81,24 +82,26 @@ a:hover {
     
     img {
         width: 50px;
-        
+    
     }
     h2 {
         color: $logoColor;
-        font-size: 30px;
+        font-size: 1.875rem;
         font-weight: bold;
         font-family: sans-serif;
         margin-top: 50px;
     }
 }
-.img_account {
-    border-radius: 10px;
+
+.img_account{
+    border-radius: 0.625rem;
     object-fit: cover;
     object-position: top;
-    width: 168px;
-    height: 168px;
-    border-radius: 20px;
+    width: 10.5rem;
+    height: 10.5rem;
+    border-radius: 1.25rem;
 }
+
 .user_info {
     ul {
         padding: 20px 0;
@@ -109,3 +112,4 @@ a:hover {
         }
     }
 }
+
