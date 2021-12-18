@@ -23,6 +23,7 @@ Auth::routes();
 // con questo tipo di rotta, si sta impostando un prefisso admin
 Route::middleware('auth')->namespace('Admin')->name('admin.')->prefix('admin')->group(function() {
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/grafici-ordini', 'HomeController@orderCharts')->name('grafici-ordini');
     Route::resource('orders', 'OrderController');
     Route::resource('plates', 'PlateController');
 });
