@@ -25,7 +25,7 @@
       <section class="form_input_section">
         <div class="input_wrapper name">
           <label for="customer_name">nome*</label>
-          <input type="text" name="customer_name" id="customer_name" placeholder="nome">
+          <input type="text" name="customer_name" id="customer_name" placeholder="nome" required>
         </div>
         <div class="input_wrapper">
           <label for="customer_surname">cognome*</label>

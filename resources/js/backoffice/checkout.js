@@ -1,9 +1,4 @@
 
-// se carrello vuoto redirect to home
-if ( typeof localStorage.cart != String  ) {
-  window.location.replace("/");
-}
-
 // prendo i dati del carrello in local storage
 const cart = JSON.parse(localStorage.cart);
 
@@ -87,6 +82,11 @@ const printCart = () => {
   document.querySelector('#cart_json').value = JSON.stringify(cart);
   // aggiorno il local storage
   localStorage.cart = JSON.stringify(cart);
+
+  // se carrello vuoto redirect to home
+  if ( localStorage.cart.length<5 ) {
+    window.location.replace("/");
+  }
 };
 printCart();
 
@@ -97,8 +97,10 @@ const preLoader= document.getElementById("loader-wrapper");
 const preLoaderText= document.getElementById("description-text-loader");
 
 paymentForm.addEventListener('submit', ()=>{
-  console.log("ciao");
-  paymentForm.style.display = "none";
-  preLoader.style.display = "flex";
-  preLoaderText.style.display = "flex";
+  if(paymentForm.checkValidity()){
+
+    paymentForm.style.display = "none";
+    preLoader.style.display = "flex";
+    preLoaderText.style.display = "flex";
+  }
 });
