@@ -13,7 +13,7 @@ const updatePrice = () => {
   });
 
   document.querySelector('#amount').value = totalPrice.toFixed(2);
-  document.querySelector('#total_price').innerHTML = `${totalPrice.toFixed(2)}€`;
+  document.querySelector('#total_price').innerHTML = `${totalPrice.toFixed(2).replace(".",",")}€`;
 };
 updatePrice();
 
@@ -42,7 +42,7 @@ const printCart = () => {
           <div class="ingredients">${elm.ingredients}</div>
         </div>
 
-        <div class="product_price">${elm.price}€</div>
+        <div class="product_price">${elm.price.toFixed(2).replace(".",",")}€</div>
       </li>
     `;  
   });
