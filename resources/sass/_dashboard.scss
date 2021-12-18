@@ -1,26 +1,34 @@
-body{
+body {
     background-color: $body-bg;
 }
-.logo img{
+
+.general {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.logo img {
     width: 4.37rem;
 }
-.bg_color{
+.bg_color {
     background-color: $logoColor;
 }
-.card-header{
+.card-header {
     background-color: $logoColor;
     color: $basicColor;
     text-align: center;
 }
-.card-header:first-child{
-    border-radius: 18px 18px 0 0 ;
+.card-header:first-child {
+    border-radius: 18px 18px 0 0;
 }
-.card{
+.card {
     border-radius: 20px;
     border: 1px solid lightgray;
-    ul{
+    ul {
         margin-right: 30px;
-        li{
+        li {
             list-style: none;
         }
     }
@@ -30,13 +38,13 @@ body{
     background-color: $logoColor;
     border-color: $logoColor;
 
-    &:hover{
+    &:hover {
         background-color: $hoverColor;
         border-color: $hoverColor;
     }
 }
-.btn-warning{
-    &:hover{
+.btn-warning {
+    &:hover {
         color: $basicColor2;
         background-color: rgb(255, 217, 0);
         border-color: rgb(255, 217, 0);
@@ -46,32 +54,36 @@ a:hover {
     text-decoration: none;
 }
 
-.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-brand {
+.navbar-light .navbar-nav .nav-link,
+.navbar-light .navbar-brand {
     color: $basicColor;
 }
-.image, .logo{
+.image,
+.logo {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
-.image_burger{
-    img{
-        width: 300px;
+
+.image_burger {
+    img {
+        max-width: 80%;
     }
 }
-.logo{
-    img{
+.logo {
+    margin-top: 50px;
+    img {
         width: 50px;
     }
-    h2{
+    h2 {
         color: $logoColor;
         font-size: 30px;
         font-weight: bold;
         font-family: sans-serif;
     }
 }
-.img_account{
+.img_account {
     border-radius: 10px;
     object-fit: cover;
     object-position: top;
@@ -79,16 +91,13 @@ a:hover {
     height: 168px;
     border-radius: 20px;
 }
-.user_info{ 
-    ul{
-        max-width: 250px;
-        li{
+.user_info {
+    ul {
+        padding: 20px 0;
+        li {
             list-style: none;
             margin: 10px 0;
+            text-align: center;
         }
     }
-}
-.salad{
-    height: 170px;
-    border-radius: 20px;
 }
