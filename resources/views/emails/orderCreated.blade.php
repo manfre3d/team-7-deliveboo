@@ -55,10 +55,12 @@
             display: inline-block;
             width: 250px;
             word-spacing: 2px;
+            font-size: 15px;
         }
 
         .order.price {
             text-align: end;
+            width: 45px;
         }
         footer{
             display: flex;
@@ -85,7 +87,6 @@
         <header>
             <div class="d-flex">
                 <img src="https://newsmondo.it/wp-content/uploads/2021/08/FB_Deliveroo.jpg" alt="Deliveboo logo">
-                <router-link :to="{ name: 'Home' }" class="nav-link text-white">
                 <h2>deliveboo</h2>
             </div>
             <h1>Riepilogo ordine:</h1>
