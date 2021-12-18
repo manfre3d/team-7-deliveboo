@@ -93,12 +93,13 @@ class PaymentsController extends Controller
             // eseguo un ciclo per inviare tante email, quante ne sono contenute in $emails
             foreach ($emails as $key=>$email){
 
-                Mail::send('emails.orderCreated',compact('newOrder','restaurant','platesOrdered'),
+                Mail::send('emails.orderCreated',compact('newOrder','restaurant','platesOrdered', 'cartData'),
                 function($message) use ($email,$emailNames,$key){
                     $message->to(strval($email),strval($emailNames[$key]))
                     ->subject('Order Created Subject');
                 });
             }
+
 
             // restituisco view avvenuto pagamento
             return view('guest.payment_success', compact('cartData', 'amount'));

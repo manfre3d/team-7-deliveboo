@@ -31,9 +31,9 @@
     
     <!-- tutti i ristoranti  -->
     <div class="row justify-content-center" v-if="category == 0">
-      <div class="col-sm-2 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center img_container" v-for="restaurant in restaurants" :key="restaurant.id">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 d-flex justify-content-center img_container" v-for="restaurant in restaurants" :key="restaurant.id">
         <router-link :to="{ name: 'Restaurant', params: { slug: restaurant.slug } }">
-          <img :src="checkImg(restaurant.img_path)" alt="restaurant img">
+          <img class="img-fluid" :src="checkImg(restaurant.img_path)" alt="restaurant img">
           <h4>{{ restaurant.name }}</h4>
         </router-link>
       </div>

@@ -1,17 +1,26 @@
-body{
+body {
     background-color: $body-bg;
 }
-.logo img{
+
+.general {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.logo img {
     width: 4.37rem;
 }
-.bg_color{
+.bg_color {
     background-color: $logoColor;
 }
-.card-header{
+.card-header {
     background-color: $logoColor;
     color: $basicColor;
     text-align: center;
 }
+
 .card-header:first-child{
     border-radius: 1.125rem 1.125rem 0 0 ;
 }
@@ -30,13 +39,13 @@ body{
     background-color: $logoColor;
     border-color: $logoColor;
 
-    &:hover{
+    &:hover {
         background-color: $hoverColor;
         border-color: $hoverColor;
     }
 }
-.btn-warning{
-    &:hover{
+.btn-warning {
+    &:hover {
         color: $basicColor2;
         background-color: rgb(255, 217, 0);
         border-color: rgb(255, 217, 0);
@@ -46,31 +55,44 @@ a:hover {
     text-decoration: none;
 }
 
-.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-brand {
+.navbar-light .navbar-nav .nav-link,
+.navbar-light .navbar-brand {
     color: $basicColor;
 }
-.image, .logo{
+.image,
+.logo {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
-.image_burger{
-    img{
-        width: 18.75rem;
+
+.image_burger {
+    img {
+        max-width: 80%;
     }
 }
-.logo{
-    img{
-        width: 3.125rem;
+
+.logo {
+    .img1 {
+        margin-top: 50px;
     }
-    h2{
+}
+.logo {
+    
+    img {
+        width: 50px;
+    
+    }
+    h2 {
         color: $logoColor;
         font-size: 1.875rem;
         font-weight: bold;
         font-family: sans-serif;
+        margin-top: 50px;
     }
 }
+
 .img_account{
     border-radius: 0.625rem;
     object-fit: cover;
@@ -79,16 +101,15 @@ a:hover {
     height: 10.5rem;
     border-radius: 1.25rem;
 }
-.user_info{ 
-    ul{
-        max-width: 15.625rem;
-        li{
+
+.user_info {
+    ul {
+        padding: 20px 0;
+        li {
             list-style: none;
-            margin: 0.625rem 0;
+            margin: 10px 0;
+            text-align: center;
         }
     }
 }
-.salad{
-    height: 10.625rem;
-    border-radius: 1.25rem;
-}
+

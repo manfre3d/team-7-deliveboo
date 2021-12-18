@@ -21,6 +21,6 @@ class Order extends Model
     }
     public function plates()
     {
-        return $this->belongsToMany("App\Plate");
+        return $this->belongsToMany("App\Plate")->withPivot('quantity')->withTimestamps();
     }
 }
