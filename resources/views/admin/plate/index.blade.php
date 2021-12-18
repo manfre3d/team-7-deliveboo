@@ -29,7 +29,7 @@
                     <div class="p-lg-5 d-flex col-12 d-flex flex-wrap mx-auto justify-content-around">
                         @foreach ($plates as $plate)
                             
-                        <div class="card mx-1 mt-3 card-menu col-12 col-lg-3">
+                        <div class="card mx-1 mt-3 card-menu col-12 col-lg-8 col-xl-3">
 
                             <div class="card-body d-flex flex-column {{ ($plate->availability)? '' : 'not_available_plate'}}">
                                 <div class="img-container d-flex justify-content-center pb-4">
