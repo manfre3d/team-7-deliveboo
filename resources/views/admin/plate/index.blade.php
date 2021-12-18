@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card card-menu">
@@ -29,7 +29,7 @@
                     <div class="p-5 d-flex col-12 d-flex flex-wrap mx-auto justify-content-around">
                         @foreach ($plates as $plate)
                             
-                        <div class="card mx-1 mt-3 card-menu" style="width: 20.5rem;">
+                        <div class="card mx-1 mt-3 card-menu col-12 col-lg-3">
                             <div class="card-body d-flex flex-column {{ ($plate->availability)? '' : 'not_available_plate'}}">
                                 <div class="img-container d-flex justify-content-center">
                                     @if (!$plate->img_path==null)

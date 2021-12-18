@@ -3,16 +3,37 @@
 }
 .img-container{
     padding-bottom: 15px;
+    min-height: 280px;
     img{
         object-fit: cover;
         object-position: top;
-        width: 250px;
-        height: 250px;
         border-radius: 20px;
     }
 }
 .buttons a .btn-danger{
     margin-top: 3px;
+}
+
+
+.card-text {
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+@media screen and (max-width: 1200px) {
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .p-5 {
+        padding: 0!important;
+    }
+    .col-md-12 {
+        padding: 0;
+    }
 }
 
 // Riepilogo ordini

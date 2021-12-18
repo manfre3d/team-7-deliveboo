@@ -1,34 +1,58 @@
 <template>
-    <div class="general-container">
-      <div class="container">
-        <i class="fas fa-cart-plus openbtn" @click="openNav()"></i>
-      </div>
-        <!-- Section restaurant-info -->
-        <section class="restaurant-info" v-if="restaurant!=null">
-          
-            <div class="container b">
-              <div class="row">
-                <div class="col-12 col-lg-4">
-                  <img class="restaurant-image" :src="require(`../img/seeder_images/` + restaurant.img_path)" alt="">
-                </div>
-                <div class="col-12 col-lg-7">
-                  <h2>Ristorante {{restaurant.name}}</h2>
-                <p>{{restaurant.description}}</p>
-                <p><span>Indirizzo: </span>{{restaurant.address}}</p>
-                <p><span>Email: </span> {{restaurant.email}}</p>
-                </div>
+  <div class="general-container">
+    <div class="container">
+      <i class="fas fa-cart-plus openbtn" @click="openNav()">
+        <span></span>
+        {{ cartCounter() }}
+        <span></span>
+      </i>
+    </div>
+    <!-- Section restaurant-info -->
+    <section class="restaurant-info" v-if="restaurant != null">
+      <div class="container b">
+        <div class="row">
+          <div class="col-12 col-lg-5">
+            <img
+              class="restaurant-image"
+              :src="checkImg(restaurant.img_path)"
+              alt=""
+            />
+          </div>
+          <div class="col-12 col-lg-7 restaurant-description">
+            <h2 class="restaurant-name">Ristorante {{ restaurant.name }}</h2>
+            <p>
+              <a
+                class="btn btn-info"
+                data-toggle="collapse"
+                href="#collapseExample"
+                role="button"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+              >
+                Info
+              </a>
+            </p>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">
+                {{ restaurant.description }}
               </div>
             </div>
-    <!-- Section order -->
-        </section>   
 
-        <Menu/>
+            <p><span>Indirizzo: </span>{{ restaurant.address }}</p>
+            <p><span>Email: </span> {{ restaurant.email }}</p>
+          </div>
+        </div>
+      </div>
+      <!-- Section order -->
+    </section>
 
-        <!-- Sidebar shopping cart -->
-        <div id="mySidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" @click="closeNav()">×</a>
-  <div class="cart a">
-        <table class="table ">
+    <Menu />
+
+    <!-- Sidebar shopping cart -->
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" @click="closeNav()">×</a>
+      <div class="cart a">
+        <table class="table">
           <thead>
             <tr>
               <th>Piatto</th>
@@ -43,24 +67,68 @@
 
               <td class="responsive-desktop" colspan="2">
                 <button @click="removeToCart(plate.id)">
-                  <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205"><path fill="#00ccbc" d="M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z"></path></svg>
+                  <svg
+                    height="24"
+                    width="24"
+                    viewBox="0 0 24 24"
+                    class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205"
+                  >
+                    <path
+                      fill="#00ccbc"
+                      d="M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z"
+                    ></path>
+                  </svg>
                 </button>
                 {{ plate.quantity }}
                 <button @click="addToCart(plate)">
-                  <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205"><path fill="#00ccbc" d="M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z"></path></svg>
+                  <svg
+                    height="24"
+                    width="24"
+                    viewBox="0 0 24 24"
+                    class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205"
+                  >
+                    <path
+                      fill="#00ccbc"
+                      d="M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z"
+                    ></path>
+                  </svg>
                 </button>
               </td>
               <td class="responsive">
                 <button @click="removeToCart(plate.id)">
-                  <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205"><path fill="#00ccbc" d="M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z"></path></svg>
+                  <svg
+                    height="24"
+                    width="24"
+                    viewBox="0 0 24 24"
+                    class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205"
+                  >
+                    <path
+                      fill="#00ccbc"
+                      d="M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z"
+                    ></path>
+                  </svg>
                 </button>
                 {{ plate.quantity }}
                 <button @click="addToCart(plate)">
-                  <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205"><path fill="#00ccbc" d="M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z"></path></svg>
+                  <svg
+                    height="24"
+                    width="24"
+                    viewBox="0 0 24 24"
+                    class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205"
+                  >
+                    <path
+                      fill="#00ccbc"
+                      d="M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z"
+                    ></path>
+                  </svg>
                 </button>
               </td>
               <td colspan="2">{{ plate.price.toFixed(2) }} &euro;</td>
-              <td><button  @click="removeElementCart(plate.id)"><i class="fas fa-trash-alt text-danger"></i></button></td>
+              <td>
+                <button @click="removeElementCart(plate.id)">
+                  <i class="fas fa-trash-alt text-danger"></i>
+                </button>
+              </td>
             </tr>
           </tbody>
           <tfoot>
@@ -72,75 +140,109 @@
             </tr>
           </tfoot>
         </table>
-        <button class="clear-cart btn" @click="removeAllCart()">Svuota il carrello</button>
+        <button class="clear-cart btn" @click="removeAllCart()">
+          Svuota il carrello
+        </button>
       </div>
-        </div>
+    </div>
 
-  
-        
-        <!-- Section Menu -->
-        <section class="order container">
-   
+    <!-- Section Menu -->
+    <section class="order container-xl">
+      <!-- Menu -->
 
+      <ul class="row d-flex">
+        <li
+          class="menu-plate col-10 col-md-5 col-xl-3 a"
+          v-for="(plate, index) in plates"
+          :key="index"
+        >
+          <div v-if="plate.name">
+            <img
+              class="plate-image"
+              :src="
+                plate.img_path != null
+                  ? `http://127.0.0.1:8000/api/image/${plate.img_path}`
+                  : ''
+              "
+              alt=""
+            />
+            <h3 class="plate-name">{{ plate.name }}</h3>
+            <p class="plate-description">{{ plate.description }}</p>
+            <div v-if="plate.price" class="price">
+              <strong>Prezzo:</strong> {{ plate.price.toFixed(2).replace(".",",") }} €
+            </div>
+            <button
+              class="btn add-cart"
+              @click="addToCart(plate)"
+              :data-toggle="modalConnection"
+              data-target="#exampleModalCenter"
+            >
+              Aggiungi al carrello
+            </button>
 
-
-   <!-- Menu -->
-    
-        <ul class="row d-flex">
-          <li class="menu-plate col-10 col-md-5 col-xl-3  a " v-for="(plate, index) in plates" :key="index">
-            <div v-if="plate.name" >
-                <h3 class="plate-name">{{ plate.name }}</h3>
-                <p>{{plate.description}}</p>
-                <div v-if="plate.price" class="price"><strong>Prezzo:</strong> {{ plate.price.toFixed(2) }} €</div>
-                <button  
-                class="btn add-cart" 
-                @click="addToCart(plate)" 
-                :data-toggle="modalConnection" 
-                data-target="#exampleModalCenter">
-                  Aggiungi al carrello
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Attenzione!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        Puoi ordinare solo da un ristorante alla volta.<br>
-                        Desideri svuotare il tuo carrello?
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" @click="removeAllCart()"  data-dismiss="modal" class="btn add-cart">Si</button>
-                        <button type="button" class="btn add-cart " data-dismiss="modal">No</button>
-                      </div>
-                    </div>
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="exampleModalCenter"
+              tabindex="-1"
+              role="dialog"
+              aria-labelledby="exampleModalCenterTitle"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">
+                      Attenzione!
+                    </h5>
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    Puoi ordinare solo da un ristorante alla volta.<br />
+                    Desideri svuotare il tuo carrello?
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      @click="removeAllCart()"
+                      data-dismiss="modal"
+                      class="btn add-cart"
+                    >
+                      Si
+                    </button>
+                    <button
+                      type="button"
+                      class="btn add-cart"
+                      data-dismiss="modal"
+                    >
+                      No
+                    </button>
                   </div>
                 </div>
+              </div>
             </div>
-            <!-- possibile img -->
-            <!-- <img v-if="restaurant.img_path" :src="require('../img/seeder_images/' + restaurant.img_path)" alt="restaurant img"> -->
-          </li>
-        </ul>  
-   
-
+          </div>
+        </li>
+      </ul>
 
       <!-- Carrello del ristorante -->
-      
-        </section>
-    </div>
+    </section>
+  </div>
 </template>
 
 <script>
-import Menu from '../components/Menu.vue'
+import Menu from "../components/Menu.vue";
 export default {
   name: "Restaurant",
   components: {
-    Menu
+    Menu,
   },
   data() {
     return {
@@ -197,6 +299,14 @@ export default {
   },
 
   methods: {
+    comma: function (stringValue) {
+      stringValue = stringValue.trim();
+      var result = stringValue.replace(/[^0-9]/g, "");
+      if (/[,\.]\d{2}$/.test(stringValue)) {
+        result = result.replace(/(\d{2})$/, ".$1");
+      }
+      return parseFloat(result);
+    },
     addToCart: function (plate) {
       if (this.cart.length == 0) {
         this.cart.push(plate);
@@ -263,14 +373,33 @@ export default {
 
       return tot.toFixed(2);
     },
+
+    cartCounter: function () {
+      let counter = 0;
+
+      this.cart.forEach((elm) => {
+        counter += elm.quantity;
+      });
+      return counter;
+    },
     /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
-    openNav: function() {
-      document.getElementById("mySidebar").style.width = "100vw";
+    openNav: function () {
+      document.getElementById("mySidebar").style.width = "min-content";
     },
 
-/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+    /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
     closeNav: function () {
-  document.getElementById("mySidebar").style.width = "0";
+      document.getElementById("mySidebar").style.width = "0";
+    },
+
+    checkImg(img_path) {
+      try {
+        let fileName = require("../img/seeder_images/" + img_path);
+        return require("../img/seeder_images/" + img_path);
+      } catch (e) {
+        this.imgPath = `http://127.0.0.1:8000/api/image/${img_path}`;
+        return this.imgPath;
+      }
     },
   },
 };
@@ -279,24 +408,24 @@ export default {
 <style lang="scss" scoped>
 @import "../../../sass/front/variables.scss";
 
-
-// .container {
-//      border: 3px solid blue;
-// }
-
+.general-container {
+  background-image: url("../img/menu-pattern1.jpg");
+  background-attachment: fixed;
+}
 
 ul {
-    list-style: none;
+  list-style: none;
+  margin: 0;
 }
 
 .row {
-//   border: 5px solid blue;
-// display: flex;
+  //   border: 5px solid blue;
+  // display: flex;
   .a {
     // border: 5px solid red;
     // justify-content: space-between;
     // margin: 0 50px;
-    padding: 50px 50px;
+    padding: 40px 30px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 8px;
     margin: 30px;
@@ -306,12 +435,35 @@ ul {
 
 .restaurant-info {
   // border: 5px solid blue;
-  // background-color: rgb(255, 223, 208);
-  background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(255,223,208,1) 100%);
-  padding: 50px 20px;
-  
+  background-color: rgb(255, 255, 255);
+  padding: 100px 20px 130px 20px;
+  color: white;
+
+  .btn-info {
+    font-size: 20px;
+    cursor: pointer;
+
+    padding: 2px 10px;
+    border-radius: 5px;
+
+    color: $mainColor;
+    border: 1px solid $mainColor;
+    background-color: transparent;
+    &:hover {
+      background-color: #04cbbf;
+      color: white;
+    }
+  }
+
+  #img1 {
+    width: 400px;
+    position: absolute;
+    right: 30px;
+  }
+
   .row {
-    align-items: center;
+    // align-items: center;
+    margin: 0 !important;
   }
 
   span {
@@ -320,53 +472,78 @@ ul {
   }
 
   h2 {
-    margin: 30px 0;
+    margin: 0 0 30px 0;
+    font-weight: 700;
+    font-size: 36px;
+    color: rgb(46, 46, 46);
   }
-  
-  img {
+
+  .restaurant-image {
     width: inherit;
-    max-width: 350px;
+    // max-width: 400px;
     border-radius: 8px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
 
+  .restaurant-description {
+    margin-left: auto;
+    // padding-top: 40px;
+    // background-color: #EFCBAD;
+    color: black;
+    // font-family: monospace;
+  }
+
+  .card-body {
+    max-height: 200px;
+    overflow-y: scroll;
   }
 }
-
-
 
 // -----------------Order Section-----------------
 .order {
-    border-radius: 8px;
-    // padding: 30px 0;
-    .row {
-      justify-content: center;
-    }
+  border-radius: 8px;
+  // padding: 30px 0;
+  .row {
+    justify-content: center;
+  }
 }
 .price {
-    text-align: end;
-    margin: 20px 0;
+  text-align: end;
+  margin: 20px 0;
 }
 
 .add-cart,
 .clear-cart {
-    border: 1px solid $mainColor;
-    font-weight: bold;
-    &:hover {
-      background-color: $mainColor;
-    }
+  border: 1px solid $mainColor;
+  font-weight: bold;
+  &:hover {
+    background-color: $mainColor;
+  }
 }
 
 .menu-plate {
-    padding: 40px 0;
-    border: 1px solid;
+  padding: 40px 0;
+  border: 1px solid;
+  background-color: white;
 }
 
+.plate-image {
+  border-radius: 10px;
+  margin-bottom: 20px;
+  height: 120px;
+  max-width: 100%;
+}
+
+.plate-description {
+  height: 150px;
+  overflow-y: scroll;
+}
 
 // Carrello
 th,
 td {
   text-align: center;
-//   border: 3px solid purple;
+  //   border: 3px solid purple;
 }
 
 button {
@@ -375,35 +552,35 @@ button {
 }
 
 .cart {
-    // padding-top: 50px!important;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  // padding-top: 50px!important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .responsive {
   display: none;
 }
 
-
 // Sidebar shopping cart
 .sidebar {
-  height: 100vh;
+  height: min-content;
   width: 0;
   position: fixed;
   z-index: 1;
-  top: 0;
+  top: 50px;
   right: 0;
   background-color: white;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top:100px;
+  padding: 40px 0;
   display: flex;
   justify-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 8px;
 
   .table {
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        border-radius: 8px;
+    border-radius: 8px;
   }
 }
 
@@ -420,9 +597,8 @@ button {
 .sidebar .closebtn {
   position: absolute;
   top: 0;
-  right: 25px;
+  left: 25px;
   font-size: 36px;
-  margin-left: 50px;
 }
 
 .openbtn {
@@ -433,10 +609,10 @@ button {
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
-      position: fixed;
-    right: 10px;
-    margin-top: 15px;
-    z-index: 10;
+  position: fixed;
+  right: 10px;
+  margin-top: 15px;
+  z-index: 10;
 }
 
 .openbtn:hover {
@@ -444,25 +620,18 @@ button {
 }
 
 #main {
-  transition: margin-left .5s;
+  transition: margin-left 0.5s;
   padding: 16px;
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
-}
-
 // --------------------------------------------
-
 
 @media screen and (max-width: 520px) {
   th,
   td,
   tr {
     // padding: 0;
-    vertical-align: middle!important;
+    vertical-align: middle !important;
   }
   .responsive {
     display: grid;
@@ -472,9 +641,55 @@ button {
   }
 
   .row {
-      .a {
+    .a {
       padding: 20px;
+    }
   }
+}
+
+@media screen and (max-width: 768px) {
+  .openbtn {
+    right: 20px;
   }
+}
+
+@media screen and (max-width: 576px) and (max-height: 900px) {
+  .sidebar {
+    top: 0;
+    height: 100vh;
+    // width: 100vw!important;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .order {
+    max-width: 1400px !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .restaurant-name {
+    padding-top: 50px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 1em;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(4, 203, 191, 1) 0%,
+    rgba(57, 255, 243, 1) 41%,
+    rgba(183, 250, 246, 1) 62%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  border-radius: 20px;
 }
 </style>
