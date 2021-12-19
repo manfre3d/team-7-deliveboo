@@ -7,9 +7,14 @@ window.Vue = require('vue');
 
 import App from './App.vue';
 import router from './router';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const app = new Vue({
     el: '#app',
     render: h => h(App),
-    router
-});
+    router,
+    mounted() {
+        AOS.init()
+      },
+    }).$mount('#app');
