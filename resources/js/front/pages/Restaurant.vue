@@ -1,7 +1,7 @@
 <template>
   <div class="general-container">
     <div class="container">
-      <i class="fas fa-cart-plus openbtn" @click="openNav()">
+      <i id="cart" class="fas fa-cart-plus openbtn" @click="toggleNav()">
         <span></span>
         {{ cartCounter() }}
         <span></span>
@@ -50,7 +50,7 @@
 
     <!-- Sidebar shopping cart -->
     <div id="mySidebar" class="sidebar">
-      <a href="javascript:void(0)" class="closebtn" @click="closeNav()">×</a>
+      <a href="javascript:void(0)" class="closebtn" @click="toggleNav()">×</a>
       <div class="cart a">
         <table class="table">
           <thead>
@@ -232,7 +232,7 @@
         </li>
       </ul>
 
-      <!-- Carrello del ristorante -->
+
     </section>
   </div>
 </template>
@@ -251,6 +251,7 @@ export default {
       cart: [],
       restaurantId: 0,
       modalConnection: "",
+      navCounter:0
     };
   },
 
@@ -299,14 +300,6 @@ export default {
   },
 
   methods: {
-    comma: function (stringValue) {
-      stringValue = stringValue.trim();
-      var result = stringValue.replace(/[^0-9]/g, "");
-      if (/[,\.]\d{2}$/.test(stringValue)) {
-        result = result.replace(/(\d{2})$/, ".$1");
-      }
-      return parseFloat(result);
-    },
     addToCart: function (plate) {
       if (this.cart.length == 0) {
         this.cart.push(plate);
@@ -382,14 +375,28 @@ export default {
       });
       return counter;
     },
-    /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
-    openNav: function () {
-      document.getElementById("mySidebar").style.width = "min-content";
-    },
+    // /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+    // openNav: function () {
+    //   document.getElementById("mySidebar").style.width = "min-content";
+    // },
 
-    /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
-    closeNav: function () {
-      document.getElementById("mySidebar").style.width = "0";
+    // /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+    // closeNav: function () {
+    //   document.getElementById("mySidebar").style.width = "0";
+    // },
+    toggleNav: function(){
+      if(this.navCounter==0){
+        document.getElementById("mySidebar").style.width = "min-content";
+        this.navCounter=1;
+        document.getElementById("cart").style.display = "none";
+
+
+      }else{
+        document.getElementById("mySidebar").style.width = "0";
+        this.navCounter=0;
+        document.getElementById("cart").style.display = "flex";
+
+      }
     },
 
     checkImg(img_path) {
@@ -569,7 +576,7 @@ button {
   position: fixed;
   z-index: 1;
   top: 50px;
-  right: 0;
+  right:100px;
   background-color: white;
   overflow-x: hidden;
   transition: 0.5s;
