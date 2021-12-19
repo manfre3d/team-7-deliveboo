@@ -585,7 +585,7 @@ button {
 
 // Sidebar shopping cart
 .sidebar {
-  height: min-content;
+  max-height: 80vh;
   width: 0;
   position: fixed;
   z-index: 1;
