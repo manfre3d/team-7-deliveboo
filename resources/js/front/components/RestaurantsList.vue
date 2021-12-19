@@ -30,7 +30,7 @@
     </div>
     
     <!-- tutti i ristoranti  -->
-    <div class="row justify-content-center" v-if="category == 0">
+    <div class="row justify-content-center container-responsive" v-if="category == 0">
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 d-flex justify-content-center img_container" v-for="restaurant in restaurants" :key="restaurant.id">
         <router-link :to="{ name: 'Restaurant', params: { slug: restaurant.slug } }">
           <img class="img-fluid" :src="checkImg(restaurant.img_path)" alt="restaurant img">
@@ -39,7 +39,7 @@
       </div>
     </div>
     <!-- ristoranti filtrati -->
-    <div class="row justify-content-center " v-if="category != 0">
+    <div class="row justify-content-center container-responsive " v-if="category != 0">
       <div v-for="restaurant in filteredRestaurants" :key="restaurant.id" class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 flex-wrap d-flex justify-content-center img_container">
         <router-link :to="{ name: 'Restaurant', params: { slug: restaurant.slug } }">
 
@@ -236,5 +236,11 @@ export default {
   font-weight: 600;
   color: white;
   vertical-align: middle;
+}
+
+@media screen and (min-width:1700px) {
+  .container-responsive {
+    max-width: 1800px;
+  }
 }
 </style>
