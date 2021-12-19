@@ -16,7 +16,7 @@
 
                          
                         <div class="card mx-1 mt-3 card-menu" style="width: 26.5rem;">
-                            <h5 class="riepilogo">Riepilogo ordine n°{{$order->id}}</h5>
+                            <h5 class="riepilogo">Riepilogo ordine n°{{$order_number}}</h5>
                             <div class="card-body d-flex flex-column padding">
                                 <h5>Ordinato da:</h5>
                                 <h6 class="card-title">{{$order['customer_name']}} {{$order['customer_surname']}}</h6>
@@ -36,7 +36,7 @@
                                             <h6>Prezzo pagato: €{{str_replace(".",",",number_format($plate['plate']['price']*$plate['quantity'], 2))}}</h6>
                                         </li>
                                     @endforeach
-                                </ul>
+                                </ol>
                             </div>
                         </div>
                     </div>
