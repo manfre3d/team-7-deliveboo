@@ -135,13 +135,17 @@
             <tr>
               <td>Prezzo totale</td>
               <td colspan="2">{{ getTotalPrice() }} &euro;</td>
-              <td><a v-if="cart.length > 0" href="/checkout">Procedi al pagamento</a></td>
+              <td>
+                  <button class="clear-cart btn btn_clear" @click="removeAllCart()">
+                    Svuota il carrello
+                  </button>
+              </td>
               <td></td>
             </tr>
           </tfoot>
         </table>
-        <button class="clear-cart btn" @click="removeAllCart()">
-          Svuota il carrello
+        <button v-if="cart.length > 0" class="clear-cart btn " >
+          <a href="/checkout">Procedi al pagamento</a>
         </button>
       </div>
     </div>
@@ -515,10 +519,16 @@ ul {
   }
 }
 .price {
-  text-align: end;
+  // text-align: end;
   margin: 20px 0;
 }
 
+.btn_clear{
+  width: 200px;
+  &:hover{
+    color: white;
+  }
+}
 .add-cart,
 .clear-cart {
   border: 1px solid $mainColor;
@@ -526,12 +536,16 @@ ul {
   &:hover {
     background-color: $mainColor;
   }
+  a{
+    color: black;
+  }
 }
 
 .menu-plate {
   padding: 40px 0;
   border: 1px solid;
   background-color: white;
+  text-align: center;
 }
 
 .plate-image {
@@ -542,8 +556,8 @@ ul {
 }
 
 .plate-description {
-  height: 150px;
-  overflow-y: scroll;
+  max-height: 150px;
+  overflow-y: auto;
 }
 
 // Carrello
@@ -617,7 +631,7 @@ button {
   border: none;
   border-radius: 5px;
   position: fixed;
-  right: 10px;
+  right: 40px;
   margin-top: 15px;
   z-index: 10;
 }
