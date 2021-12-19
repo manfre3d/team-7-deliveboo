@@ -1,10 +1,10 @@
 <template>
   <section class="container-fluid">
-    <div class="row">
-      <div v-if="category.length!=0" class="d-flex flex-wrap col">
-        <h2 class="col-12">Filtri selezionati</h2> 
-        <div class="left-col col-6">
-          <ul class="col-12 d-flex">
+    <div>
+      <div v-if="category.length!=0" class="d-flex flex-wrap row">
+        <h2 class="col-12 my-5">Filtri selezionati</h2> 
+        <div class="left-col col-12 col-md-6">
+          <ul class="col-12 flex-wrap d-flex">
             <li v-for="(_categories,index) in category" :key="index" class="d-flex flex-wrap">
               <h3><span class="badge badge-secondary d-flex align-content-center mx-1">
                 {{categoriesNames[_categories-1]}}
@@ -16,10 +16,10 @@
           </ul>
 
         </div>
-        <div class="right-col col-6 d-flex justify-content-end">
+        <div class="right-col col-12 col-md-6 d-flex justify-content-end">
           <button class="btn_delete_filter mx-2" @click="removeAllFilters()">
             <h3>
-              <span class="badge badge-secondary d-flex align-content-center mx-1">      
+              <span class="badge d-flex align-content-center mx-1  btn-danger">      
               Rimuovi tutti i filtri          
               </span>
             </h3>
@@ -39,20 +39,21 @@
       </div>
     </div>
     <!-- ristoranti filtrati -->
-    <div class="row" v-if="category != 0">
-      <div v-for="restaurant in filteredRestaurants" :key="restaurant.id" class="col-sm-12 col-md-6 col-lg-4 col-xl-3 img_container d-flex flex-column align-items-center">
+    <div class="row justify-content-center " v-if="category != 0">
+      <div v-for="restaurant in filteredRestaurants" :key="restaurant.id" class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 flex-wrap d-flex justify-content-center img_container">
         <router-link :to="{ name: 'Restaurant', params: { slug: restaurant.slug } }">
 
           <img
+          class="img-fluid"
           :src="checkImg(restaurant.img_path)"
           alt="restaurant img">
 
           <h4>{{ restaurant.name }}</h4>
         </router-link>
-        <div class="tags">
+        <div class="tags col-12 justify-content-center">
           <h6 class="badge badge-warning" v-for="(type,index) in restaurant.types" :key="index">
-          {{ categoriesNames[type - 1] }}
-        </h6>
+            {{ categoriesNames[type - 1] }}
+          </h6>
         </div> 
       </div>
     </div>
