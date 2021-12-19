@@ -123,7 +123,7 @@
                   </svg>
                 </button>
               </td>
-              <td colspan="2">{{ plate.price.toFixed(2) }} &euro;</td>
+              <td colspan="2">{{ plate.price.toFixed(2).replace(".",",") }} &euro;</td>
               <td>
                 <button @click="removeElementCart(plate.id)">
                   <i class="fas fa-trash-alt text-danger"></i>
@@ -299,14 +299,6 @@ export default {
   },
 
   methods: {
-    comma: function (stringValue) {
-      stringValue = stringValue.trim();
-      var result = stringValue.replace(/[^0-9]/g, "");
-      if (/[,\.]\d{2}$/.test(stringValue)) {
-        result = result.replace(/(\d{2})$/, ".$1");
-      }
-      return parseFloat(result);
-    },
     addToCart: function (plate) {
       if (this.cart.length == 0) {
         this.cart.push(plate);
@@ -371,7 +363,7 @@ export default {
         tot += elm.price * elm.quantity;
       });
 
-      return tot.toFixed(2);
+      return tot.toFixed(2).replace(".",",");
     },
 
     cartCounter: function () {
