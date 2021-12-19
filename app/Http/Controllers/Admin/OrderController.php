@@ -50,7 +50,10 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Order $order)
-    {
+    {   
+        if( $order->user_id != Auth::id() ) {
+            abort("403");
+        }
 
         $platesOrdered=[];
         foreach ($order->plates as $plate) 
