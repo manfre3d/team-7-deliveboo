@@ -11,18 +11,19 @@
 // Commons
 
 body::-webkit-scrollbar {
-    width: 1em;
+    width: 13px;
     
   }
    
   body::-webkit-scrollbar-track {
-      background-color: transparent;
-    border-radius: 20px;
+    background-color: $scrollbar_outer_color;
+    
+    // border-radius: 20px;
   }
    
   body::-webkit-scrollbar-thumb {
-    background: $mainColor;
-    border-radius: 20px;
+    background: $scrollbar_inner_color;
+    // border-radius: 20px;
   }
 
   body {
