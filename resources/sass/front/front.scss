@@ -1,3 +1,6 @@
+@import "../../sass/front/variables.scss";
+
+
 // Reset
 * {
     margin: 0;
@@ -6,3 +9,23 @@
 }
 
 // Commons
+
+body::-webkit-scrollbar {
+    width: 13px;
+    
+  }
+   
+  body::-webkit-scrollbar-track {
+    background-color: $scrollbar_outer_color;
+    
+    // border-radius: 20px;
+  }
+   
+  body::-webkit-scrollbar-thumb {
+    background: $scrollbar_inner_color;
+    // border-radius: 20px;
+  }
+
+  body {
+    overflow: overlay;
+}

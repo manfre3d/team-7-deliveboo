@@ -20,6 +20,13 @@ section {
     justify-content: center;
     align-items: center;
     padding-top: 80px;
+    background-color: white;
+
+box-shadow: 0px 0px 39px -10px rgba(0,207,182,0.76);
+-webkit-box-shadow: 0px 0px 39px -10px rgba(0,207,182,0.76);
+-moz-box-shadow: 0px 0px 39px -10px rgba(0,207,182,0.76);
+    margin-bottom: 80px;
+        
 }
 
 @media screen and (max-width: 576px){
@@ -57,4 +64,6 @@ section {
         padding: 50px 0;
     }
 }
+
+
 </style>

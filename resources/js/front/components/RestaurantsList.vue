@@ -5,11 +5,11 @@
         <h2 class="col-12">Filtri selezionati</h2> 
         <div class="left-col col-6">
           <ul class="col-12 d-flex">
-            <li v-for="(categories,index) in category" :key="index" class="d-flex flex-wrap">
+            <li v-for="(_categories,index) in category" :key="index" class="d-flex flex-wrap">
               <h3><span class="badge badge-secondary d-flex align-content-center mx-1">
-                {{categoriesNames[categories-1]}}
+                {{categoriesNames[_categories-1]}}
                 
-              <button class="btn_delete_filter mx-2" @click="removeFilter(category)">X</button>
+              <button class="btn_delete_filter mx-2" @click="removeFilter(_categories)">X</button>
               </span></h3>
               
             </li>
@@ -85,7 +85,7 @@ export default {
       })
       .catch((error) => {
         //handle error
-        console.log(error);
+        console.error(error);
       });
     axios
       .get("/api/restaurants")
@@ -96,16 +96,15 @@ export default {
       })
       .catch((error) => {
         //handle error
-        console.log(error);
+        console.error(error);
       });
   },
   watch: {
     selectedCategory: function () {
-      if(!this.category.includes(this.selectedCategory)){
+      if(!this.category.includes(this.selectedCategory) && this.selectedCategory != ''){
         this.category.push(this.selectedCategory);
-
       }
-      
+
       this.searchForCategory(this.category);
     },
   },
@@ -120,15 +119,13 @@ export default {
           stringCategories+='-'+elm;
         }
       });
-      console.log(stringCategories);
       axios
         .get("http://127.0.0.1:8000/api/restaurants/type/" + stringCategories)
         .then((response) => {
-          console.log(response.data.data);
           this.filteredRestaurants = response.data.data;
         })
         .catch((error) => {
-          console.log(error);
+          console.error(error);
         });
     },
     checkImg(img_path){
@@ -143,10 +140,9 @@ export default {
       }
     },
     removeFilter(category_id){
-
       let indexOfElement=this.category.indexOf(category_id);
       this.category.splice(indexOfElement, 1);
-
+      
       this.searchForCategory(this.category);
     //   let stringCategories='';
     //   this.category.forEach((elm,index)=>{

@@ -22,10 +22,10 @@
                 @foreach ($cartData as $item)
                     <li class="col-2">{{$item->quantity}}x</li>
                     <li class="col-8">{{$item->name}}</li>
-                    <li class="col-2">{{$item->price}}€</li>
+                    <li class="col-2">{{str_replace(".",",",number_format($item->price, 2))}}€</li>
                 @endforeach
             </ul>
-            <h5 class="text-center">Totale: {{$amount}}€</h5>
+            <h5 class="text-center">Totale: {{str_replace(".",",",number_format($amount, 2))}}€</h5>
         </div>
       </main>
       <footer>

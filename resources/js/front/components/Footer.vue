@@ -47,7 +47,6 @@ footer{
     padding-top: 1.87rem;
     padding: 1.25rem 0;
     background-color: $lightgray;
-    color:$gold;
     bottom: 0;
     border-top: 0.06rem solid $lightgray;
 
@@ -58,12 +57,18 @@ footer{
     
     a:hover 
     {
-    color: $silver;
+    color: $mainColor;
     text-decoration: none; 
     transition: color .2s ease-in-out;
     }
     .row{
         margin: 0;
     }
+}
+
+.pb-2 {
+    font-weight: 700;
+    font-size: 20px;
+    color: $mainColor;
 }
 </style>
