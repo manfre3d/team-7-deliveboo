@@ -11,7 +11,7 @@
             <div class="logo d-flex align-items-center">
               <img src="https://newsmondo.it/wp-content/uploads/2021/08/FB_Deliveroo.jpg" alt="Deliveboo logo">
               <router-link :to="{ name: 'Home' }" class="nav-link text-white">
-              <h2>deliveboo</h2>
+              <h2>Deliveboo</h2>
               <span class="sr-only">(current)</span>
             </router-link>
             </div>

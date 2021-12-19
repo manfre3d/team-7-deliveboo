@@ -272,3 +272,15 @@ animation: loader-inner 2s infinite ease-in;
   height: 0%;
 }
 }
+
+// logo
+.navbar-brand {
+  font-size: 2rem;
+  color: #fff;
+  text-decoration: none;
+  img {
+    vertical-align: middle;
+    border-style: none;    
+    width: 4.37rem;
+  }
+}
