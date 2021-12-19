@@ -50,7 +50,24 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Order $order)
-    {
+    {   
+        if( $order->user_id != Auth::id() ) {
+            abort("403");
+        }
+
+        // prendi il numero dell'ordine 
+        $restaurant_id = $order->user_id;
+        $orders_list = Order::where('user_id', $restaurant_id)->get();
+
+        $order_number = null;
+        foreach ($orders_list as $key => $_order) 
+        {
+            if ( $_order->id == $order->id ) 
+            {
+                $order_number = $key + 1;
+            }
+        }
+
 
         $platesOrdered=[];
         foreach ($order->plates as $plate) 
@@ -62,7 +79,7 @@ class OrderController extends Controller
         }
         
 
-        return view('admin.order.show', compact('platesOrdered','order'));
+        return view('admin.order.show', compact('platesOrdered','order', 'order_number'));
     }
 
     /**

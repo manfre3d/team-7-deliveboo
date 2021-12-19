@@ -1,7 +1,7 @@
 <template>
   <div class="general-container">
     <div class="container">
-      <i class="fas fa-cart-plus openbtn" @click="openNav()">
+      <i id="cart" class="fas fa-cart-plus openbtn" @click="toggleNav()">
         <span></span>
         {{ cartCounter() }}
         <span></span>
@@ -50,7 +50,7 @@
 
     <!-- Sidebar shopping cart -->
     <div id="mySidebar" class="sidebar">
-      <a href="javascript:void(0)" class="closebtn" @click="closeNav()">×</a>
+      <a href="javascript:void(0)" class="closebtn" @click="toggleNav()">×</a>
       <div class="cart a">
         <table class="table">
           <thead>
@@ -123,7 +123,7 @@
                   </svg>
                 </button>
               </td>
-              <td colspan="2">{{ plate.price.toFixed(2) }} &euro;</td>
+              <td colspan="2">{{ plate.price.toFixed(2).replace(".",",") }} &euro;</td>
               <td>
                 <button @click="removeElementCart(plate.id)">
                   <i class="fas fa-trash-alt text-danger"></i>
@@ -135,13 +135,17 @@
             <tr>
               <td>Prezzo totale</td>
               <td colspan="2">{{ getTotalPrice() }} &euro;</td>
-              <td><a v-if="cart.length > 0" href="/checkout">Procedi al pagamento</a></td>
+              <td>
+                  <button class="clear-cart btn btn_clear" @click="removeAllCart()">
+                    Svuota il carrello
+                  </button>
+              </td>
               <td></td>
             </tr>
           </tfoot>
         </table>
-        <button class="clear-cart btn" @click="removeAllCart()">
-          Svuota il carrello
+        <button v-if="cart.length > 0" class="clear-cart btn " >
+          <a href="/checkout">Procedi al pagamento</a>
         </button>
       </div>
     </div>
@@ -232,7 +236,7 @@
         </li>
       </ul>
 
-      <!-- Carrello del ristorante -->
+
     </section>
   </div>
 </template>
@@ -251,6 +255,7 @@ export default {
       cart: [],
       restaurantId: 0,
       modalConnection: "",
+      navCounter:0
     };
   },
 
@@ -299,14 +304,6 @@ export default {
   },
 
   methods: {
-    comma: function (stringValue) {
-      stringValue = stringValue.trim();
-      var result = stringValue.replace(/[^0-9]/g, "");
-      if (/[,\.]\d{2}$/.test(stringValue)) {
-        result = result.replace(/(\d{2})$/, ".$1");
-      }
-      return parseFloat(result);
-    },
     addToCart: function (plate) {
       if (this.cart.length == 0) {
         this.cart.push(plate);
@@ -371,7 +368,7 @@ export default {
         tot += elm.price * elm.quantity;
       });
 
-      return tot.toFixed(2);
+      return tot.toFixed(2).replace(".",",");
     },
 
     cartCounter: function () {
@@ -382,14 +379,28 @@ export default {
       });
       return counter;
     },
-    /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
-    openNav: function () {
-      document.getElementById("mySidebar").style.width = "min-content";
-    },
+    // /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+    // openNav: function () {
+    //   document.getElementById("mySidebar").style.width = "min-content";
+    // },
 
-    /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
-    closeNav: function () {
-      document.getElementById("mySidebar").style.width = "0";
+    // /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+    // closeNav: function () {
+    //   document.getElementById("mySidebar").style.width = "0";
+    // },
+    toggleNav: function(){
+      if(this.navCounter==0){
+        document.getElementById("mySidebar").style.width = "min-content";
+        this.navCounter=1;
+        document.getElementById("cart").style.display = "none";
+
+
+      }else{
+        document.getElementById("mySidebar").style.width = "0";
+        this.navCounter=0;
+        document.getElementById("cart").style.display = "flex";
+
+      }
     },
 
     checkImg(img_path) {
@@ -508,10 +519,16 @@ ul {
   }
 }
 .price {
-  text-align: end;
+  // text-align: end;
   margin: 20px 0;
 }
 
+.btn_clear{
+  width: 200px;
+  &:hover{
+    color: white;
+  }
+}
 .add-cart,
 .clear-cart {
   border: 1px solid $mainColor;
@@ -519,12 +536,16 @@ ul {
   &:hover {
     background-color: $mainColor;
   }
+  a{
+    color: black;
+  }
 }
 
 .menu-plate {
   padding: 40px 0;
   border: 1px solid;
   background-color: white;
+  text-align: center;
 }
 
 .plate-image {
@@ -535,8 +556,8 @@ ul {
 }
 
 .plate-description {
-  height: 150px;
-  overflow-y: scroll;
+  max-height: 150px;
+  overflow-y: auto;
 }
 
 // Carrello
@@ -564,12 +585,12 @@ button {
 
 // Sidebar shopping cart
 .sidebar {
-  height: min-content;
+  max-height: 80vh;
   width: 0;
   position: fixed;
   z-index: 1;
   top: 50px;
-  right: 0;
+  right:100px;
   background-color: white;
   overflow-x: hidden;
   transition: 0.5s;
@@ -610,7 +631,7 @@ button {
   border: none;
   border-radius: 5px;
   position: fixed;
-  right: 10px;
+  right: 40px;
   margin-top: 15px;
   z-index: 10;
 }

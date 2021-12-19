@@ -29,19 +29,19 @@
         </div>
         <div class="input_wrapper">
           <label for="customer_surname">cognome*</label>
-          <input type="text" name="customer_surname" id="customer_surname" placeholder="cognome">
+          <input type="text" name="customer_surname" id="customer_surname" required placeholder="cognome">
         </div>
         <div class="input_wrapper email">
           <label for="customer_email">la tua email*</label>
-          <input type="email" name="customer_email" id="customer_email" placeholder="la tua e-mail">
+          <input type="email" name="customer_email" id="customer_email" required placeholder="la tua e-mail">
         </div>
         <div class="input_wrapper">
           <label for="customer_phone_number">telefono*</label>
-          <input type="text" name="customer_phone_number" id="customer_phone_number" placeholder="0433123456">
+          <input type="text" name="customer_phone_number" id="customer_phone_number" required placeholder="0433123456">
         </div>
         <div class="input_wrapper address">
           <label for="customer_address">indirizzo di consegna*</label>
-          <input type="text" name="customer_address" id="customer_address" placeholder="indirizzo di consegna">
+          <input type="text" name="customer_address" id="customer_address" required placeholder="indirizzo di consegna">
         </div>
 
         <input type="text" name="cart_json" id="cart_json" value="">
@@ -79,37 +79,6 @@
   </main>
   
   <script src="https://js.braintreegateway.com/web/dropin/1.32.0/js/dropin.min.js"></script>
-  <script>
-    var form = document.querySelector('#payment-form');
-    // token generato
-        var client_token = "{{ $token }}";
-
-        // creo drop in braintree
-        braintree.dropin.create({
-          authorization: client_token,
-          selector: '#bt-dropin'
-
-        }, function (createErr, instance) {
-          if (createErr) {
-            console.log('Create Error', createErr);
-            return;
-          }
-          form.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            instance.requestPaymentMethod(function (err, payload) {
-              if (err) {
-                console.log('Request Payment Method Error', err);
-                return;
-              }
-
-              // Add the nonce to the form and submit
-              document.querySelector('#nonce').value = payload.nonce;
-              form.submit();
-            });
-          });
-        });
-    </script>
-    <script src="{{ asset('js/checkout.js') }}" defer></script>
+  <script id="js_script" src="{{ asset('js/checkout.js') }}" data-token="{{$token}}" defer></script>
 </body>
 </html>
