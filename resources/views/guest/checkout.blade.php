@@ -7,6 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link rel="stylesheet" href="{{ asset('css/checkout_page.css') }}">
+  <link rel="icon" type="image/x-icon" href="https://cdn.iconscout.com/icon/free/png-256/deliveroo-3442893-2875354.png">
+
 </head>
 <body>
   <header>
