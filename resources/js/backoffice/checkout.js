@@ -2,6 +2,55 @@
 // prendo i dati del carrello in local storage
 const cart = JSON.parse(localStorage.cart);
 
+// braintree token
+const js_script = document.getElementById('js_script');
+let braintreeToken = js_script.getAttribute('data-token');
+
+// page pre loader js
+const paymentForm= document.getElementById("payment-form");
+const preLoader= document.getElementById("loader-wrapper");
+const preLoaderText= document.getElementById("description-text-loader");
+
+const showLoader = ()=>{
+  paymentForm.style.display = "none";
+  preLoader.style.display = "flex";
+  preLoaderText.style.display = "flex";
+};
+
+
+var form = document.querySelector('#payment-form');
+// token generato
+var client_token = braintreeToken;
+
+// creo drop in braintree
+braintree.dropin.create({
+  authorization: client_token,
+  selector: '#bt-dropin'
+
+}, function (createErr, instance) {
+  if (createErr) {
+    console.log('Create Error', createErr);
+    return;
+  }
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    instance.requestPaymentMethod(function (err, payload) {
+      if (err) {
+        console.log('Request Payment Method Error', err);
+        return;
+      }
+
+      showLoader();
+
+      // Add the nonce to the form and submit
+      document.querySelector('#nonce').value = payload.nonce;
+      form.submit();
+    });
+  });
+});
+
+
 // funzione che aggiorna il prezzo totale
 const updatePrice = () => {
   let totalPrice = 0;
@@ -90,17 +139,3 @@ const printCart = () => {
 };
 printCart();
 
-
-// page pre loader js
-const paymentForm= document.getElementById("payment-form");
-const preLoader= document.getElementById("loader-wrapper");
-const preLoaderText= document.getElementById("description-text-loader");
-
-paymentForm.addEventListener('submit', ()=>{
-  if(paymentForm.checkValidity()){
-
-    paymentForm.style.display = "none";
-    preLoader.style.display = "flex";
-    preLoaderText.style.display = "flex";
-  }
-});
