@@ -1,12 +1,12 @@
 <template>
-  <section class="container-fluid">
+  <section class="container-fluid container-responsive">
     <div class="row">
       <div class="col-12">
         <h2>Le categorie di ristoranti più amate</h2>
       </div>
     </div>
 
-    <ul class="d-flex flex-wrap container-responsive">
+    <ul class="d-flex flex-wrap">
       <li class="d-flex col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-3 col-xxl-3 justify-content-center" v-for="category in categories" :key="category.id">
         <div class="card mx-1 card-menu" style=" cursor: pointer" @click="$emit('category', category.id)" v-if="category.id < 5">
           <div class="card_body">
@@ -122,6 +122,8 @@ export default {
 @media screen and (min-width:1700px) {
   .container-responsive {
     max-width: 1800px;
+    margin: auto;
+    padding: 0 100px;
   }
 }
 </style>
