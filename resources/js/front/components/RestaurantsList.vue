@@ -2,11 +2,15 @@
   <section class="container-fluid">
     <div class="row">
       <div v-if="category.length!=0" class="d-flex flex-wrap col">
-        <h2 class="col-12">Filtri selezionati</h2> 
+        <h2 data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-delay="400"
+     data-aos-duration="400"
+     data-aos-offset="0" class="col-12">Filtri selezionati</h2> 
         <div class="left-col col-6">
           <ul class="col-12 d-flex">
-            <li v-for="(categories,index) in category" :key="index" class="d-flex flex-wrap">
-              <h3><span class="badge badge-secondary d-flex align-content-center mx-1">
+            <li data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="0" data-aos-delay="400" v-for="(categories,index) in category" :key="index" class="d-flex flex-wrap">
+              <h3  ><span class="badge badge-secondary d-flex align-content-center mx-1">
                 {{categoriesNames[categories-1]}}
                 
               <button class="btn_delete_filter mx-2" @click="removeFilter(category)">X</button>
@@ -17,7 +21,11 @@
 
         </div>
         <div class="right-col col-6 d-flex justify-content-end">
-          <button class="btn_delete_filter mx-2" @click="removeAllFilters()">
+          <button class="btn_delete_filter mx-2" @click="removeAllFilters()" data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-delay="400"
+     data-aos-duration="400"
+     data-aos-offset="0">
             <h3>
               <span class="badge badge-secondary d-flex align-content-center mx-1">      
               Rimuovi tutti i filtri          
@@ -31,7 +39,9 @@
     
     <!-- tutti i ristoranti  -->
     <div class="row justify-content-center" v-if="category == 0">
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 d-flex justify-content-center img_container" v-for="restaurant in restaurants" :key="restaurant.id">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 d-flex justify-content-center img_container" v-for="restaurant in restaurants" :key="restaurant.id" data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-offset="0">
         <router-link :to="{ name: 'Restaurant', params: { slug: restaurant.slug } }">
           <img class="img-fluid" :src="checkImg(restaurant.img_path)" alt="restaurant img">
           <h4>{{ restaurant.name }}</h4>
@@ -40,7 +50,11 @@
     </div>
     <!-- ristoranti filtrati -->
     <div class="row" v-if="category != 0">
-      <div v-for="restaurant in filteredRestaurants" :key="restaurant.id" class="col-sm-12 col-md-6 col-lg-4 col-xl-3 img_container d-flex flex-column align-items-center">
+      <div v-for="restaurant in filteredRestaurants" :key="restaurant.id" class="col-sm-12 col-md-6 col-lg-4 col-xl-3 img_container d-flex flex-column align-items-center" data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-duration="300"
+     data-aos-delay="200"
+     data-aos-offset="0">
         <router-link :to="{ name: 'Restaurant', params: { slug: restaurant.slug } }">
 
           <img
