@@ -6,7 +6,7 @@
       </div>
     </div>
 
-    <ul class="d-flex flex-wrap">
+    <ul class="d-flex flex-wrap container-responsive">
       <li class="d-flex col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-3 col-xxl-3 justify-content-center" v-for="category in categories" :key="category.id">
         <div class="card mx-1 card-menu" style=" cursor: pointer" @click="$emit('category', category.id)" v-if="category.id < 5">
           <div class="card_body">
@@ -112,6 +112,16 @@ export default {
       @include title;
       @include tag;
     }  
+  }
+}
+
+.container-responsive {
+  margin: auto;
+}
+
+@media screen and (min-width:1700px) {
+  .container-responsive {
+    max-width: 1800px;
   }
 }
 </style>
