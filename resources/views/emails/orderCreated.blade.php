@@ -14,7 +14,7 @@
             background-color: #00CCBE;
             padding: 28px 0px;
             border-top-right-radius: 30px;
-            border-top-left-radius: 15px;
+            border-top-left-radius: 30px;
             text-align: center;
         }
         header img{
