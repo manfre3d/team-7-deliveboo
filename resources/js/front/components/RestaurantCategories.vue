@@ -123,7 +123,7 @@ export default {
   .container-responsive {
     max-width: 1800px;
     margin: auto;
-    padding: 0 100px;
+    padding: 60px 100px;
   }
 }
 </style>
