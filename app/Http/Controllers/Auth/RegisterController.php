@@ -63,7 +63,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
             'password' => ['required', 'string', 'min:8','confirmed'],
             'address' => ['required', 'string','max:150'],
-            'piva' => ['required', 'string','size:11'],
+            'piva' => ['required', 'string','size:11','unique:users'],
             'image' => ['nullable','mimes:jpeg,jpg,png','max:1000'],
             'description' => ['nullable','string'],
             'restaurant_type' => ['required']
