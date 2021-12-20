@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+<div class="container-xl">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card card-menu">
@@ -26,12 +26,12 @@
 						<strong>{{ $message }}</strong>
 					</div>
 					@endif  
-                    <div class="p-lg-5 d-flex col-12 d-flex flex-wrap mx-auto justify-content-around">
+                    <div class="p-lg-3 d-flex col-12 d-flex flex-wrap mx-auto justify-content-around">
                         @foreach ($plates as $plate)
                             
-                        <div class="card mx-1 mt-3 card-menu col-12 col-lg-8 col-xl-3">
+                        <div class="mt-3 col-12 col-md-6 col-xl-4">
 
-                            <div class="card-body d-flex flex-column {{ ($plate->availability)? '' : 'not_available_plate'}}">
+                            <div style="height: 100%" class="card-body card card-menu d-flex flex-column {{ ($plate->availability)? '' : 'not_available_plate'}}">
                                 <div class="img-container d-flex justify-content-center pb-4">
                                     @if (!$plate->img_path==null)
                                         <img class="card-img-top" src="{{asset('storage/'.$plate->img_path)}}" alt="Card plate image">   
