@@ -139,8 +139,11 @@ export default {
         return require('../img/seeder_images/'+ img_path);
         
       } catch (e) {
-        this.imgPath=`http://127.0.0.1:8000/api/image/${img_path}`;
-        return this.imgPath;
+        if(img_path!=null){
+
+          this.imgPath=`http://127.0.0.1:8000/api/image/${img_path}`;
+          return this.imgPath;
+        }
       }
     },
     removeFilter(category_id){
