@@ -19,10 +19,7 @@
         </ul>
         <ul class="navbar-nav mr-auto login">
           <li class="nav-item back-link">
-            <a class="nav-link text-white" href="/login">Accedi</a>
-          </li>
-          <li class="nav-item back-link">
-            <a class="nav-link text-white" href="/register">Registrati</a>
+            <a class="nav-link text-white" href="/login">Admin</a>
           </li>
         </ul>
       </div>
@@ -53,9 +50,11 @@ export default {
   li{
    a{
     color: #fff;
-    font-size: 1.06rem;
+    font-size: 1.4rem;
     font-weight: 500;
   } 
 }
 }
+
+
 </style>
