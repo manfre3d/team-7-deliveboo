@@ -290,13 +290,17 @@ animation: loader-inner 2s infinite ease-in;
   // margin-left: 20px;
   // background-color: white;
   // border: 5px solid blue;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  padding: 0 20px;
 
   .col-6 {
     
     // max-width: max-content;
     background-color: rgb(163, 0, 0);
     border-radius: 8px;
-    padding: 16px 0;
+    padding: 16px 10px;
     text-align: center;
     color: white;
     animation-name: color;

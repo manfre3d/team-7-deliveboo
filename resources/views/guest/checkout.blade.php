@@ -7,9 +7,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Deliveboo</title>
   <link rel="icon" type="image/x-icon" href="https://cdn.iconscout.com/icon/free/png-256/deliveroo-3442893-2875354.png">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="{{ asset('css/checkout_page.css') }}">
  
 
@@ -27,12 +24,11 @@
   <main>
     {{-- se il pagamento restituisce un errore --}}
     @if ( count($errors) > 0 )
-    <div class="container-fluid error">
-      <div class="row justify-content-center">
-        <div class="col-6">C'è stato un errore e il pagamento è stato interrotto</div>
-      </div>
-    </div>
+    <div class="error">
+      <div class="col-6">C'è stato un errore e il pagamento è stato interrotto</div>
+  </div>
     @endif 
+    
     
     
     <form method="post" id="payment-form" action="{{ url('/checkout_process') }}">
