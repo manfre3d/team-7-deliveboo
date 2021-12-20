@@ -28,7 +28,7 @@
 
                         @foreach ($orders as $key=>$order)                        
                         <div class="card mx-1 mt-3 card-menu" style="width: 20.5rem;">
-                            <h5 class="riepilogo">Riepilogo ordine n°{{$key+1}}</h5>
+                            <h5 class="riepilogo">Riepilogo ordine n°{{count($orders) - $key}}</h5>
                             <div class="card-body d-flex flex-column padding">
                                 <h5>Ordinato da:</h5>
                                 <h6 class="card-title">{{$order['customer_name']}} {{$order['customer_surname']}}</h6>
