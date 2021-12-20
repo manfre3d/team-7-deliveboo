@@ -33,7 +33,23 @@ class RestaurantsTypesTableSeeder extends Seeder
             [
                 "name"=>"Indiano",
                 "img"=>"cucina-indiana.jpg"
-            ]
+            ],
+            [
+                "name"=>"Italiano",
+                "img"=>null
+            ],
+            [
+                "name"=>"Steak-House",
+                "img"=>null
+            ],
+            [
+                "name"=>"Fast-food",
+                "img"=>null
+            ],
+            [
+                "name"=>"Greco",
+                "img"=>null
+            ],
         ];
 
         foreach($restaurantCategories as $category) {
