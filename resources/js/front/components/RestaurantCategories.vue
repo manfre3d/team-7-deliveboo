@@ -9,7 +9,7 @@
     <ul class="d-flex flex-wrap">
       <li class="d-flex col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-3 col-xxl-3 justify-content-center" v-for="category in categories" :key="category.id">
         <div class="card mx-1 card-menu" style=" cursor: pointer" @click="$emit('category', category.id)" v-if="category.id < 5">
-          <div class="card_body">
+          <div class="card_body" data-aos="fade-left" data-aos-duration="1000">
             <img v-if="category.img_path" :src="require('../img/restaurant_category/' + category.img_path)" alt="category img">
             <h4>{{ category.name }}</h4>
           </div>

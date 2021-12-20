@@ -2,8 +2,8 @@
   <section class="container-fluid">
     <div>
       <div v-if="category.length!=0" class="d-flex flex-wrap row">
-        <h2 class="col-12 my-5">Filtri selezionati</h2> 
-        <div class="left-col col-12 col-md-6">
+        <h2 class="col-12 my-5" data-aos="fade-zoom-in">Filtri selezionati</h2> 
+        <div class="left-col col-12 col-md-6" data-aos="fade-zoom-in">
           <ul class="col-12 flex-wrap d-flex">
             <li v-for="(_categories,index) in category" :key="index" class="d-flex flex-wrap">
               <h3><span class="badge badge-secondary d-flex align-content-center mx-1">
@@ -31,7 +31,8 @@
     
     <!-- tutti i ristoranti  -->
     <div class="row justify-content-center container-responsive" v-if="category == 0">
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 d-flex justify-content-center img_container" v-for="restaurant in restaurants" :key="restaurant.id">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 d-flex justify-content-center img_container" v-for="restaurant in restaurants" :key="restaurant.id" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="0" data-aos-delay="200" data-aos-duration="500">
+
         <router-link :to="{ name: 'Restaurant', params: { slug: restaurant.slug } }">
           <img class="img-fluid" :src="checkImg(restaurant.img_path)" alt="restaurant img">
           <h4>{{ restaurant.name }}</h4>
@@ -39,8 +40,10 @@
       </div>
     </div>
     <!-- ristoranti filtrati -->
+
     <div class="row justify-content-center container-responsive " v-if="category != 0">
-      <div v-for="restaurant in filteredRestaurants" :key="restaurant.id" class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 flex-wrap d-flex justify-content-center img_container">
+      <div v-for="restaurant in filteredRestaurants" :key="restaurant.id" class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 flex-wrap d-flex justify-content-center img_container" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="0" data-aos-delay="200" data-aos-duration="500">
+
         <router-link :to="{ name: 'Restaurant', params: { slug: restaurant.slug } }">
 
           <img
