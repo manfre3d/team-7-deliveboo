@@ -27,8 +27,10 @@ export default {
   },
   methods: {
     getCategory(categorySelected) {
-      // console.log(categorySelected);
-      this.category = categorySelected;
+      this.category = '';
+      setTimeout( () => {
+        this.category = categorySelected;
+      }, 0)
     },
   },
 };

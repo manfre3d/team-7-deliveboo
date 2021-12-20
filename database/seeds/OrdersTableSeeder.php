@@ -14,7 +14,7 @@ class OrdersTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ( $i = 0; $i < 50; $i++) {
+        for ( $i = 0; $i < 1550; $i++) {
             $newOrder = new Order();
             $newOrder->user_id = $faker->numberBetween(1, 15) ;
             $newOrder->total_price = $faker->randomFloat(2, 1, 200);
@@ -23,7 +23,20 @@ class OrdersTableSeeder extends Seeder
             $newOrder->customer_email = $faker->email();
             $newOrder->customer_phone_number = $faker->phoneNumber();
             $newOrder->customer_address = $faker->address();
+            $newOrder->timestamps = false;
+            $newOrder->created_at = $this->getRandomDate();
             $newOrder->save();
         }
+    }
+
+    public function getRandomDate()
+    {
+        $years = ['2021', '2020', '2019'];
+
+        $year = $years[rand(0, 2)];
+        $month = rand(1, 12);
+        $day = rand(1, 25);
+        
+        return "{$year}-{$month}-{$day}";
     }
 }

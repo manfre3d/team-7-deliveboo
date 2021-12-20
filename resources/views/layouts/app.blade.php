@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://cdn.iconscout.com/icon/free/png-256/deliveroo-3442893-2875354.png">
 
 </head>
 <body>

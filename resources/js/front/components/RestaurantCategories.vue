@@ -1,5 +1,5 @@
 <template>
-  <section class="container-fluid">
+  <section class="container-fluid container-responsive">
     <div class="row">
       <div class="col-12">
         <h2>Le categorie di ristoranti più amate</h2>
@@ -112,6 +112,18 @@ export default {
       @include title;
       @include tag;
     }  
+  }
+}
+
+.container-responsive {
+  margin: auto;
+}
+
+@media screen and (min-width:1700px) {
+  .container-responsive {
+    max-width: 1800px;
+    margin: auto;
+    padding: 0 100px;
   }
 }
 </style>

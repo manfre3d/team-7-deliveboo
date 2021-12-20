@@ -1,25 +1,25 @@
 <template>
   <section class="container-fluid">
-    <div class="row">
-      <div v-if="category.length!=0" class="d-flex flex-wrap col">
-        <h2 class="col-12" data-aos="fade-zoom-in">Filtri selezionati</h2> 
-        <div class="left-col col-6" data-aos="fade-zoom-in">
-          <ul class="col-12 d-flex">
-            <li v-for="(categories,index) in category" :key="index" class="d-flex flex-wrap">
-              <h3  ><span class="badge badge-secondary d-flex align-content-center mx-1">
-                {{categoriesNames[categories-1]}}
+    <div>
+      <div v-if="category.length!=0" class="d-flex flex-wrap row">
+        <h2 class="col-12 my-5" data-aos="fade-zoom-in">Filtri selezionati</h2> 
+        <div class="left-col col-12 col-md-6" data-aos="fade-zoom-in">
+          <ul class="col-12 flex-wrap d-flex">
+            <li v-for="(_categories,index) in category" :key="index" class="d-flex flex-wrap">
+              <h3><span class="badge badge-secondary d-flex align-content-center mx-1">
+                {{categoriesNames[_categories-1]}}
                 
-              <button class="btn_delete_filter mx-2" @click="removeFilter(category)">X</button>
+              <button class="btn_delete_filter mx-2" @click="removeFilter(_categories)">X</button>
               </span></h3>
               
             </li>
           </ul>
 
         </div>
-        <div class="right-col col-6 d-flex justify-content-end">
+        <div class="right-col col-12 col-md-6 d-flex justify-content-end">
           <button class="btn_delete_filter mx-2" @click="removeAllFilters()">
             <h3>
-              <span class="badge badge-secondary d-flex align-content-center mx-1">      
+              <span class="badge d-flex align-content-center mx-1  btn-danger">      
               Rimuovi tutti i filtri          
               </span>
             </h3>
@@ -30,8 +30,9 @@
     </div>
     
     <!-- tutti i ristoranti  -->
-    <div class="row justify-content-center" v-if="category == 0">
-      <div data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="0" data-aos-delay="200" data-aos-duration="500" class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 d-flex justify-content-center img_container" v-for="restaurant in restaurants" :key="restaurant.id">
+    <div class="row justify-content-center container-responsive" v-if="category == 0">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 d-flex justify-content-center img_container" v-for="restaurant in restaurants" :key="restaurant.id" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="0" data-aos-delay="200" data-aos-duration="500">
+
         <router-link :to="{ name: 'Restaurant', params: { slug: restaurant.slug } }">
           <img class="img-fluid" :src="checkImg(restaurant.img_path)" alt="restaurant img">
           <h4>{{ restaurant.name }}</h4>
@@ -39,20 +40,23 @@
       </div>
     </div>
     <!-- ristoranti filtrati -->
-    <div class="row" v-if="category != 0">
-      <div v-for="restaurant in filteredRestaurants" :key="restaurant.id" class="col-sm-12 col-md-6 col-lg-4 col-xl-3 img_container d-flex flex-column align-items-center" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="0" data-aos-delay="200" data-aos-duration="500">
+
+    <div class="row justify-content-center container-responsive " v-if="category != 0">
+      <div v-for="restaurant in filteredRestaurants" :key="restaurant.id" class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 flex-wrap d-flex justify-content-center img_container" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="0" data-aos-delay="200" data-aos-duration="500">
+
         <router-link :to="{ name: 'Restaurant', params: { slug: restaurant.slug } }">
 
           <img
+          class="img-fluid"
           :src="checkImg(restaurant.img_path)"
           alt="restaurant img">
 
           <h4>{{ restaurant.name }}</h4>
         </router-link>
-        <div class="tags">
+        <div class="tags col-12 justify-content-center">
           <h6 class="badge badge-warning" v-for="(type,index) in restaurant.types" :key="index">
-          {{ categoriesNames[type - 1] }}
-        </h6>
+            {{ categoriesNames[type - 1] }}
+          </h6>
         </div> 
       </div>
     </div>
@@ -85,7 +89,7 @@ export default {
       })
       .catch((error) => {
         //handle error
-        console.log(error);
+        console.error(error);
       });
     axios
       .get("/api/restaurants")
@@ -96,16 +100,15 @@ export default {
       })
       .catch((error) => {
         //handle error
-        console.log(error);
+        console.error(error);
       });
   },
   watch: {
     selectedCategory: function () {
-      if(!this.category.includes(this.selectedCategory)){
+      if(!this.category.includes(this.selectedCategory) && this.selectedCategory != ''){
         this.category.push(this.selectedCategory);
-
       }
-      
+
       this.searchForCategory(this.category);
     },
   },
@@ -120,15 +123,13 @@ export default {
           stringCategories+='-'+elm;
         }
       });
-      console.log(stringCategories);
       axios
         .get("http://127.0.0.1:8000/api/restaurants/type/" + stringCategories)
         .then((response) => {
-          console.log(response.data.data);
           this.filteredRestaurants = response.data.data;
         })
         .catch((error) => {
-          console.log(error);
+          console.error(error);
         });
     },
     checkImg(img_path){
@@ -143,10 +144,9 @@ export default {
       }
     },
     removeFilter(category_id){
-
       let indexOfElement=this.category.indexOf(category_id);
       this.category.splice(indexOfElement, 1);
-
+      
       this.searchForCategory(this.category);
     //   let stringCategories='';
     //   this.category.forEach((elm,index)=>{
@@ -239,5 +239,11 @@ export default {
   font-weight: 600;
   color: white;
   vertical-align: middle;
+}
+
+@media screen and (min-width:1700px) {
+  .container-responsive {
+    max-width: 1800px;
+  }
 }
 </style>

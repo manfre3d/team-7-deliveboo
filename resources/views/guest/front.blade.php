@@ -23,7 +23,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.0/PixiPlugin.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.0/TextPlugin.min.js"></script>
         {{-- End Gsap plugins --}}
-
+        <link rel="icon" type="image/x-icon" href="https://cdn.iconscout.com/icon/free/png-256/deliveroo-3442893-2875354.png">
     <title>Deliveboo</title>
 </head>
 

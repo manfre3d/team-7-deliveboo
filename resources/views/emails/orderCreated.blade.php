@@ -57,7 +57,6 @@
             word-spacing: 2px;
             font-size: 15px;
         }
-
         .order.price {
             text-align: end;
             width: 45px;
@@ -104,7 +103,6 @@
                             <div class="order price">{{$item->price}}€</div>
                         </div>
                     </div>
-
                 @endforeach
 
             <h4>Prezzo totale pagato: {{$newOrder['total_price']}}€</h4> 

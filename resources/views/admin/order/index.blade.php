@@ -12,7 +12,7 @@
                         <a href="{{route('admin.home')}}" class="d-flex justify-content-center align-items-end">
                             <button class="btn-primary btn">Torna alla pagina precedente</button>                            
                         </a>
-
+                        <a class="btn-primary btn" href="{{route('admin.grafici-ordini', date("Y"))}}">Statistiche</a>
                     </div>
                 </div>
 
