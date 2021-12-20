@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card card-menu">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <a href="{{route('admin.orders.index')}}">
@@ -12,13 +12,10 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="d-flex col-12 d-flex flex-wrap mx-auto justify-content-around">
-
-                         
-                        <div class="card mx-1 mt-3 card-menu" style="width: 26.5rem;">
-                            <h5 class="riepilogo">Riepilogo ordine n°{{$order_number}}</h5>
-                            <div class="card-body d-flex flex-column padding">
-                                <h5>Ordinato da:</h5>
+                
+                    <h3 class="mb-3 text-center">Riepilogo ordine n°{{$order_number}}</h3>
+                    <div class="padding">
+                        <h5>Ordinato da:</h5>
                                 <h6 class="card-title">{{$order['customer_name']}} {{$order['customer_surname']}}</h6>
                                 <h5>Email:</h5>
                                 <h6 class="card-title">{{$order['customer_email']}}</h6>
@@ -37,9 +34,7 @@
                                         </li>
                                     @endforeach
                                 </ol>
-                            </div>
-                        </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
         </div>
