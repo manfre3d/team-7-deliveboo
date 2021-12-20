@@ -10,13 +10,13 @@
     <!-- Section restaurant-info -->
     <section class="restaurant-info" v-if="restaurant != null">
       <div class="container b">
-        <div class="row">
+        <div class="row" data-aos="zoom-in" data-aos-duration="700">
           <div class="col-12 col-lg-5">
             <img
               class="restaurant-image"
               :src="checkImg(restaurant.img_path)"
               alt=""
-            />
+             >
           </div>
           <div class="col-12 col-lg-7 restaurant-description">
             <h2 class="restaurant-name">Ristorante {{ restaurant.name }}</h2>

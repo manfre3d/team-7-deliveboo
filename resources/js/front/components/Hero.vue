@@ -2,7 +2,7 @@
   <section class="container-fluid">
       <div class="row hero_container d-flex">
         <div class="col-sm-12 col-md-6 d-flex justify-content-center align-items-center hero_title">
-          <h1 data-aos="fade-down" data-aos-easing="linear" data-aos-duration="800">I ristoranti che ami, a domicilio in 32 minuti</h1>
+          <h1 data-aos="fade-down" data-aos-duration="800">I ristoranti che ami, a domicilio in 32 minuti</h1>
         </div>
         <div class="hero_img col-sm-12 col-md-6 d-flex justify-content-center">
           <img src="../img/hero.png" alt="Hero image">
