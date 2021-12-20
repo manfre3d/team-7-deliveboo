@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "aos": "^2.3.4",
         "bootstrap-vue": "^2.21.2",
         "chart.js": "^3.6.2",
         "imagemin-webpack-plugin": "^2.4.2",
