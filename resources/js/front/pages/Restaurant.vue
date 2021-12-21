@@ -1,7 +1,7 @@
 <template>
   <div class="general-container">
-    <div class="container">
-      <i id="cart" class="fas fa-cart-plus openbtn" @click="toggleNav()">
+    <div class="container" v-if="navCounter==0" @click="toggleNav()">
+      <i id="cart" class="fas fa-cart-plus openbtn"  >
         <span></span>
         {{ cartCounter() }}
         <span></span>
@@ -49,7 +49,70 @@
     <Menu />
 
     <!-- Sidebar shopping cart -->
-    <div id="mySidebar" class="sidebar">
+    <div id="mySidebar" class="sidebar_restaurant" v-if="navCounter==1">
+      <section class="cart_section_restaurant">
+        <h3>Carrello</h3>
+        <button class="closebtn btn  close_cart"  @click="toggleNav()">
+          <i class="fas fa-times"></i>
+        </button>
+        <!-- <a href="javascript:void(0)" class="closebtn" @click="toggleNav()">×</a> -->
+        <ul id="cart_data">
+          <li class="cart_item" v-for="(plate, index) in cart" :key="index">
+            <div class="quantity_wrapper">
+              <button type="button" id="${elm.id}_decrease" class="modify_quantity decrease" @click="removeToCart(plate.id)">
+              <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205"><path fill="#00ccbc" d="M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z"></path></svg>
+              </button>
+              <span class="quantity">{{ plate.quantity }}x</span>
+              <button type="button" id="${elm.id}_increase" class="modify_quantity increase" @click="addToCart(plate)">
+              <svg height="24" width="24" viewBox="0 0 24 24" class="ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205"><path fill="#00ccbc" d="M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z"></path></svg>
+              </button>
+            </div>
+
+
+            <div class="info_wrapper">
+              <h4 class="product_name">{{ plate.name }}</h4>
+            <div class="ingredients">{{plate.ingredients}}</div>
+            </div>
+
+            <div class="delete_wrapper">
+              <button @click="removeElementCart(plate.id)">
+                <i class="fas fa-trash-alt text-danger"></i>
+              </button>
+            </div>
+            <div class="product_price">{{ plate.price.toFixed(2).replace(".",",") }} &euro;</div>
+          </li>
+        </ul>
+
+        <hr>
+        <div class="cart_btn_sec">
+          <h3 class="input-label">Totale:<span id="total_price">{{ getTotalPrice() }} &euro;</span></h3>
+          <button class="clear-cart btn btn_clear" @click="removeAllCart()">
+            Svuota il carrello
+          </button>
+          <button v-if="cart.length > 0" class="clear-cart btn " >
+            <a href="/checkout">Procedi al pagamento</a>
+          </button>
+        </div>
+      </section>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- <div id="mySidebar" class="sidebar">
       <a href="javascript:void(0)" class="closebtn" @click="toggleNav()">×</a>
       <div class="cart a">
         <table class="table">
@@ -148,7 +211,7 @@
           <a href="/checkout">Procedi al pagamento</a>
         </button>
       </div>
-    </div>
+    </div> -->
 
     <!-- Section Menu -->
     <section class="order container-xl">
@@ -388,17 +451,33 @@ export default {
     // closeNav: function () {
     //   document.getElementById("mySidebar").style.width = "0";
     // },
+    // toggleNav: function(){
+    //   if(this.navCounter==0){
+    //     document.getElementById("mySidebar").style.minWidth = '50%';
+    //     this.navCounter=1;
+    //     document.getElementById("cart").style.display = "none";
+
+
+    //   }else{
+    //     document.getElementById("mySidebar").style.minWidth = "0";
+    //     this.navCounter=0;
+    //     document.getElementById("cart").style.display = "flex";
+
+    //   }
+    // },
     toggleNav: function(){
       if(this.navCounter==0){
-        document.getElementById("mySidebar").style.width = "min-content";
+
+        
+        // document.getElementById("mySidebar").style.minWidth = '50%';
         this.navCounter=1;
-        document.getElementById("cart").style.display = "none";
+        // document.getElementById("cart").style.display = "none";
 
 
       }else{
-        document.getElementById("mySidebar").style.width = "0";
+        // document.getElementById("mySidebar").style.minWidth = "0";
         this.navCounter=0;
-        document.getElementById("cart").style.display = "flex";
+        // document.getElementById("cart").style.display = "flex";
 
       }
     },
@@ -577,6 +656,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 }
 
 .responsive {
@@ -584,43 +664,46 @@ button {
 }
 
 // Sidebar shopping cart
-.sidebar {
-  max-height: 80vh;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 50px;
-  right:100px;
-  background-color: white;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding: 40px 0;
-  display: flex;
-  justify-content: center;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 8px;
+// .sidebar {
+//   // max-height: 80vh;
+//   // width: 0;
+//   // position: fixed;
+//   // z-index: 1;
+//   // top: 50px;
+//   // right:100px;
+//   // background-color: white;
+//   // overflow-x: hidden;
+//   // transition: 0.5s;
+//   // padding: 40px 0;
+//   // display: flex;
+//   // justify-content: center;
+//   // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+//   // border-radius: 8px;
 
-  .table {
-    border-radius: 8px;
-  }
-}
+//   .table {
+//     border-radius: 8px;
+//   }
+// }
 
-.sidebar a {
+.sidebar_restaurant a {
   text-decoration: none;
   display: block;
   transition: 0.3s;
 }
 
-.sidebar a:hover {
+.sidebar_restaurant a:hover {
   color: #f1f1f1;
 }
 
-.sidebar .closebtn {
-  position: absolute;
-  top: 0;
-  left: 25px;
-  font-size: 36px;
-}
+// .sidebar .closebtn {
+//   position: absolute;
+//   top: 0;
+//   right: 25px;
+//   font-size: 36px;
+//   color: white;
+//   background-color: red;
+//   padding: 2px 10px;
+// }
 
 .openbtn {
   font-size: 20px;
@@ -634,11 +717,13 @@ button {
   right: 40px;
   margin-top: 15px;
   z-index: 10;
+  
 }
 
 .openbtn:hover {
   background-color: #444;
 }
+
 
 #main {
   transition: margin-left 0.5s;
@@ -674,13 +759,7 @@ button {
   }
 }
 
-@media screen and (max-width: 576px) and (max-height: 900px) {
-  .sidebar {
-    top: 0;
-    height: 100vh;
-    // width: 100vw!important;
-  }
-}
+
 
 @media screen and (min-width: 1100px) {
   .order {
@@ -692,5 +771,198 @@ button {
   .restaurant-name {
     padding-top: 50px;
   }
+}
+
+
+.sidebar_restaurant{
+  // max-height: 80vh;
+  min-width: 50%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 50px;
+  right:100px;
+  background-color: white;
+  overflow-x: hidden;
+  transition: .5s;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 8px;
+  @media screen and (max-width: 1300px) {
+    & {
+      // top: 0;
+      // height: 100vh;
+      width: 70%;
+      // right: 0;
+      // width: 100vw!important;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    & {
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      right: 0;
+      // width: 100vw!important;
+    }
+  }
+  
+  .cart_section_restaurant {
+    background-color: white;
+      border-radius: .35rem;
+      width: 100%;
+      padding: 2.75rem 1.5rem;
+      -webkit-box-shadow: 2px 2px 23px -4px rgba(0, 0, 0, 0.15); 
+      box-shadow: 2px 2px 23px -4px rgba(0, 0, 0, 0.15);
+      @media screen and (max-width: 1100px) {
+        & {
+          width: 100%;
+          right: 0;
+          left: 0;
+        }
+      }
+      @media screen and (max-width: 900px) {
+        & {
+          width: 100%;
+          // margin-bottom: 2rem;
+          
+        }
+      }
+      .closebtn {
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 36px;
+        color: white;
+        background-color: #c50000;
+        padding: 0 13px;
+      }
+      
+      .close_cart:hover{
+        background-color:black;
+      }
+      .cart_btn_sec{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        @media screen and (max-width: 450px) {
+          & {
+            justify-content: center;
+            button{
+              margin: 3px 0;
+            }
+          }
+        }
+      }
+      #cart_data {
+        max-height: 40vh;
+        overflow-y: auto;    
+        overflow-x: auto;
+        max-height: 35vh;
+
+        padding-right: 1rem;  
+          
+        @media screen and (max-width: 900px) {
+          & {
+            max-height: 55%;
+          }
+        }
+
+      }
+  
+      .cart_item {
+        display: flex;
+        margin: 1.25rem 0;
+        .ingredients {
+          color: rgba(0, 0, 0, 0.651);
+          // @media screen and (max-width: 630px) {
+          //   & {
+              
+          //       display: none;
+          //   }
+          // }
+        }
+        .info_wrapper {
+          padding: 0 1rem;
+          width: 70%;
+          @media screen and (max-width: 1300px) {
+            & {
+              padding: 0 0;
+              width: 65%;
+
+            }
+          }
+          @media screen and (max-width: 900px) {
+            & {
+              
+                width: 70%;
+            }
+          }
+          @media screen and (max-width: 630px) {
+            & {
+              
+                width: 60%;
+            }
+          }
+          @media screen and (max-width: 490px) {
+            & {
+              
+                width: 50%;
+            }
+          }
+          @media screen and (max-width: 430px) {
+            & {
+              
+                width: 40%;
+            }
+          }
+        }
+        .modify_quantity {
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+          vertical-align: middle;
+        }
+        .quantity_wrapper {
+          min-width: 5rem;
+        }
+        .delete_wrapper {
+          min-width: 2rem;
+          text-align: center;
+        }
+        .product_price {
+          margin-left: auto;
+        }
+        .product_name {
+          text-transform: capitalize;
+          margin-bottom: .15rem;
+          
+        }
+      }
+      hr {
+        margin-top: 2rem;
+        border: $greenMain 1px solid;
+      }
+      .input-label {
+        display: flex;
+        margin-top: 1rem;
+        width: 100%;
+        span {
+          margin-left: auto;
+        }
+      }
+    }
+    
+}
+.hide_cart{
+  display: none;
+  min-width: none;
+}
+.show_cart{
+  display: flex;
+  min-width: 40%;
 }
 </style>
