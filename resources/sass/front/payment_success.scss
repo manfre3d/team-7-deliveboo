@@ -5,7 +5,7 @@
     background: linear-gradient(185deg, rgba(0,204,190,1) 51%, rgba(0,126,138,1) 51%);
     background-repeat: no-repeat;
     font-family: sans-serif;
-    height: 100vh;  
+    min-height: 100vh;  
 }
 .logo_container{
     padding: 50px 0;
@@ -46,7 +46,7 @@ h5{
     padding-top: 15px;
 }
 footer{
-    background-color: rgba(0,126,138,1);
+    // background-color: rgba(0,126,138,1);
     h4{
         padding: 50px;
         a{
