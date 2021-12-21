@@ -802,7 +802,7 @@ button {
   @media screen and (max-width: 900px) {
     & {
       top: 0;
-      height: 100vh;
+      height: 100%;
       width: 100%;
       right: 0;
       // width: 100vw!important;
