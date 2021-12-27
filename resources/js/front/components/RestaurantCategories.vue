@@ -17,7 +17,7 @@
       </li>
     </ul>
 
-      <!-- Stampa tag categorie -->
+    <!-- Stampa tag categorie -->
     <h2>Cerchi qualcos'altro?</h2>
     <ul>
       <li class="row tag">

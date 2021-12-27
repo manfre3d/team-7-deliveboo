@@ -1,7 +1,6 @@
 <template>
   <section class="section-menu">
-  <img src="../img/menu.png" alt="">
-
+    <img src="../img/menu.png" alt="">
   </section>
 </template>
 

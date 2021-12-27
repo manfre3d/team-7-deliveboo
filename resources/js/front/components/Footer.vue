@@ -27,7 +27,6 @@
                 <a href="https://www.linkedin.com/in/eliaraguso/" target="_blank"><i class="fab fa-linkedin fa-2x pl-1"></i></a>
             </div>
 
-
         </div>
     </div>
    </footer>
