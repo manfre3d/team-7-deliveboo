@@ -79,7 +79,7 @@
                 <i class="fas fa-trash-alt text-danger"></i>
               </button>
             </div>
-            <div class="product_price">{{ plate.price.toFixed(2).replace(".",",") }} &euro;</div>
+            <div class="product_price">{{ parseFloat(plate.price).toFixed(2).replace(".",",") }} &euro;</div>
           </li>
         </ul>
 
@@ -120,7 +120,7 @@
             <h3 class="plate-name">{{ plate.name }}</h3>
             <p class="plate-description">{{ plate.description }}</p>
             <div v-if="plate.price" class="price">
-              <strong>Prezzo:</strong> {{ plate.price.toFixed(2).replace(".",",") }} €
+              <strong>Prezzo:</strong> {{ parseFloat(plate.price).toFixed(2).replace(".",",") }} €
             </div>
             <button
               class="btn add-cart"
@@ -315,7 +315,7 @@ export default {
         tot += elm.price * elm.quantity;
       });
 
-      return tot.toFixed(2).replace(".",",");
+      return parseFloat(tot).toFixed(2).replace(".",",");
     },
 
     cartCounter: function () {
