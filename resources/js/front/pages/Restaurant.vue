@@ -341,7 +341,6 @@ export default {
     //     this.navCounter=1;
     //     document.getElementById("cart").style.display = "none";
 
-
     //   }else{
     //     document.getElementById("mySidebar").style.minWidth = "0";
     //     this.navCounter=0;
