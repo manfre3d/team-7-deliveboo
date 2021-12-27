@@ -335,19 +335,6 @@ export default {
     // closeNav: function () {
     //   document.getElementById("mySidebar").style.width = "0";
     // },
-    // toggleNav: function(){
-    //   if(this.navCounter==0){
-    //     document.getElementById("mySidebar").style.minWidth = '50%';
-    //     this.navCounter=1;
-    //     document.getElementById("cart").style.display = "none";
-
-    //   }else{
-    //     document.getElementById("mySidebar").style.minWidth = "0";
-    //     this.navCounter=0;
-    //     document.getElementById("cart").style.display = "flex";
-
-    //   }
-    // },
     toggleNav: function(){
       if(this.navCounter==0){
 
