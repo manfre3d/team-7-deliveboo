@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class TrustProxies extends Middleware
 {   
+    // setting for https heroku
     /**
      * The trusted proxies for this application.
      *
