@@ -326,28 +326,14 @@ export default {
       });
       return counter;
     },
-    // /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
-    // openNav: function () {
-    //   document.getElementById("mySidebar").style.width = "min-content";
-    // },
-
-    // /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
-    // closeNav: function () {
-    //   document.getElementById("mySidebar").style.width = "0";
-    // },
     toggleNav: function(){
       if(this.navCounter==0){
 
-        
-        // document.getElementById("mySidebar").style.minWidth = '50%';
         this.navCounter=1;
-        // document.getElementById("cart").style.display = "none";
-
-
+       
       }else{
-        // document.getElementById("mySidebar").style.minWidth = "0";
+
         this.navCounter=0;
-        // document.getElementById("cart").style.display = "flex";
 
       }
     },
