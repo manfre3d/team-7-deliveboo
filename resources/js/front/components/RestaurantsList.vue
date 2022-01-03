@@ -95,7 +95,7 @@ export default {
       .get("/api/restaurants")
       .then((response) => {
         //handle success
-        // console.log(response.data.data);
+        
         this.restaurants = response.data.data;
       })
       .catch((error) => {
@@ -114,7 +114,7 @@ export default {
   },
   methods: {
     searchForCategory(id_category) {
-      // console.log(id_category);
+      
       let stringCategories='';
       id_category.forEach((elm,index)=>{
         if(index==0){
@@ -151,24 +151,6 @@ export default {
       this.category.splice(indexOfElement, 1);
       
       this.searchForCategory(this.category);
-    //   let stringCategories='';
-    //   this.category.forEach((elm,index)=>{
-    //     if(index==0){
-    //       stringCategories+=elm;
-    //     }else{
-    //       stringCategories+='-'+elm;
-    //     }
-    //   });
-    //   console.log(stringCategories);
-    //   axios
-    //     .get("http://127.0.0.1:8000/api/restaurants/type/" + stringCategories)
-    //     .then((response) => {
-    //       console.log(response.data.data);
-    //       this.filteredRestaurants = response.data.data;
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
     },
     removeAllFilters(){
       this.category=[];
